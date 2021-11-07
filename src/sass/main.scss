@@ -1,9 +1,12 @@
 @import './base/normalize';
 @import './base/reset-styles';
+@import './utils/typography';
+@import './utils/breakpoints';
+@import './utils/mixins';
+@import './utils/variables';
+@import './components/container';
 @import './components/header-home';
-@import './components/header-library';
 @import './components/content';
 @import './components/modal';
 @import './components/pagination';
 @import './components/footer';
-@import './utils/typography';
