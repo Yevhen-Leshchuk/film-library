@@ -1,0 +1,30 @@
+<div class='header-auth'>
+  <button type='submit' class='header-button header-button--in'>log in</button>
+  <button type='button' class='header-button header-button--out'>log out</button>
+  <span class='switcher theme-switcher'></span>
+</div>
+
+<div class='header-main-nav'>
+  <div class='header-logo' data-action="home">
+    <svg class='header-logo__icon'>
+      <use href='{{this}}#film'></use>
+    </svg>
+    <h1 class='header-logo__name'>Filmoteka</h1>
+  </div>
+  <div class='header-nav'>
+    <button type='button' class='header-button header-home-btn header-button--active' data-action="home">Home</button>
+    <button type='button' class='header-button header-library-btn' data-action="library">my library</button>
+  </div>
+</div>
+
+<form class='header-form'>
+  <input class='header-form__input' type='text' name='query' autocomplete="off" placeholder='Search Movies' />
+  <svg class='header-form__icon'>
+    <use href='{{this}}#search'></use>
+  </svg>
+</form>
+
+<div class='header-control'>
+  <button type='button' class='header-control__btn header-control__watched'>Watched</button>
+  <button type='button' class='header-control__btn header-control__queue'>Queue</button>
+</div>
