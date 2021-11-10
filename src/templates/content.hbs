@@ -1,0 +1,28 @@
+<ul class="galery">
+  {{#each this}}
+
+  <li class="galery-card" data-id={{id}} data-title={{original_title}} data-poster={{poster_path}} data-genres={{genres}} data-date={{release_date}} data-rating={{vote_average}}>
+      <div class="trailer">
+        <svg class='trailer-logo__icon'>
+          <use href='{{this}}#youtube'></use>
+        </svg>
+      </div>
+
+      <div class="gallery-box">
+      {{#if poster_path}}
+      <img src='https://image.tmdb.org/t/p/w500/{{poster_path}}' alt="image" class="gallery-box__image" />
+      {{else}}
+      <img src='https://www.prokerala.com/movies/assets/img/no-poster-available.jpg' alt="image" class="gallery-box__image" />
+      {{/if}}
+      </div>
+
+      <h2 class="galery-card__title">{{original_title}}</h2>
+      <div class="galery-desc">
+        <span class="galery-genres">{{genres}}</span>
+        <span class="galery-desc__release">{{release_date}}</span>
+        <span class="galery-desc__rating">{{vote_average}}</span>
+      </div>
+  </li>
+
+  {{/each}}
+</ul>
