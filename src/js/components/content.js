@@ -1,5 +1,4 @@
 import gallery from '../../templates/content.hbs';
-import logo from '../../images/sprite/sprite.svg';
 import { apiService } from '../services/api';
 import refs from '../refs';
 
