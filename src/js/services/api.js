@@ -6,6 +6,7 @@ let GENRES = [];
 class Api {
   constructor() {
     this.url = '';
+    this.page = 1;
 
     this.genre = `${baseURL}/genre/movie/list?api_key=${api_key}&language=en-US`;
     this.trending = `${baseURL}/trending/movie/day?api_key=${api_key}`;
