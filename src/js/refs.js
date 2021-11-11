@@ -1,6 +1,7 @@
 const refs = {
-  containerHederRefs: document.querySelector('header .container'),
-  contentRefs: document.querySelector('.content'),
+  hederContainerRef: document.querySelector('header .container'),
+  contentRef: document.querySelector('.content'),
+  footerContainerRef: document.querySelector('.footer .container'),
 };
 
 export default refs;

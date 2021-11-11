@@ -5,7 +5,7 @@ import refs from '../refs';
 export function galleryMarkup(movies) {
   const markup = gallery(movies);
 
-  refs.contentRefs.insertAdjacentHTML('beforeend', markup);
+  refs.contentRef.insertAdjacentHTML('beforeend', markup);
 }
 
 function fetchMovies() {

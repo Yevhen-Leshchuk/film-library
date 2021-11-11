@@ -1,0 +1,28 @@
+.footer {
+  background-color: $sLightGray;
+
+  @include fontProperty($color: $darkGray, $size: 14px, $height: 1.14, $text-align: center);
+}
+
+.footer > .container {
+  padding-top: 29px;
+  padding-bottom: 29px;
+}
+
+.footer-copyright {
+  margin-bottom: 10px;
+}
+
+.footer-developer__icon {
+  width: 14px;
+  height: 13px;
+}
+
+.footer-developer__icon {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.footer-developer__link {
+  text-decoration: underline;
+}
