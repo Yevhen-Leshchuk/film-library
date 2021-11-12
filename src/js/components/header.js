@@ -9,21 +9,21 @@ headerHomeMarkup();
 function headerHomeMarkup() {
   const markup = headerHome(logo);
 
-  refs.containerHederRefs.insertAdjacentHTML('beforeend', markup);
+  refs.hederContainerRef.insertAdjacentHTML('beforeend', markup);
 }
 
 // logic of header home and library pages------------------
 
-const headerNavRefs = document.querySelector('.header-nav');
-const headerFormRefs = document.querySelector('.header-form');
-const headerControlRefs = document.querySelector('.header-control');
-const headerRefs = document.querySelector('.header');
-const headerBtnHomeRefs = document.querySelector('.header-home-btn');
-const headerBtnLibrRefs = document.querySelector('.header-library-btn');
-const logoRefs = document.querySelector('.header-logo');
+const headerNavRef = document.querySelector('.header-nav');
+const headerFormRef = document.querySelector('.header-form');
+const headerControlRef = document.querySelector('.header-control');
+const headerRef = document.querySelector('.header');
+const headerBtnHomeRef = document.querySelector('.header-home-btn');
+const headerBtnLibrRef = document.querySelector('.header-library-btn');
+const logoRef = document.querySelector('.header-logo');
 
-headerNavRefs.addEventListener('click', onControlClick);
-logoRefs.addEventListener('click', onLogoClick);
+headerNavRef.addEventListener('click', onControlClick);
+logoRef.addEventListener('click', onLogoClick);
 
 function onControlClick(event) {
   event.preventDefault();
@@ -46,22 +46,22 @@ function onLogoClick(event) {
 
 function openHeaderHome(element) {
   if (element.dataset.action === 'home') {
-    headerFormRefs.classList.remove('header-form--hidden');
-    headerControlRefs.classList.remove('header-control--active');
-    headerBtnLibrRefs.classList.remove('header-button--active');
-    headerRefs.classList.remove('header-library');
-    headerRefs.classList.add('header-home');
-    headerBtnHomeRefs.classList.add('header-button--active');
+    headerFormRef.classList.remove('header-form--hidden');
+    headerControlRef.classList.remove('header-control--active');
+    headerBtnLibrRef.classList.remove('header-button--active');
+    headerRef.classList.remove('header-library');
+    headerRef.classList.add('header-home');
+    headerBtnHomeRef.classList.add('header-button--active');
   }
 }
 
 function openHeaderLibrary(element) {
   if (element.dataset.action === 'library') {
-    headerFormRefs.classList.add('header-form--hidden');
-    headerControlRefs.classList.add('header-control--active');
-    headerBtnLibrRefs.classList.add('header-button--active');
-    headerRefs.classList.add('header-library');
-    headerRefs.classList.remove('header-home');
-    headerBtnHomeRefs.classList.remove('header-button--active');
+    headerFormRef.classList.add('header-form--hidden');
+    headerControlRef.classList.add('header-control--active');
+    headerBtnLibrRef.classList.add('header-button--active');
+    headerRef.classList.add('header-library');
+    headerRef.classList.remove('header-home');
+    headerBtnHomeRef.classList.remove('header-button--active');
   }
 }
