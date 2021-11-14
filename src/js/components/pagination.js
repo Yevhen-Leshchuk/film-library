@@ -29,8 +29,8 @@ const pagination = new Pagination(container, {
   },
 });
 
-pagination.on('beforeMove', async ev => {
-  apiService.page = ev.page;
+pagination.on('beforeMove', async e => {
+  apiService.page = e.page;
   const movies = await apiService.fetchMovies();
   clearGallery();
   galleryMarkup(movies.results);
