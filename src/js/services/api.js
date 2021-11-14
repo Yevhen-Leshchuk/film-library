@@ -7,9 +7,12 @@ class Api {
   constructor() {
     this.url = '';
     this.page = 1;
+    this.searchQuery = '';
 
-    this.genre = `${baseURL}/genre/movie/list?api_key=${api_key}&language=en-US`;
+    this.searchMovies = `${baseURL}/search/movie?api_key=${api_key}`;
+    this.genre = `${baseURL}/genre/movie/list?api_key=${api_key}`;
     this.trending = `${baseURL}/trending/movie/day?api_key=${api_key}`;
+    this._lang = '';
   }
 
   async fetchGenres() {
@@ -21,10 +24,17 @@ class Api {
   }
 
   async fetchMovies() {
+    console.log(this.searchQuery);
+    if (this.searchQuery) {
+      this.url = `${this.searchMovies}&query=${this.searchQuery}&page=${this.page}&language=${this._lang}`;
+    } else {
+      this.url = `${this.trending}&page=${this.page}&language=${this._lang}`;
+    }
     try {
-      this.url = this.trending;
+      // console.log(this.url);
       const response = await fetch(this.url);
       const data = await response.json();
+      this.page = data.page;
 
       // console.log(results);
       data.results = data.results.map(movie => {
@@ -47,6 +57,18 @@ class Api {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  incrementPage() {
+    this.page += 1;
+  }
+
+  resetPage() {
+    this.page = 1;
+  }
+
+  set query(value) {
+    this.searchQuery = value;
   }
 }
 

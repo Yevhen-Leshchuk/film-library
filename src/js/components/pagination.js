@@ -1,10 +1,10 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { apiService } from '../services/api';
-import { galleryMarkup } from '../components/content';
+import { galleryMarkup, clearGallery } from '../components/content';
 
 const container = document.getElementById('tui-pagination-container');
-console.log(container);
+// console.log(container);
 
 const pagination = new Pagination(container, {
   itemsPerPage: 20,
@@ -29,9 +29,10 @@ const pagination = new Pagination(container, {
   },
 });
 
-pagination.on('beforeMove', async evt => {
-  apiService.page = evt.page;
+pagination.on('beforeMove', async ev => {
+  apiService.page = ev.page;
   const movies = await apiService.fetchMovies();
+  clearGallery();
   galleryMarkup(movies.results);
 });
 
