@@ -1,15 +1,20 @@
 import headerHome from '../../templates/header-home.hbs';
 import logo from '../../images/sprite/sprite.svg';
+import { apiService } from '../services/api';
+import { searchFormHandler, fetchMovies, galleryMarkup, clearGallery } from '../components/content';
+import pagination from '../components/pagination';
 import refs from '../refs';
 
 // loading header home -----------------------
 
 headerHomeMarkup();
 
-function headerHomeMarkup() {
-  const markup = headerHome(logo);
+export const searchFormRef = document.querySelector('.header-form');
 
-  refs.hederContainerRef.insertAdjacentHTML('beforeend', markup);
+function headerHomeMarkup() {
+  const markupHeader = headerHome(logo);
+
+  refs.hederContainerRef.insertAdjacentHTML('beforeend', markupHeader);
 }
 
 // logic of header home and library pages------------------
@@ -42,6 +47,12 @@ function onLogoClick(event) {
   const logo = event.currentTarget;
 
   openHeaderHome(logo);
+  clearGallery();
+
+  apiService.searchQuery = '';
+  apiService.page = 1;
+  fetchMovies();
+  pagination.reset();
 }
 
 function openHeaderHome(element) {

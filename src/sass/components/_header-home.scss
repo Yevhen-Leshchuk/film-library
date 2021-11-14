@@ -84,9 +84,17 @@ header .container {
 }
 
 .switcher {
-  margin-left: 85px;
+  margin-left: 82px;
   font-size: 120%;
   cursor: pointer;
+
+  @media screen and (min-width: 480px) {
+    margin-left: 90px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-left: 110px;
+    font-size: 140%;
+  }
 }
 .switcher:before {
   content: '🌞';
@@ -104,7 +112,21 @@ header .container {
   padding-right: 0;
   cursor: pointer;
 
-  @include fontProperty($color: $white, $weight: 500, $height: 1.17, $transform: uppercase);
+  @include fontProperty(
+    $color: $white,
+    $weight: 500,
+    $size: 12px,
+    $height: 1.17,
+    $transform: uppercase
+  );
+
+  @media screen and (min-width: 480px) {
+    font-size: 14px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+  }
 }
 
 .header-button--out {
@@ -113,7 +135,8 @@ header .container {
 
 .header-main-nav {
   display: flex;
-  align-items: baseline;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 38px;
   cursor: pointer;
 
@@ -180,7 +203,11 @@ header .container {
   width: calc(100% - 20px);
   color: $white;
 
-  @include fontProperty($size: 14px, $height: 1.14, $text-align: none);
+  @include fontProperty($size: 18px, $height: 1.14, $text-align: none);
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
 
   &::placeholder {
     color: $white;

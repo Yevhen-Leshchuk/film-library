@@ -1,5 +1,6 @@
 import footer from '../../templates/footer.hbs';
 import icon from '../../images/sprite/sprite.svg';
+
 import refs from '../refs';
 
 function footerMarkup() {
