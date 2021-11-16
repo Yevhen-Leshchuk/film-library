@@ -1,7 +1,7 @@
 import headerHome from '../../templates/header-home.hbs';
 import logo from '../../images/sprite/sprite.svg';
 import { apiService } from '../services/api';
-import { searchFormHandler, fetchMovies, galleryMarkup, clearGallery } from '../components/content';
+import { fetchMovies, clearGallery } from '../components/content';
 import pagination from '../components/pagination';
 import refs from '../refs';
 

@@ -24,7 +24,7 @@ class Api {
   }
 
   async fetchMovies() {
-    console.log(typeof this.searchQuery);
+    // console.log(typeof this.searchQuery);
     if (this.searchQuery !== '') {
       this.url = `${this.searchMovies}&query=${this.searchQuery}&page=${this.page}&language=${this._lang}`;
     } else {
@@ -45,13 +45,13 @@ class Api {
             .map(id => {
               // console.log(id);
               const movieGenre = GENRES.find(genre => genre.id === id);
-              // console.log(movieGenre?.name);
+              // console.log(movieGenre);
               return movieGenre?.name || '';
             })
             .join(', '),
         };
       });
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (error) {
       console.log(error);
