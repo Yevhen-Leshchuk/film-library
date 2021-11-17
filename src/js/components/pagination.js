@@ -29,8 +29,8 @@ const pagination = new Pagination(container, {
   },
 });
 
-pagination.on('beforeMove', async ev => {
-  apiService.page = ev.page;
+pagination.on('beforeMove', async e => {
+  apiService.page = e.page;
   const movies = await apiService.fetchMovies();
   clearGallery();
   galleryMarkup(movies.results);
@@ -41,7 +41,7 @@ const init = async total => {
   totalItemsFromServer = await apiService.fetchMovies();
 
   if (total === undefined) total = totalItemsFromServer.total_results;
-  console.log(total);
+  // console.log(total);
 
   pagination.setTotalItems(total);
   pagination.reset();

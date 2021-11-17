@@ -1,0 +1,51 @@
+<div class='movie-card'>
+  <div class='movie-box'>
+    {{#if poster_path}}
+      <img
+        src='https://image.tmdb.org/t/p/w500/{{poster_path}}'
+        alt='image'
+        class='movie-box__image'
+      />
+    {{else}}
+      <img
+        src='https://www.csaff.org/wp-content/uploads/csaff-no-poster.jpg'
+        alt='image'
+        class='movie-box__image'
+      />
+    {{/if}}
+  </div>
+
+  <button type='button' class='close-modal'>
+  </button>
+
+  <div class='movie-desc'>
+    <div class="movie-title">
+      <h2 class='movie-desc__title'>{{title}}</h2>
+      <div class="movie-desc__trailer"></div>
+    </div>
+    <div class='info-box'>
+      <ul class='movie-info'>
+        <li class='movie-info__list'>Vote / Votes</li>
+        <li class='movie-info__list'>Popularity</li>
+        <li class='movie-info__list'>Original Title</li>
+        <li class='movie-info__list'>Genre</li>
+      </ul>
+
+      <ul class='movie-data'>
+        <li class='movie-data__list movie-data__vote'>{{vote_average}}</li>
+        <span class="slash">/</span>
+        <span class='movie-data__list movie-data__votes'>{{vote_count}}</span>
+        <li class='movie-data__list'>{{popularity}}</li>
+        <li class='movie-data__list movie-data__title'>{{original_title}}</li>
+        <li class='movie-data__list'>{{genres}}</li>
+      </ul>
+    </div>
+
+    <h3 class='movie-about__title'>About</h3>
+    <p class='movie-desc__overview'>{{overview}}</p>
+    <div class='movie-btn'>
+      <button type='button' class='movie-btn__btn movie-btn--watched'>add to Watched</button>
+      <button type='button' class='movie-btn__btn movie-btn--queue'>add to queue</button>
+    </div>
+  </div>
+</div>

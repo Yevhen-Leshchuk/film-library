@@ -24,8 +24,8 @@ class Api {
   }
 
   async fetchMovies() {
-    console.log(this.searchQuery);
-    if (this.searchQuery) {
+    // console.log(typeof this.searchQuery);
+    if (this.searchQuery !== '') {
       this.url = `${this.searchMovies}&query=${this.searchQuery}&page=${this.page}&language=${this._lang}`;
     } else {
       this.url = `${this.trending}&page=${this.page}&language=${this._lang}`;
@@ -34,9 +34,8 @@ class Api {
       // console.log(this.url);
       const response = await fetch(this.url);
       const data = await response.json();
-      this.page = data.page;
+      // this.page = data.page;
 
-      // console.log(results);
       data.results = data.results.map(movie => {
         // console.log(movie);
         return {
@@ -46,7 +45,7 @@ class Api {
             .map(id => {
               // console.log(id);
               const movieGenre = GENRES.find(genre => genre.id === id);
-              // console.log(movieGenre );
+              // console.log(movieGenre);
               return movieGenre?.name || '';
             })
             .join(', '),
@@ -59,9 +58,9 @@ class Api {
     }
   }
 
-  incrementPage() {
-    this.page += 1;
-  }
+  // incrementPage() {
+  //   this.page += 1;
+  // }
 
   resetPage() {
     this.page = 1;

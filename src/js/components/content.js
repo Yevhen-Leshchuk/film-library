@@ -1,8 +1,8 @@
 import gallery from '../../templates/content.hbs';
-import { apiService } from '../services/api';
-import { searchFormRef } from '../components/header';
 import pagination from '../components/pagination';
 import refs from '../refs';
+import { apiService } from '../services/api';
+import { searchFormRef } from '../components/header';
 
 searchFormRef.addEventListener('submit', searchFormHandler);
 
@@ -21,7 +21,7 @@ export function searchFormHandler(event) {
 
 export function fetchMovies() {
   apiService.fetchMovies().then(({ results }) => {
-    console.log(results);
+    // console.log(results);
 
     galleryMarkup(results);
     pagination.reset(results.total_resulrs);
