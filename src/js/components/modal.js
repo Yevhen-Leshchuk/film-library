@@ -20,7 +20,7 @@ function openModal(event) {
   fetchMovie();
 
   refs.modalRef.classList.remove('backdrop--hidden');
-  refs.bodyRef.classList.add('hidden');
+  refs.bodyRef.classList.add('body--hidden');
 
   window.addEventListener('keydown', onKeyPress);
 }
@@ -29,7 +29,7 @@ function closeModal() {
   refs.modalRef.classList.add('backdrop--hidden');
 
   window.removeEventListener('keydown', onKeyPress);
-  refs.bodyRef.classList.remove('hidden');
+  refs.bodyRef.classList.remove('body--hidden');
 
   refs.modalRef.innerHTML = '';
 }

@@ -19,7 +19,7 @@ export function searchFormHandler(event) {
   form.reset();
 }
 
-function fetchMovies() {
+export function fetchMovies() {
   apiService.fetchMovies().then(({ results }) => {
     // console.log(results);
 
