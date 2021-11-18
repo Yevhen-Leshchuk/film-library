@@ -31,7 +31,9 @@ const pagination = new Pagination(container, {
 
 pagination.on('beforeMove', async e => {
   apiService.page = e.page;
+  console.log(apiService.page);
   const movies = await apiService.fetchMovies();
+
   clearGallery();
   galleryMarkup(movies.results);
 });
