@@ -13,6 +13,7 @@ export function searchFormHandler(event) {
 
   const form = event.currentTarget;
   apiService.query = form.elements.query.value;
+  apiService.page = 1;
 
   clearGallery();
   fetchMovies();

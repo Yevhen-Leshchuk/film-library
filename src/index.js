@@ -5,3 +5,4 @@ import './js/components/header';
 import './js/components/footer';
 import './js/components/pagination';
 import './js/components/modal';
+import './js/components/modal-app';
