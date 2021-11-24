@@ -3,6 +3,7 @@ import logo from '../../images/sprite/sprite.svg';
 import { apiService } from '../services/api';
 import { fetchMovies, clearGallery } from '../components/content';
 import pagination from '../components/pagination';
+import { movieLibrary } from '../components/movie-card';
 import refs from '../refs';
 
 // loading header home -----------------------
@@ -18,17 +19,23 @@ function headerHomeMarkup() {
 }
 
 // logic of header home and library pages------------------
+const refsFromHeader = {
+  headerNavRef: document.querySelector('.header-nav'),
+  headerFormRef: document.querySelector('.header-form'),
+  headerControlRef: document.querySelector('.header-control'),
+  headerRef: document.querySelector('.header'),
+  headerBtnHomeRef: document.querySelector('.header-home-btn'),
+  headerBtnLibrRef: document.querySelector('.header-library-btn'),
+  logoRef: document.querySelector('.header-logo'),
+  queueBtnRef: document.querySelector('.header-control__queue'),
+  watchedBtnRef: document.querySelector('.header-control__watched'),
+};
+console.log(refsFromHeader.queueBtnRef);
 
-const headerNavRef = document.querySelector('.header-nav');
-const headerFormRef = document.querySelector('.header-form');
-const headerControlRef = document.querySelector('.header-control');
-const headerRef = document.querySelector('.header');
-const headerBtnHomeRef = document.querySelector('.header-home-btn');
-const headerBtnLibrRef = document.querySelector('.header-library-btn');
-const logoRef = document.querySelector('.header-logo');
-
-headerNavRef.addEventListener('click', onControlClick);
-logoRef.addEventListener('click', onLogoClick);
+refsFromHeader.headerNavRef.addEventListener('click', onControlClick);
+refsFromHeader.logoRef.addEventListener('click', onLogoClick);
+refsFromHeader.queueBtnRef.addEventListener('click', onQueueBtnClick);
+refsFromHeader.watchedBtnRef.addEventListener('click', onWatchedBtnClick);
 
 function onControlClick(event) {
   event.preventDefault();
@@ -45,9 +52,8 @@ function onLogoClick(event) {
   event.preventDefault();
 
   const logo = event.currentTarget;
-
+  // console.log(logo);
   openHeaderHome(logo);
-  clearGallery();
 
   apiService.searchQuery = '';
   apiService.page = 1;
@@ -57,22 +63,43 @@ function onLogoClick(event) {
 
 function openHeaderHome(element) {
   if (element.dataset.action === 'home') {
-    headerFormRef.classList.remove('header-form--hidden');
-    headerControlRef.classList.remove('header-control--active');
-    headerBtnLibrRef.classList.remove('header-button--active');
-    headerRef.classList.remove('header-library');
-    headerRef.classList.add('header-home');
-    headerBtnHomeRef.classList.add('header-button--active');
+    clearGallery();
+
+    fetchMovies(); //при возврате на страницу home доолжна быть та же страница что была до перехода на страницу library
+
+    refsFromHeader.headerFormRef.classList.remove('header-form--hidden');
+    refsFromHeader.headerControlRef.classList.remove('header-control--active');
+    refsFromHeader.headerBtnLibrRef.classList.remove('header-button--active');
+    refsFromHeader.headerRef.classList.remove('header-library');
+    refsFromHeader.headerRef.classList.add('header-home');
+    refsFromHeader.headerBtnHomeRef.classList.add('header-button--active');
   }
 }
 
 function openHeaderLibrary(element) {
   if (element.dataset.action === 'library') {
-    headerFormRef.classList.add('header-form--hidden');
-    headerControlRef.classList.add('header-control--active');
-    headerBtnLibrRef.classList.add('header-button--active');
-    headerRef.classList.add('header-library');
-    headerRef.classList.remove('header-home');
-    headerBtnHomeRef.classList.remove('header-button--active');
+    clearGallery();
+    movieLibrary._showQueue();
+
+    refsFromHeader.headerFormRef.classList.add('header-form--hidden');
+    refsFromHeader.headerControlRef.classList.add('header-control--active');
+    refsFromHeader.headerBtnLibrRef.classList.add('header-button--active');
+    refsFromHeader.headerRef.classList.add('header-library');
+    refsFromHeader.headerRef.classList.remove('header-home');
+    refsFromHeader.headerBtnHomeRef.classList.remove('header-button--active');
   }
+}
+
+function onQueueBtnClick() {
+  movieLibrary._showQueue();
+}
+
+function onWatchedBtnClick() {
+  clearGallery();
+  showWatched();
+}
+
+export function setClassOnBtn() {
+  refsFromHeader.queueBtnRef.classList.add('header-control__btn--active');
+  refsFromHeader.watchedBtnRef.classList.remove('header-control__btn--active');
 }
