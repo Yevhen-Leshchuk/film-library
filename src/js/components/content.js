@@ -6,6 +6,10 @@ import { searchFormRef } from '../components/header';
 
 searchFormRef.addEventListener('submit', searchFormHandler);
 
+export let movieStorage = {
+  storage: [],
+};
+
 export function searchFormHandler(event) {
   event.preventDefault();
 
@@ -23,14 +27,16 @@ export function searchFormHandler(event) {
 export function fetchMovies() {
   apiService.fetchMovies().then(({ results }) => {
     // console.log(results);
+    movieStorage.storage = results;
+    // console.log(movieStorage.movies);
 
     galleryMarkup(results);
     pagination.reset(results.total_resulrs);
   });
 }
 
-function startPage() {
-  apiService.fetchGenres();
+async function startPage() {
+  await apiService.fetchGenres();
   fetchMovies();
 }
 

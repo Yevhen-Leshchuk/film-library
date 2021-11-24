@@ -1,19 +1,11 @@
 export default class Modal {
-  constructor({
-    rootSelector,
-    body,
-    activeModalClass,
-    removeScrollClass,
-    fetch,
-    movieCardMarkup,
-    modalClass,
-  }) {
+  constructor({ rootSelector, body, activeModalClass, removeScrollClass, storage, modalClass }) {
     this._refs = this._getRefs(rootSelector, body, modalClass);
+    this._modalBtnRef = {};
     this._imgId = '';
     this._activeModalClass = activeModalClass;
     this._removeScrollClass = removeScrollClass;
-    this._fetch = fetch;
-    this._movieCardMarkup = movieCardMarkup;
+    this._storage = storage;
     this._modalClass = modalClass;
 
     this._bindEvents();
@@ -27,6 +19,16 @@ export default class Modal {
     refs.modalRef = document.querySelector(`${modalClass}`);
 
     return refs;
+  }
+
+  _getRefEl(closeModalRef, queueRef, watchedRef) {
+    closeModalRef.addEventListener('click', this._closeModal.bind(this));
+
+    const refs = {
+      queueRef,
+      watchedRef,
+    };
+    this._modalBtnRef = refs;
   }
 
   _bindEvents() {
@@ -44,11 +46,21 @@ export default class Modal {
       return;
     }
 
-    this._fetch();
+    this._storage();
     this._refs.modalRef.classList.remove(this._activeModalClass);
     this._refs.bodyRef.classList.add(this._removeScrollClass);
-
     window.addEventListener('keydown', this._onKeyPress.bind(this));
+
+    localStorage.setItem('inModalMovie', JSON.stringify(this._newMovie));
+
+    const localStorageMovies = localStorage.getItem('queueStorage');
+    const queueStorage = JSON.parse(localStorageMovies);
+    queueStorage.find(movie => {
+      if (movie.id === this._imgId) {
+        this._modalBtnRef.queueRef.classList.add('movie-btn__btn--active');
+        this._modalBtnRef.queueRef.textContent = 'remove from queue';
+      }
+    });
   }
 
   _closeModal() {
@@ -68,18 +80,7 @@ export default class Modal {
     if (event.code === 'Escape') this._closeModal();
   }
 
-  _getElementById(results) {
-    console.log(results);
-
-    results.map(result => {
-      if (result.id === this._imgId) {
-        this._movieCardMarkup(result);
-      }
-    });
-
-    const closeModalRef = document.querySelector('.close-modal');
-    console.log(closeModalRef);
-
-    closeModalRef.addEventListener('click', this._closeModal.bind(this));
+  _getMovie(newMovie) {
+    this._newMovie = newMovie;
   }
 }
