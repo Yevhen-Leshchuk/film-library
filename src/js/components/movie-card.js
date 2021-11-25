@@ -1,4 +1,5 @@
 import refs from '../refs';
+import pagination from '../components/pagination';
 import movieCard from '../../templates/movie-card.hbs';
 import Modal from '../components/modal-app';
 import { movieStorage, galleryMarkup, clearGallery } from '../components/content';
@@ -38,10 +39,15 @@ function movieCardMarkup(movie) {
   refs.modalRef.insertAdjacentHTML('beforeend', markup);
 }
 
+//--------------------Movie Library-----------
+
 class Library {
   constructor() {
     this._refs = {};
-    this._textContent = '';
+    this._queueBtn = '';
+    this._watchedBtn = '';
+    this._queueStorage = '';
+    this._isActive = false;
   }
 
   _bindEvents(queueRef, watchedRef) {
@@ -51,28 +57,55 @@ class Library {
     };
     this._refs = refs;
     refs.queueRef.addEventListener('click', this._onButtonQueueClick.bind(this));
-    refs.queueRef.addEventListener('click', this._clearQueue.bind(this));
   }
 
   _onButtonQueueClick(event) {
     event.preventDefault();
 
-    this._getMoviesFromLocalStorage();
+    this._queueBtn = event.target;
 
-    this._textContent = event.target;
+    if (!this._isActive) {
+      this._isActive = true;
 
-    this._textContent.textContent = 'remove from queue';
-    this._refs.queueRef.classList.add('movie-btn__btn--active');
+      this._getMoviesFromLocalStorage();
+
+      this._queueBtn.textContent = 'remove from queue';
+      this._refs.queueRef.classList.add('movie-btn__btn--active');
+      return;
+    }
+
+    if (this._isActive) {
+      this._isActive = false;
+
+      this._clearQueue();
+      return;
+    }
   }
 
   _showQueue() {
     const movieStorage = localStorage.getItem('queueStorage');
-    let queueStorage = JSON.parse(movieStorage) || [];
+    this._queueStorage = JSON.parse(movieStorage) || [];
     setClassOnBtn();
-    galleryMarkup(queueStorage);
+    galleryMarkup(this._queueStorage);
   }
 
-  _clearQueue() {}
+  _clearQueue() {
+    const modalStorage = localStorage.getItem('inModalMovie');
+    const inModalMovie = JSON.parse(modalStorage);
+    const movieStorage = localStorage.getItem('queueStorage');
+    this._queueStorage = JSON.parse(movieStorage) || [];
+
+    if (!this._queueStorage || this._queueStorage.find(e => e.id === inModalMovie.id)) {
+      this._queueStorage.pop(inModalMovie);
+
+      localStorage.setItem('queueStorage', JSON.stringify(this._queueStorage));
+    }
+
+    this._queueBtn.textContent = 'add to queue';
+    this._refs.queueRef.classList.remove('movie-btn__btn--active');
+    clearGallery();
+    pagination.reset(this._queueStorage.length);
+  }
 
   _showWatched() {
     // queueBtnRef.classList.remove('header-control__btn--active');
@@ -83,13 +116,24 @@ class Library {
     const modalStorage = localStorage.getItem('inModalMovie');
     const inModalMovie = JSON.parse(modalStorage);
     const movieStorage = localStorage.getItem('queueStorage');
-    let queueStorage = JSON.parse(movieStorage) || [];
+    this._queueStorage = JSON.parse(movieStorage) || [];
 
+    this._addToQueue(this._queueStorage, inModalMovie);
+
+    // if (!queueStorage.find(e => e.id === inModalMovie.id)) {
+    //   this._queue = queueStorage;
+    //   this._queue.push(inModalMovie);
+
+    //   localStorage.setItem('queueStorage', JSON.stringify(this._queue));
+    // }
+  }
+
+  _addToQueue(queueStorage, inModalMovie) {
+    // console.log(queueStorage);
     if (!queueStorage.find(e => e.id === inModalMovie.id)) {
-      this._queue = queueStorage;
-      this._queue.push(inModalMovie);
+      queueStorage.push(inModalMovie);
 
-      localStorage.setItem('queueStorage', JSON.stringify(this._queue));
+      localStorage.setItem('queueStorage', JSON.stringify(queueStorage));
     }
   }
 }
