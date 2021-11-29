@@ -26,16 +26,23 @@ export function searchFormHandler(event) {
 
 export function fetchMovies() {
   apiService.fetchMovies().then(({ results }) => {
-    // console.log(results);
+    console.log(results);
     movieStorage.storage = results;
-    // console.log(movieStorage.movies);
+
+    if (results.length === 0) {
+      refs.paginationContainerRef.classList.add('tui-pagination--hidden');
+    } else {
+      refs.paginationContainerRef.classList.remove('tui-pagination--hidden');
+    }
 
     galleryMarkup(results);
+    refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
+
     pagination.reset(results.total_resulrs);
   });
 }
 
-async function startPage() {
+export async function startPage() {
   await apiService.fetchGenres();
   fetchMovies();
 }

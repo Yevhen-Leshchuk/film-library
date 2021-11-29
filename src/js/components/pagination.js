@@ -4,6 +4,7 @@ import { apiService } from '../services/api';
 import { galleryMarkup, clearGallery, movieStorage } from '../components/content';
 
 const container = document.getElementById('tui-pagination-container');
+
 // console.log(container);
 
 const pagination = new Pagination(container, {
@@ -31,6 +32,7 @@ const pagination = new Pagination(container, {
 
 pagination.on('beforeMove', async e => {
   apiService.page = e.page;
+
   // console.log(apiService.page);
   const movies = await apiService.fetchMovies();
   movieStorage.storage = movies.results;

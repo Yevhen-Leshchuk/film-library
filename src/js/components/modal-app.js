@@ -2,7 +2,7 @@ export default class Modal {
   constructor({ rootSelector, body, activeModalClass, removeScrollClass, storage, modalClass }) {
     this._refs = this._getRefs(rootSelector, body, modalClass);
     this._modalBtnRef = {};
-    this._imgId = '';
+    this._imgId = [];
     this._activeModalClass = activeModalClass;
     this._removeScrollClass = removeScrollClass;
     this._storage = storage;
@@ -36,6 +36,13 @@ export default class Modal {
     this._refs.modalRef.addEventListener('click', this._onLightboxClick.bind(this));
   }
 
+  _getMovieFromQueueStorage() {
+    const localStorageMovies = localStorage.getItem('queueStorage');
+    const queueStorage = JSON.parse(localStorageMovies);
+
+    return queueStorage;
+  }
+
   _openModal(event) {
     event.preventDefault();
     const imgRef = event.target;
@@ -45,7 +52,6 @@ export default class Modal {
     if (imgRef.nodeName !== 'IMG') {
       return;
     }
-
     this._storage();
     this._refs.modalRef.classList.remove(this._activeModalClass);
     this._refs.bodyRef.classList.add(this._removeScrollClass);
@@ -53,14 +59,27 @@ export default class Modal {
 
     localStorage.setItem('inModalMovie', JSON.stringify(this._newMovie));
 
-    const localStorageMovies = localStorage.getItem('queueStorage');
-    const queueStorage = JSON.parse(localStorageMovies);
-    queueStorage.find(movie => {
-      if (movie.id === this._imgId) {
-        this._modalBtnRef.queueRef.classList.add('movie-btn__btn--active');
-        this._modalBtnRef.queueRef.textContent = 'remove from queue';
-      }
-    });
+    this._getId();
+
+    this._renderActiveQueueBtn();
+  }
+
+  _renderActiveQueueBtn() {
+    if (this._getMovieFromQueueStorage() !== null) {
+      this._getMovieFromQueueStorage().find(movie => {
+        if (movie.id === this._imgId) {
+          this._modalBtnRef.queueRef.classList.add('movie-btn__btn--active');
+          this._modalBtnRef.queueRef.textContent = 'remove from queue';
+        }
+      });
+    }
+  }
+
+  _getId() {
+    if (this._getMovieFromQueueStorage() !== null) {
+      const arrQueue = this._getMovieFromQueueStorage().map(movie => movie.id);
+      return arrQueue.includes(this._imgId);
+    } else return false;
   }
 
   _closeModal() {
@@ -82,5 +101,6 @@ export default class Modal {
 
   _getMovie(newMovie) {
     this._newMovie = newMovie;
+    console.log(this._newMovie);
   }
 }
