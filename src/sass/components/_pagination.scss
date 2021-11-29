@@ -1,4 +1,8 @@
-#tui-pagination-container{
+.tui-pagination--hidden {
+  display: none !important;
+}
+
+#tui-pagination-container, #pagination-container {
   width: 100%;
   height: auto;
   margin-top: 0;

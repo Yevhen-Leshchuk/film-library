@@ -1,7 +1,7 @@
 import headerHome from '../../templates/header-home.hbs';
 import logo from '../../images/sprite/sprite.svg';
 import { apiService } from '../services/api';
-import { fetchMovies, clearGallery } from '../components/content';
+import { fetchMovies, clearGallery, startPage } from '../components/content';
 import pagination from '../components/pagination';
 import { movieLibrary } from '../components/movie-card';
 import refs from '../refs';
@@ -30,7 +30,8 @@ const refsFromHeader = {
   queueBtnRef: document.querySelector('.header-control__queue'),
   watchedBtnRef: document.querySelector('.header-control__watched'),
 };
-console.log(refsFromHeader.queueBtnRef);
+
+movieLibrary._getHeaderHomeBtn(refsFromHeader.headerBtnHomeRef);
 
 refsFromHeader.headerNavRef.addEventListener('click', onControlClick);
 refsFromHeader.logoRef.addEventListener('click', onLogoClick);
@@ -41,7 +42,7 @@ function onControlClick(event) {
   event.preventDefault();
 
   const controlItem = event.target;
-  controlItem.getAttribute('button[data-action"]');
+  controlItem.getAttribute('button[data-action]');
   const getElement = controlItem;
 
   openHeaderHome(getElement);
@@ -52,20 +53,21 @@ function onLogoClick(event) {
   event.preventDefault();
 
   const logo = event.currentTarget;
-  // console.log(logo);
+
   openHeaderHome(logo);
 
   apiService.searchQuery = '';
   apiService.page = 1;
-  fetchMovies();
   pagination.reset();
 }
 
 function openHeaderHome(element) {
   if (element.dataset.action === 'home') {
     clearGallery();
-
-    fetchMovies(); //при возврате на страницу home доолжна быть та же страница что была до перехода на страницу library
+    startPage();
+    apiService.searchQuery = '';
+    apiService.page = 1;
+    pagination.reset();
 
     refsFromHeader.headerFormRef.classList.remove('header-form--hidden');
     refsFromHeader.headerControlRef.classList.remove('header-control--active');
@@ -73,6 +75,9 @@ function openHeaderHome(element) {
     refsFromHeader.headerRef.classList.remove('header-library');
     refsFromHeader.headerRef.classList.add('header-home');
     refsFromHeader.headerBtnHomeRef.classList.add('header-button--active');
+
+    refs.paginationContainerRef.classList.remove('tui-pagination--hidden');
+    refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
   }
 }
 
@@ -87,6 +92,11 @@ function openHeaderLibrary(element) {
     refsFromHeader.headerRef.classList.add('header-library');
     refsFromHeader.headerRef.classList.remove('header-home');
     refsFromHeader.headerBtnHomeRef.classList.remove('header-button--active');
+
+    if (movieLibrary._queueStorage.length !== 0) {
+      refs.libraryPaginationContainerRef.classList.remove('tui-pagination--hidden');
+    }
+    refs.paginationContainerRef.classList.add('tui-pagination--hidden');
   }
 }
 
