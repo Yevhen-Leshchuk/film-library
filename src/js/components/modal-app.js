@@ -1,7 +1,6 @@
 export default class Modal {
   constructor({ rootSelector, body, activeModalClass, removeScrollClass, storage, modalClass }) {
     this._refs = this._getRefs(rootSelector, body, modalClass);
-    this._modalBtnRef = {};
     this._imgId = [];
     this._activeModalClass = activeModalClass;
     this._removeScrollClass = removeScrollClass;
@@ -21,14 +20,8 @@ export default class Modal {
     return refs;
   }
 
-  _getRefEl(closeModalRef, queueRef, watchedRef) {
+  _getRefEl(closeModalRef) {
     closeModalRef.addEventListener('click', this._closeModal.bind(this));
-
-    const refs = {
-      queueRef,
-      watchedRef,
-    };
-    this._modalBtnRef = refs;
   }
 
   _bindEvents() {
@@ -37,10 +30,17 @@ export default class Modal {
   }
 
   _getMovieFromQueueStorage() {
-    const localStorageMovies = localStorage.getItem('queueStorage');
-    const queueStorage = JSON.parse(localStorageMovies);
+    const movieQueueStorage = localStorage.getItem('queueStorage');
+    const queueStorage = JSON.parse(movieQueueStorage);
 
     return queueStorage;
+  }
+
+  _getMovieFromWatchedStorage() {
+    const movieWatchedStorage = localStorage.getItem('watchedStorage');
+    const watchedStorage = JSON.parse(movieWatchedStorage);
+
+    return watchedStorage;
   }
 
   _openModal(event) {
@@ -52,33 +52,25 @@ export default class Modal {
     if (imgRef.nodeName !== 'IMG') {
       return;
     }
+
     this._storage();
+
     this._refs.modalRef.classList.remove(this._activeModalClass);
     this._refs.bodyRef.classList.add(this._removeScrollClass);
     window.addEventListener('keydown', this._onKeyPress.bind(this));
-
-    localStorage.setItem('inModalMovie', JSON.stringify(this._newMovie));
-
-    this._getId();
-
-    this._renderActiveQueueBtn();
   }
 
-  _renderActiveQueueBtn() {
-    if (this._getMovieFromQueueStorage() !== null) {
-      this._getMovieFromQueueStorage().find(movie => {
-        if (movie.id === this._imgId) {
-          this._modalBtnRef.queueRef.classList.add('movie-btn__btn--active');
-          this._modalBtnRef.queueRef.textContent = 'remove from queue';
-        }
-      });
-    }
-  }
-
-  _getId() {
+  _getIdForQueueStorage() {
     if (this._getMovieFromQueueStorage() !== null) {
       const arrQueue = this._getMovieFromQueueStorage().map(movie => movie.id);
       return arrQueue.includes(this._imgId);
+    } else return false;
+  }
+
+  _getIdForWatchedStorage() {
+    if (this._getMovieFromWatchedStorage() !== null) {
+      const arrWatched = this._getMovieFromWatchedStorage().map(movie => movie.id);
+      return arrWatched.includes(this._imgId);
     } else return false;
   }
 
@@ -101,6 +93,5 @@ export default class Modal {
 
   _getMovie(newMovie) {
     this._newMovie = newMovie;
-    console.log(this._newMovie);
   }
 }

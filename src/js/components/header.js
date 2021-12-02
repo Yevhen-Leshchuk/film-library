@@ -1,9 +1,9 @@
 import headerHome from '../../templates/header-home.hbs';
 import logo from '../../images/sprite/sprite.svg';
 import { apiService } from '../services/api';
-import { fetchMovies, clearGallery, startPage } from '../components/content';
+import { clearGallery, startPage } from '../components/content';
 import pagination from '../components/pagination';
-import { movieLibrary } from '../components/movie-card';
+import { movieLibrary } from '../components/movie-library';
 import refs from '../refs';
 
 // loading header home -----------------------
@@ -65,10 +65,13 @@ function openHeaderHome(element) {
   if (element.dataset.action === 'home') {
     clearGallery();
     startPage();
+
     apiService.searchQuery = '';
     apiService.page = 1;
     pagination.reset();
 
+    refsFromHeader.queueBtnRef.classList.remove('header-control__btn--active');
+    refsFromHeader.watchedBtnRef.classList.remove('header-control__btn--active');
     refsFromHeader.headerFormRef.classList.remove('header-form--hidden');
     refsFromHeader.headerControlRef.classList.remove('header-control--active');
     refsFromHeader.headerBtnLibrRef.classList.remove('header-button--active');
@@ -95,21 +98,53 @@ function openHeaderLibrary(element) {
 
     if (movieLibrary._queueStorage.length !== 0) {
       refs.libraryPaginationContainerRef.classList.remove('tui-pagination--hidden');
+    } else {
+      refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
     }
     refs.paginationContainerRef.classList.add('tui-pagination--hidden');
   }
 }
 
 function onQueueBtnClick() {
+  clearGallery();
   movieLibrary._showQueue();
+
+  if (movieLibrary._queueStorage.length !== 0) {
+    refs.libraryPaginationContainerRef.classList.remove('tui-pagination--hidden');
+  } else {
+    refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
+  }
+  refs.paginationContainerRef.classList.add('tui-pagination--hidden');
 }
 
 function onWatchedBtnClick() {
   clearGallery();
-  showWatched();
+  movieLibrary._showWatched();
+
+  refsFromHeader.queueBtnRef.classList.remove('header-control__btn--active');
+  refsFromHeader.watchedBtnRef.classList.add('header-control__btn--active');
+
+  if (movieLibrary._watchedStorage.length !== 0) {
+    refs.libraryPaginationContainerRef.classList.remove('tui-pagination--hidden');
+  } else {
+    refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
+  }
+  refs.paginationContainerRef.classList.add('tui-pagination--hidden');
 }
 
 export function setClassOnBtn() {
   refsFromHeader.queueBtnRef.classList.add('header-control__btn--active');
   refsFromHeader.watchedBtnRef.classList.remove('header-control__btn--active');
+}
+
+export function getClassQueueBtn() {
+  if (refsFromHeader.queueBtnRef.classList.contains('header-control__btn--active')) {
+    return true;
+  } else return false;
+}
+
+export function getClassWatchedBtn() {
+  if (refsFromHeader.watchedBtnRef.classList.contains('header-control__btn--active')) {
+    return true;
+  } else return false;
 }

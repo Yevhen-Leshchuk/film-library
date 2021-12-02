@@ -6,10 +6,6 @@ import { searchFormRef } from '../components/header';
 
 searchFormRef.addEventListener('submit', searchFormHandler);
 
-export let movieStorage = {
-  storage: [],
-};
-
 export function searchFormHandler(event) {
   event.preventDefault();
 
@@ -26,18 +22,16 @@ export function searchFormHandler(event) {
 
 export function fetchMovies() {
   apiService.fetchMovies().then(({ results }) => {
-    console.log(results);
-    movieStorage.storage = results;
+    // console.log(results);
 
     if (results.length === 0) {
       refs.paginationContainerRef.classList.add('tui-pagination--hidden');
     } else {
       refs.paginationContainerRef.classList.remove('tui-pagination--hidden');
     }
-
-    galleryMarkup(results);
     refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
 
+    galleryMarkup(results);
     pagination.reset(results.total_resulrs);
   });
 }

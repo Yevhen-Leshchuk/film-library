@@ -1,7 +1,8 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-import { galleryMarkup, clearGallery, movieStorage } from '../components/content';
-import { movieLibrary } from '../components/movie-card';
+import { galleryMarkup, clearGallery } from '../components/content';
+import { movieLibrary } from '../components/movie-library';
+import { getClassWatchedBtn } from '../components/header';
 
 //-----------library pagination-------------
 
@@ -33,40 +34,68 @@ const libraryPagination = new Pagination(libraryСontainer, {
 libraryPagination.on('beforeMove', e => {
   movieLibrary._storagePage = e.page;
 
-  const storage = localStorage.getItem('queueStorage');
-  const queueStorage = JSON.parse(storage) || [];
+  const movieQueStorage = localStorage.getItem('queueStorage');
+  const queueStorage = JSON.parse(movieQueStorage) || [];
+
+  const movieWatStorage = localStorage.getItem('watchedStorage');
+  const watchedStorage = JSON.parse(movieWatStorage) || [];
 
   if (movieLibrary._storagePage === 1) {
-    clearGallery();
-
-    galleryMarkup(queueStorage.slice(0, 20));
+    if (!getClassWatchedBtn()) {
+      clearGallery();
+      galleryMarkup(queueStorage.slice(0, 20));
+    } else {
+      clearGallery();
+      galleryMarkup(watchedStorage.slice(0, 20));
+    }
   }
 
   if (movieLibrary._storagePage === 2) {
-    clearGallery();
-    movieStorage.storage = queueStorage.slice(20);
-
-    galleryMarkup(movieStorage.storage);
-
-    // if (queueStorage.length <= 20) movieLibrary._storagePage = 1;
+    if (!getClassWatchedBtn()) {
+      clearGallery();
+      galleryMarkup(queueStorage.slice(20));
+    } else {
+      clearGallery();
+      galleryMarkup(watchedStorage.slice(20));
+    }
   }
 });
 
-let totalItemsFromStorage;
-const initItems = total => {
-  const storage = localStorage.getItem('queueStorage');
-  const queueStorage = JSON.parse(storage) || [];
+let totalItemsFromQueueStorage;
 
-  totalItemsFromStorage = queueStorage;
+const initQueue = total => {
+  const movieQueStorage = localStorage.getItem('queueStorage');
+  const queueStorage = JSON.parse(movieQueStorage) || [];
 
-  total = totalItemsFromStorage.length;
+  totalItemsFromQueueStorage = queueStorage;
+  total = totalItemsFromQueueStorage.length;
 
   libraryPagination.setTotalItems(total);
   libraryPagination.reset();
 };
 
-initItems();
+initQueue();
 
-export default {
-  reset: initItems,
+export const queue = {
+  reset: initQueue,
+};
+
+let totalItemsFromWatchedStorage;
+
+const initWatched = total => {
+  const movieWatStorage = localStorage.getItem('watchedStorage');
+  const watchedStorage = JSON.parse(movieWatStorage) || [];
+
+  totalItemsFromWatchedStorage = watchedStorage;
+
+  total = totalItemsFromWatchedStorage.length;
+
+  libraryPagination.setTotalItems(total);
+  libraryPagination.reset();
+};
+
+initWatched();
+
+export const watched = {
+  reset: initWatched,
 };
