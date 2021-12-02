@@ -1,11 +1,9 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { apiService } from '../services/api';
-import { galleryMarkup, clearGallery, movieStorage } from '../components/content';
+import { galleryMarkup, clearGallery } from '../components/content';
 
 const container = document.getElementById('tui-pagination-container');
-
-// console.log(container);
 
 const pagination = new Pagination(container, {
   itemsPerPage: 20,
@@ -33,9 +31,7 @@ const pagination = new Pagination(container, {
 pagination.on('beforeMove', async e => {
   apiService.page = e.page;
 
-  // console.log(apiService.page);
   const movies = await apiService.fetchMovies();
-  movieStorage.storage = movies.results;
 
   clearGallery();
   galleryMarkup(movies.results);
@@ -46,7 +42,6 @@ const init = async total => {
   totalItemsFromServer = await apiService.fetchMovies();
 
   if (total === undefined) total = totalItemsFromServer.total_results;
-  // console.log(total);
 
   pagination.setTotalItems(total);
   pagination.reset();

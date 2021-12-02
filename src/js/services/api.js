@@ -1,5 +1,6 @@
 const api_key = `${process.env.API_KEY}`;
 const baseURL = `https://api.themoviedb.org/3`;
+const ID_URL = `${baseURL}/movie/`;
 
 let GENRES = [];
 
@@ -24,43 +25,42 @@ class Api {
   }
 
   async fetchMovies() {
-    // console.log(typeof this.searchQuery);
     if (this.searchQuery !== '') {
       this.url = `${this.searchMovies}&query=${this.searchQuery}&page=${this.page}&language=${this._lang}`;
     } else {
       this.url = `${this.trending}&page=${this.page}&language=${this._lang}`;
     }
     try {
-      // console.log(this.url);
       const response = await fetch(this.url);
       const data = await response.json();
-      // this.page = data.page;
 
       data.results = data.results.map(movie => {
-        // console.log(movie);
         return {
           ...movie,
           genres: movie.genre_ids
             .slice(0, 2)
             .map(id => {
-              // console.log(id);
               const movieGenre = GENRES.find(genre => genre.id === id);
-              // console.log(movieGenre);
               return movieGenre?.name || '';
             })
             .join(', '),
         };
       });
-      // console.log(data);
       return data;
     } catch (error) {
       console.log(error);
     }
   }
 
-  // incrementPage() {
-  //   this.page += 1;
-  // }
+  async MovieSearchId(movieId) {
+    try {
+      const response = await fetch(`${ID_URL}${movieId}?api_key=${api_key}`);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error with Api ID' + error);
+    }
+  }
 
   resetPage() {
     this.page = 1;
