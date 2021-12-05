@@ -17,6 +17,8 @@ class Library {
     this._watchedStorage = [];
     this._isActive = false;
     this._id = null;
+    this._queueId = [];
+    this._watchedId = [];
   }
 
   _bindEvents(queueRef, watchedRef) {
@@ -98,8 +100,15 @@ class Library {
       return;
     }
 
-    this._queueStorage.push(this._newMovie);
+    this._getWatchedMovieId();
+    this._getQueueMovieId();
 
+    if (this._getWatchedMovieId().find(id => id === modalMovieCard._imgId)) {
+      //Добавить нотификашку!
+      return;
+    }
+
+    this._queueStorage.push(this._newMovie);
     localStorage.setItem('queueStorage', JSON.stringify(this._queueStorage));
 
     if (this._storagePage === 1 || this._queueStorage) {
@@ -182,8 +191,15 @@ class Library {
       return;
     }
 
-    this._watchedStorage.push(this._newMovie);
+    this._getQueueMovieId();
+    this._getWatchedMovieId();
 
+    if (this._getQueueMovieId().find(id => id === modalMovieCard._imgId)) {
+      //Добавить нотификашку!
+      return;
+    }
+
+    this._watchedStorage.push(this._newMovie);
     localStorage.setItem('watchedStorage', JSON.stringify(this._watchedStorage));
 
     if (this._storagePage === 1 || this._watchedStorage) {
@@ -198,7 +214,7 @@ class Library {
     }
 
     this._refs.watchedRef.classList.add('movie-btn__btn--active');
-    this._refs.watchedRef.textContent = 'remove from queue';
+    this._refs.watchedRef.textContent = 'remove from watched';
   }
 
   _showQueue() {
@@ -226,6 +242,21 @@ class Library {
 
   _getMovieForLibrary(newMovie) {
     this._newMovie = newMovie;
+  }
+
+  _getQueueMovieId() {
+    const movieQueStorage = localStorage.getItem('queueStorage');
+    const queueStorage = JSON.parse(movieQueStorage) || [];
+
+    this._queueId = queueStorage.map(movie => movie.id);
+    return this._queueId;
+  }
+
+  _getWatchedMovieId() {
+    const movieWatStorage = localStorage.getItem('watchedStorage');
+    const watchedStorage = JSON.parse(movieWatStorage) || [];
+    this._watchedId = watchedStorage.map(movie => movie.id);
+    return this._watchedId;
   }
 }
 

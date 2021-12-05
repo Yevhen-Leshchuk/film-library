@@ -35,6 +35,7 @@ pagination.on('beforeMove', async e => {
 
   clearGallery();
   galleryMarkup(movies.results);
+  console.log(movies.results);
 });
 
 let totalItemsFromServer;
