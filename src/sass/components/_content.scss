@@ -14,7 +14,7 @@
   @media screen and (min-width: 768px) {
     display: flex;
     flex-wrap: wrap;
-    margin-right: -30px;
+    margin-right: -20px;
   }
 }
 
@@ -22,8 +22,11 @@
   position: relative;
   margin-right: auto;
   margin-left: auto;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  padding-bottom: 5px;
   border-radius: 5px 5px 0px 0px;
+  transform: scale(1);
+  transition: transform 250ms $cubicBezier;
 
   &:last-child {
     margin-bottom: 0;
@@ -43,17 +46,24 @@
     }
   }
   @media screen and (min-width: 1200px) {
-    flex-basis: calc(100% / 4 - 30px);
+    flex-basis: calc(100% / 4 - 20px);
     margin-left: 0;
-    margin-right: 30px;
+    margin-right: 20px;
     margin-bottom: 30px;
 
     &:nth-child(4n) {
       margin-right: 0;
+      margin-bottom: 30px;
     }
     &:nth-child(n + 17) {
       margin-bottom: 0;
     }
+  }
+  &:hover {
+   transform: scale(1.05);
+   transition: transform 250ms $cubicBezier;
+   box-shadow: 0 5px 20px -5px $orange;
+  border-radius: 5px;
   }
 }
 
@@ -98,6 +108,7 @@
 
 .galery-card__title {
   margin-bottom: 2px;
+  margin-left: 6px;
   @include fontProperty($color: $black, $weight: 500, $height: 1.17, $text-align: left, $transform: uppercase);
 }
 
@@ -105,6 +116,8 @@
   display: flex;
   align-items: baseline;
   margin-bottom: 4px;
+  margin-left: 6px;
+
   @include fontProperty($color: $black, $weight: 500, $height: 1.33, $text-align: left);
 }
 
