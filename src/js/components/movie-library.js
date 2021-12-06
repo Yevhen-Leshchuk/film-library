@@ -4,6 +4,11 @@ import { galleryMarkup, clearGallery } from '../components/content';
 import { setClassOnBtn } from '../components/header';
 import { queue, watched } from '../components/library-pagination';
 import { getClassWatchedBtn, getClassQueueBtn } from '../components/header';
+import {
+  showMessageStorageEmpty,
+  showMessageStorageFuul,
+  showMessageSameMovies,
+} from '../components/notification';
 
 //--------------------Movie Library-----------
 
@@ -82,6 +87,8 @@ class Library {
       this._refs.queueRef.textContent = 'add to queue';
 
       if (this._queueStorage.length === 0) {
+        showMessageStorageEmpty();
+
         refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
       }
 
@@ -96,7 +103,7 @@ class Library {
     //------------------------------------------------------------
 
     if (this._queueStorage.length === 40) {
-      alert('Хранилище фильмов заполнено! Пожалуйста очистите хранилище.');
+      showMessageStorageFuul();
       return;
     }
 
@@ -104,7 +111,7 @@ class Library {
     this._getQueueMovieId();
 
     if (this._getWatchedMovieId().find(id => id === modalMovieCard._imgId)) {
-      //Добавить нотификашку!
+      showMessageSameMovies();
       return;
     }
 
@@ -173,6 +180,8 @@ class Library {
       this._refs.watchedRef.textContent = 'add to Watched';
 
       if (this._watchedStorage.length === 0) {
+        showMessageStorageEmpty();
+
         refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
       }
 
@@ -187,7 +196,7 @@ class Library {
     //------------------------------------------------------------
 
     if (this._watchedStorage.length === 40) {
-      alert('Хранилище фильмов заполнено! Пожалуйста очистите хранилище.');
+      showMessageStorageFuul();
       return;
     }
 
@@ -195,7 +204,7 @@ class Library {
     this._getWatchedMovieId();
 
     if (this._getQueueMovieId().find(id => id === modalMovieCard._imgId)) {
-      //Добавить нотификашку!
+      showMessageSameMovies();
       return;
     }
 
