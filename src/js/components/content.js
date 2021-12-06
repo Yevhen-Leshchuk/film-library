@@ -3,13 +3,17 @@ import pagination from '../components/pagination';
 import refs from '../refs';
 import { apiService } from '../services/api';
 import { searchFormRef } from '../components/header';
+import { showMessageNoInput, showMessageInvalidRequest } from '../components/notification';
 
 searchFormRef.addEventListener('submit', searchFormHandler);
 
 export function searchFormHandler(event) {
   event.preventDefault();
 
-  if (!event.currentTarget.elements.query.value) return;
+  if (!event.currentTarget.elements.query.value) {
+    showMessageNoInput();
+    return;
+  }
 
   const form = event.currentTarget;
   apiService.query = form.elements.query.value;
@@ -22,9 +26,11 @@ export function searchFormHandler(event) {
 
 export function fetchMovies() {
   apiService.fetchMovies().then(({ results }) => {
-    // console.log(results);
+    console.log(results);
 
     if (results.length === 0) {
+      showMessageInvalidRequest();
+
       refs.paginationContainerRef.classList.add('tui-pagination--hidden');
     } else {
       refs.paginationContainerRef.classList.remove('tui-pagination--hidden');
