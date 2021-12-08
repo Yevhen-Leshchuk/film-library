@@ -9,6 +9,7 @@
   width: 30px;
   height: 30px;
   background: transparent;
+  // @include element-color($orange);
   background-image: url(../images/sprite/close.svg);
   background-repeat: no-repeat;
   background-position: center;
@@ -150,7 +151,7 @@
   margin-right: 20px;
 
   @include fontProperty(
-    $color: $black,
+    // $color: $black,
     $weight: 500,
     $height: 1.15,
     $text-align: left,
@@ -186,7 +187,7 @@
 
 .movie-data {
 
-  @include fontProperty($color: $black, $weight: 500, $text-align: left);
+  @include fontProperty($weight: 500, $text-align: left);
 }
 
 .movie-data__list {
@@ -243,7 +244,7 @@
 .movie-desc__overview {
   margin-bottom: 22px;
 
-  @include fontProperty($color: $black, $weight: 500, $height: 1.66, $text-align: left);
+  @include fontProperty($weight: 500, $height: 1.66, $text-align: left);
 }
 
 .movie-btn {
