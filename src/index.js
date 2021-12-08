@@ -7,3 +7,4 @@ import './js/components/pagination';
 import './js/components/movie-card';
 import './js/components/modal-app';
 import './js/components/notification';
+import './js/components/theme';
