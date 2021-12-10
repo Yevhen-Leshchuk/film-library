@@ -1,0 +1,119 @@
+.footer-modal {
+  @media screen and (max-width: 480px) {
+   width: 100vw;
+   height: 100vh;
+  }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 50px 20px 40px;
+  width: 480px;
+  height: auto;
+  overflow: scroll;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms $cubicBezier;
+  background-color: $white;
+   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+
+  .backdrop--hidden & {
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+}
+
+.team-list__item {
+  transform: scale(1);
+  transition: transform 250ms $cubicBezier;
+}
+
+.team-list__item:hover{
+  transform: scale(1.03);
+  transition: transform 250ms $cubicBezier;
+}
+
+.team-list__images {
+  @media screen and (max-width: 480px) {
+    background-position: 50% 50%;
+  }
+
+  height: 465px;
+  border-radius: 5px 5px 0px 0px;
+  background-color: $gray;
+  background-image: url(../images/footer/Yevhen-Leshchuk.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.team-content {
+  padding-top: 30px;
+  padding-right: 32px;
+  padding-left: 32px;
+  padding-bottom: 24px;
+  background: $white;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 0px 0px 4px 4px;
+}
+
+.team-content__title {
+  margin-top: 0;
+  margin-bottom: 10px;
+
+  @include fontProperty(
+    $color: $black,
+    $weight: 500,
+    $size: 22px,
+    $height: 1.19
+  );
+  text-align: center;
+}
+
+.team-content__text {
+  margin-top: 0;
+  margin-bottom: 16px;
+
+  @include fontProperty($color: $darkGray, $size: 18px, $height: 1.19);
+  text-align: center;
+}
+.team-social {
+  display: flex;
+  justify-content: center;
+}
+
+.team-social__item:not(:last-child) {
+  margin-right: 5px;
+
+  @media screen and (min-width: 480px) {
+    margin-right: 10px;
+  }
+}
+
+.team-social__link {
+  display: block;
+  padding: 12px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: $gray;
+
+  transition: background-color 250ms $cubicBezier;
+
+  &:hover,
+  &:focus {
+    background-color: $orange;
+  }
+}
+
+.team-social__icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+
+  transition: fill 250ms $cubicBezier;
+
+  .team-social__link:hover &,
+  .team-social__link:focus & {
+    fill: $white;
+  }
+}

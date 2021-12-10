@@ -1,8 +1,9 @@
 import refs from '../refs';
 import movieCard from '../../templates/movie-card.hbs';
-import Modal from '../components/modal-app';
+import Modal from './modal-card';
 import { movieLibrary } from '../components/movie-library';
 import { apiService } from '../services/api';
+import { getRefCloseBtn } from '../components/footer';
 
 export const modalMovieCard = new Modal({
   rootSelector: '.content',
