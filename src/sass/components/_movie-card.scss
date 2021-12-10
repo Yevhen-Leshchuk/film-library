@@ -4,17 +4,24 @@
 
 .close-modal {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 12px;
+  right: 12px;
   width: 30px;
   height: 30px;
   background: transparent;
-  // @include element-color($orange);
-  background-image: url(../images/sprite/close.svg);
-  background-repeat: no-repeat;
-  background-position: center;
   border-style: none;
+  cursor: pointer;
+}
 
+.close-modal__icon {
+  fill: $black;
+  transition:  fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+
+    &:hover {
+    fill: $orange;
+    transition:  fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
 
 .backdrop {
@@ -151,7 +158,6 @@
   margin-right: 20px;
 
   @include fontProperty(
-    // $color: $black,
     $weight: 500,
     $height: 1.15,
     $text-align: left,

@@ -3,11 +3,6 @@ body {
   transition: color 250ms $cubicBezier, background-color 250ms $cubicBezier;
 }
 
-// body.light-theme {
-//   background-color: #ffffff;
-//   color: #333333;
-// }
-
 body.dark-theme {
   background-color: $dark;
   color: $white;
@@ -35,9 +30,16 @@ body.dark-theme .movie-btn__btn {
   }
 }
 
-// body.dark-theme .close-modal {
-//   color: $white;
-// }
+body.dark-theme .close-modal__icon {
+  fill: $white;
+  transition:  fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+
+    &:hover {
+    fill: $orange;
+    transition:  fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
 
 body.dark-theme .footer {
   background-color: #1d2025;
@@ -58,6 +60,23 @@ body.dark-theme .tui-page-btn  {
   }
 }
 
+body.dark-theme  .footer-modal   {
+  background-color: $dark;
+  box-shadow: 0 5px 20px -5px $white;
+}
+
+body.dark-theme  .team-content   {
+  background-color: $dark;
+  border-color: $white;
+}
+
+body.dark-theme  .team-content__title  {
+  color: $white;
+}
+
+body.dark-theme  .team-content__text  {
+  color: $white;
+}
 
 .tui-page-btn
 

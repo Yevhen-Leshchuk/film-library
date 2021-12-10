@@ -5,6 +5,6 @@ import './js/components/header';
 import './js/components/footer';
 import './js/components/pagination';
 import './js/components/movie-card';
-import './js/components/modal-app';
+import './js/components/modal-card';
 import './js/components/notification';
 import './js/components/theme';

@@ -54,6 +54,10 @@
   }
 }
 
+.tui-next, .tui-prev {
+  padding: 15px !important;
+}
+
 .tui-prev-is-ellip {
    @media screen and (min-width: 480px) {
     padding: 4px 13px !important;
@@ -63,11 +67,13 @@
 
 .tui-first {
   margin-right: 5px !important;
+  padding: 15px !important;
   background-color: $sLightGray;
 }
 
 .tui-last {
   margin-left: 5px !important;
+  padding: 15px !important;
   background-color: $sLightGray;
 }
 
