@@ -83,26 +83,6 @@ header .container {
   margin-bottom: 20px;
 }
 
-// .switcher {
-//   margin-left: 82px;
-//   font-size: 120%;
-//   cursor: pointer;
-
-//   @media screen and (min-width: 480px) {
-//     margin-left: 90px;
-//   }
-//   @media screen and (min-width: 768px) {
-//     margin-left: 110px;
-//     font-size: 140%;
-//   }
-// }
-// .switcher:before {
-//   content: '🌞';
-// }
-// .switcher.active:before {
-//   content: '🌙';
-// }
-
 .header-button {
   border-style: none;
   background: transparent;
@@ -129,7 +109,7 @@ header .container {
   }
 }
 
-.header-button--out {
+.header-button--log-out {
   display: none;
 }
 
