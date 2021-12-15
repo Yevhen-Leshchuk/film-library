@@ -1,0 +1,95 @@
+<div class='form-card'>
+  <button type='button' class='close-modal' id='form-modal'>
+    <svg class='close-modal__icon' width='20' height='20' id='close' viewBox='0 0 32 32'>
+      <path
+        d='M32 3.223L28.777 0 16 12.777 3.223 0 0 3.223 12.777 16 0 28.777 3.223 32 16 19.223 28.777 32 32 28.777 19.223 16 32 3.223z'
+      ></path>
+    </svg>
+  </button>
+  <div class='form-container'>
+    <div class='control-btn' id='controls'>
+      <button
+        class='control-sign-in control control-btn--active'
+        type='submit'
+        data-action='sign-in'
+      >Sign In</button>
+      <button class='control-sign-up control' type='submit' data-action='sign-up'>Sign Up</button>
+    </div>
+
+    <form class='form-sign-in form-sign'>
+      <div class='form-sign__container'>
+        <input
+          class='form-sign__input'
+          type='text'
+          name='username'
+          id='username'
+          placeholder='Name'
+        />
+        <label class='form-sign__field' for='username'>User Name</label>
+
+        <svg class='form-sign__icon'>
+          <use href='{{this}}#form-name'></use>
+        </svg>
+        <div class='error'></div>
+      </div>
+
+      <div class='form-sign__container'>
+        <input class='form-sign__input' type='email' name='email' id='email' placeholder='Mail' />
+        <label class='form-sign__field' for='email'>Email</label>
+
+        <svg class='form-sign__icon'>
+          <use href='{{this}}#form-mail'></use>
+        </svg>
+        <div class='error'></div>
+      </div>
+
+      <div class='form-sign__container'>
+        <input
+          class='form-sign__input'
+          type='password'
+          name='password'
+          id='password'
+          placeholder='Password'
+        />
+        <label class='form-sign__field' for='password'>Password</label>
+
+        <svg class='form-sign__icon'>
+          <use href='{{this}}#lock'></use>
+        </svg>
+        <div class='error'></div>
+      </div>
+
+      <button class='submit-btn control' type='submit'>Submit</button>
+    </form>
+
+    <form class='form-sign-up form-sign form-sign--hidden'>
+      <div class='form-sign__container'>
+        <input class='form-sign__input' type='email' name='email' id='email' placeholder='Mail' />
+        <label class='form-sign__field' for='email'>Email</label>
+
+        <svg class='form-sign__icon'>
+          <use href='{{this}}#form-mail'></use>
+        </svg>
+        <div class='error'></div>
+      </div>
+
+      <div class='form-sign__container'>
+        <input
+          class='form-sign__input'
+          type='password'
+          name='password'
+          id='password'
+          placeholder='Password'
+        />
+        <label class='form-sign__field' for='password'>Password</label>
+
+        <svg class='form-sign__icon'>
+          <use href='{{this}}#lock'></use>
+        </svg>
+        <div class='error'></div>
+      </div>
+
+      <button class='submit-btn control' type='submit'>Submit</button>
+    </form>
+  </div>
+</div>

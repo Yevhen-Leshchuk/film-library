@@ -8,3 +8,5 @@ import './js/components/movie-card';
 import './js/components/modal-card';
 import './js/components/notification';
 import './js/components/theme';
+import './js/components/forms';
+import './js/components/modal-forms';

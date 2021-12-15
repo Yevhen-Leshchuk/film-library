@@ -4,6 +4,7 @@ import { apiService } from '../services/api';
 import { clearGallery, startPage } from '../components/content';
 import pagination from '../components/pagination';
 import { movieLibrary } from '../components/movie-library';
+import { onAccountClick } from '../components/modal-forms';
 import refs from '../refs';
 
 // loading header home -----------------------
@@ -29,14 +30,15 @@ const refsFromHeader = {
   logoRef: document.querySelector('.header-logo'),
   queueBtnRef: document.querySelector('.header-control__queue'),
   watchedBtnRef: document.querySelector('.header-control__watched'),
+  accountRef: document.querySelector('.header-auth'),
 };
-
 movieLibrary._getHeaderHomeBtn(refsFromHeader.headerBtnHomeRef);
 
 refsFromHeader.headerNavRef.addEventListener('click', onControlClick);
 refsFromHeader.logoRef.addEventListener('click', onLogoClick);
 refsFromHeader.queueBtnRef.addEventListener('click', onQueueBtnClick);
 refsFromHeader.watchedBtnRef.addEventListener('click', onWatchedBtnClick);
+refsFromHeader.accountRef.addEventListener('click', onAccountClick);
 
 function onControlClick(event) {
   event.preventDefault();
