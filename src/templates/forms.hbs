@@ -9,15 +9,17 @@
   <div class='form-container'>
     <div class='control-btn' id='controls'>
       <button
-        class='control-sign-in control control-btn--active'
+        class='control-sign-up control control-btn--active'
         type='submit'
-        data-action='sign-in'
-      >Sign In</button>
-      <button class='control-sign-up control' type='submit' data-action='sign-up'>Sign Up</button>
+        data-action='sign-up'
+      >Sign Up</button>
+      <button class='control-sign-in control' type='submit' data-action='sign-in'>Sign In</button>
     </div>
 
-    <form class='form-sign-in form-sign'>
+    <form class='form-sign-up form-sign' id='form-up' autocomplete='on'>
       <div class='form-sign__container'>
+        <label class='form-sign__field' for='username'>User Name</label>
+
         <input
           class='form-sign__input'
           type='text'
@@ -25,25 +27,41 @@
           id='username'
           placeholder='Name'
         />
-        <label class='form-sign__field' for='username'>User Name</label>
-
         <svg class='form-sign__icon'>
           <use href='{{this}}#form-name'></use>
         </svg>
-        <div class='error'></div>
+
+        <svg class='form-sign__failure-icon action'>
+          <use href='{{this}}#notification'></use>
+        </svg>
+        <svg class='form-sign__success-icon action'>
+          <use href='{{this}}#checked'></use>
+        </svg>
+
+        <span class='error'></span>
       </div>
 
       <div class='form-sign__container'>
-        <input class='form-sign__input' type='email' name='email' id='email' placeholder='Mail' />
         <label class='form-sign__field' for='email'>Email</label>
+
+        <input class='form-sign__input' type='email' name='email' id='email' placeholder='Mail' />
+        <span class='error'></span>
+
+        <svg class='form-sign__failure-icon action'>
+          <use href='{{this}}#notification'></use>
+        </svg>
+        <svg class='form-sign__success-icon action'>
+          <use href='{{this}}#checked'></use>
+        </svg>
 
         <svg class='form-sign__icon'>
           <use href='{{this}}#form-mail'></use>
         </svg>
-        <div class='error'></div>
       </div>
 
       <div class='form-sign__container'>
+        <label class='form-sign__field' for='password'>Password</label>
+
         <input
           class='form-sign__input'
           type='password'
@@ -51,42 +69,63 @@
           id='password'
           placeholder='Password'
         />
-        <label class='form-sign__field' for='password'>Password</label>
+        <span class='error'></span>
+
+        <svg class='form-sign__failure-icon action'>
+          <use href='{{this}}#notification'></use>
+        </svg>
+        <svg class='form-sign__success-icon action'>
+          <use href='{{this}}#checked'></use>
+        </svg>
 
         <svg class='form-sign__icon'>
           <use href='{{this}}#lock'></use>
         </svg>
-        <div class='error'></div>
       </div>
 
       <button class='submit-btn control' type='submit'>Submit</button>
     </form>
 
-    <form class='form-sign-up form-sign form-sign--hidden'>
+    <form class='form-sign-in form-sign form-sign--hidden' id='form-in' autocomplete='on'>
       <div class='form-sign__container'>
-        <input class='form-sign__input' type='email' name='email' id='email' placeholder='Mail' />
         <label class='form-sign__field' for='email'>Email</label>
+
+        <input class='form-sign__input' type='email' name='email' id='emailIn' placeholder='Mail' />
+        <svg class='form-sign__failure-icon action'>
+          <use href='{{this}}#notification'></use>
+        </svg>
+        <svg class='form-sign__success-icon action'>
+          <use href='{{this}}#checked'></use>
+        </svg>
 
         <svg class='form-sign__icon'>
           <use href='{{this}}#form-mail'></use>
         </svg>
-        <div class='error'></div>
+        <span class='error'></span>
       </div>
 
       <div class='form-sign__container'>
+        <label class='form-sign__field' for='password'>Password</label>
+
         <input
           class='form-sign__input'
           type='password'
           name='password'
-          id='password'
+          id='passwordIn'
           placeholder='Password'
         />
-        <label class='form-sign__field' for='password'>Password</label>
+
+        <svg class='form-sign__failure-icon action'>
+          <use href='{{this}}#notification'></use>
+        </svg>
+        <svg class='form-sign__success-icon action'>
+          <use href='{{this}}#checked'></use>
+        </svg>
 
         <svg class='form-sign__icon'>
           <use href='{{this}}#lock'></use>
         </svg>
-        <div class='error'></div>
+        <span class='error'></span>
       </div>
 
       <button class='submit-btn control' type='submit'>Submit</button>

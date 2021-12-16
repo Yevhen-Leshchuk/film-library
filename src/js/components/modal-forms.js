@@ -18,7 +18,7 @@ export function onAccountClick(event) {
   window.addEventListener('keydown', onKeyPress);
 }
 
-function closeModal() {
+export function closeModal() {
   refs.modalRef.classList.add('backdrop--hidden');
   refs.bodyRef.classList.remove('body--hidden', 'body_landscape--hidden');
   refs.htmlRef.classList.remove('is-landscape');

@@ -3,13 +3,16 @@ import movieCard from '../../templates/movie-card.hbs';
 import Modal from './modal-card';
 import { movieLibrary } from '../components/movie-library';
 import { apiService } from '../services/api';
-import { getRefCloseBtn } from '../components/footer';
+// import { getRefCloseBtn } from '../components/footer';
 
 export const modalMovieCard = new Modal({
   rootSelector: '.content',
   body: 'body',
+  html: 'html',
   activeModalClass: 'backdrop--hidden',
   removeScrollClass: 'body--hidden',
+  landscapeHidden: 'body_landscape--hidden',
+  landscapeVisible: 'is-landscape',
   modalClass: '#modal',
   storage: getMovies,
 });

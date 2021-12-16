@@ -23,13 +23,16 @@ function onFooterModal(event) {
   closeModalBtnRef.addEventListener('click', closeModal);
 
   refs.modalRef.classList.remove('backdrop--hidden');
-  refs.bodyRef.classList.add('body--hidden');
+  refs.bodyRef.classList.add('body--hidden', 'body_landscape--hidden');
+  refs.htmlRef.classList.add('is-landscape');
+
   window.addEventListener('keydown', onKeyPress);
 }
 
 function closeModal() {
   refs.modalRef.classList.add('backdrop--hidden');
-  refs.bodyRef.classList.remove('body--hidden');
+  refs.bodyRef.classList.remove('body--hidden', 'body_landscape--hidden');
+  refs.htmlRef.classList.remove('is-landscape');
 
   refs.modalRef.innerHTML = '';
 
