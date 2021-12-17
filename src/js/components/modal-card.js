@@ -1,21 +1,34 @@
 export default class Modal {
-  constructor({ rootSelector, body, activeModalClass, removeScrollClass, storage, modalClass }) {
-    this._refs = this._getRefs(rootSelector, body, modalClass);
+  constructor({
+    rootSelector,
+    body,
+    activeModalClass,
+    removeScrollClass,
+    storage,
+    modalClass,
+    landscapeHidden,
+    html,
+    landscapeVisible,
+  }) {
+    this._refs = this._getRefs(rootSelector, body, modalClass, html);
     this._imgId = [];
     this._activeModalClass = activeModalClass;
     this._removeScrollClass = removeScrollClass;
     this._storage = storage;
     this._modalClass = modalClass;
+    this.landscapeHidden = landscapeHidden;
+    this._landscapeVisible = landscapeVisible;
 
     this._bindEvents();
   }
 
-  _getRefs(rootSelector, body, modalClass) {
+  _getRefs(rootSelector, body, modalClass, html) {
     const refs = {};
 
     refs.eventTargetRef = document.querySelector(`${rootSelector}`);
     refs.bodyRef = document.querySelector(`${body}`);
     refs.modalRef = document.querySelector(`${modalClass}`);
+    refs.htmlRef = document.querySelector(`${html}`);
 
     return refs;
   }
@@ -56,7 +69,9 @@ export default class Modal {
     this._storage();
 
     this._refs.modalRef.classList.remove(this._activeModalClass);
-    this._refs.bodyRef.classList.add(this._removeScrollClass);
+    this._refs.bodyRef.classList.add(this._removeScrollClass, this.landscapeHidden);
+    this._refs.htmlRef.classList.add(this._landscapeVisible);
+
     window.addEventListener('keydown', this._onKeyPress.bind(this));
   }
 
@@ -76,7 +91,8 @@ export default class Modal {
 
   _closeModal() {
     this._refs.modalRef.classList.add(this._activeModalClass);
-    this._refs.bodyRef.classList.remove(this._removeScrollClass);
+    this._refs.bodyRef.classList.remove(this._removeScrollClass, this.landscapeHidden);
+    this._refs.htmlRef.classList.remove(this._landscapeVisible);
 
     this._refs.modalRef.innerHTML = '';
 

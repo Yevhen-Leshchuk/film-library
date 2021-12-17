@@ -37,12 +37,12 @@ body.dark-theme .movie-btn__btn {
 
 body.dark-theme .close-modal__icon {
   fill: $white;
-  transition:  fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition:  fill 250ms $cubicBezier;
 
 
     &:hover {
     fill: $orange;
-    transition:  fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition:  fill 250ms $cubicBezier;
   }
 }
 
@@ -83,7 +83,23 @@ body.dark-theme  .team-content__text  {
   color: $white;
 }
 
-.tui-page-btn
+body.dark-theme  .form-card {
+  background-color: $dark;
+  color: $white;
+}
+
+body.dark-theme  .control {
+  color: $white;
+}
+
+body.dark-theme  .form-sign__icon {
+  transition: fill 250ms $cubicBezier;
+
+  .form-sign__input:focus ~ & {
+    fill: $orange;
+  }
+}
+
 
 .toolbar {
   display: flex;

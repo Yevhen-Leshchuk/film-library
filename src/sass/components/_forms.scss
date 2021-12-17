@@ -110,7 +110,7 @@
   color: $white;
 }
 
-.control-sign-in {
+.control-sign-up {
   margin-right: 10px;
 }
 
@@ -125,46 +125,50 @@
 
 .form-sign__container {
   position: relative;
-  margin-bottom: 15px;
+  height: 95px;
 }
 
 .form-sign__input {
   width: 100%;
-  height: 40px;
+  height: 39px;
   border-radius: 8px;
   outline: none;
   border: 1px solid $lightGray;
-  padding: 0 30px;
+  padding: 0 35px;
   font-size: 16px;
 
   &:focus {
   border: 2px solid $orange;
   }
   &::placeholder {
-    font-size: 12px;
+    font-size: 15px;
   }
   &:focus::placeholder {
     color:$orange;
   }
 }
 
+.form-sign__input--error {
+border: 2px solid $red ;
+}
+
+.form-sign__input--success {
+border: 2px solid green ;
+}
+
 .form-sign__field {
   display: block;
   margin-bottom: 5px;
-  transform: translate(5px, -55px);
-
-  .form-sign__input:focus ~ & {
-    color: $orange;
-  }
+  font-size: 15px;
 }
 
 .form-sign__icon {
   position: absolute;
-  top: 25%;
+  top: 36%;
   left: 15px;
 
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
 
   fill: $black;
 
@@ -192,14 +196,39 @@
 /**
 * ! style rules for form icons
 **/
+
+.action {
+  position: absolute;
+  top: 36%;
+  right: 15px;
+  width: 20px;
+  height: 20px;
+}
+
+.form-sign__failure-icon,
+.form-sign__success-icon {
+  opacity: 0;
+}
+
+.form-sign__failure-icon,
 .error {
-  color: red;
+  fill: $red;
+  color: $red;
+}
+
+.form-sign__success-icon {
+  fill: green;
 }
 
 .error {
-  font-size: 14.5px;
+  display: inline-block;
+  font-size: 15px;
   margin-top: 5px;
 }
+
+/**
+* animation
+**/
 
 @keyframes fadeEffect {
   from {

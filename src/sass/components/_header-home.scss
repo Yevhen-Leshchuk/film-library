@@ -83,6 +83,18 @@ header .container {
   margin-bottom: 20px;
 }
 
+.header-entrance__icon {
+  width: 32px;
+  height: 32px;
+  fill: $white;
+  cursor: pointer;
+
+  &:hover {
+    fill: $orange;
+    transition:  fill 250ms $cubicBezier;
+  }
+}
+
 .header-button {
   border-style: none;
   background: transparent;
@@ -148,6 +160,10 @@ header .container {
 
     @include fontProperty($color: $white, $weight: 500, $size: 30px, $height: 1.17);
   }
+}
+
+.header-logo--accent {
+  color: $orange;
 }
 
 .header-home-btn {
