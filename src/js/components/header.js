@@ -31,6 +31,7 @@ const refsFromHeader = {
   queueBtnRef: document.querySelector('.header-control__queue'),
   watchedBtnRef: document.querySelector('.header-control__watched'),
   accountRef: document.querySelector('.header-auth'),
+  headerEntranceRef: document.querySelector('.header-entrance__icon'),
 };
 movieLibrary._getHeaderHomeBtn(refsFromHeader.headerBtnHomeRef);
 
@@ -38,7 +39,7 @@ refsFromHeader.headerNavRef.addEventListener('click', onControlClick);
 refsFromHeader.logoRef.addEventListener('click', onLogoClick);
 refsFromHeader.queueBtnRef.addEventListener('click', onQueueBtnClick);
 refsFromHeader.watchedBtnRef.addEventListener('click', onWatchedBtnClick);
-refsFromHeader.accountRef.addEventListener('click', onAccountClick);
+refsFromHeader.headerEntranceRef.addEventListener('click', onAccountClick);
 
 function onControlClick(event) {
   event.preventDefault();
@@ -72,18 +73,22 @@ function openHeaderHome(element) {
     apiService.page = 1;
     pagination.reset();
 
-    refsFromHeader.queueBtnRef.classList.remove('header-control__btn--active');
-    refsFromHeader.watchedBtnRef.classList.remove('header-control__btn--active');
-    refsFromHeader.headerFormRef.classList.remove('header-form--hidden');
-    refsFromHeader.headerControlRef.classList.remove('header-control--active');
-    refsFromHeader.headerBtnLibrRef.classList.remove('header-button--active');
-    refsFromHeader.headerRef.classList.remove('header-library');
-    refsFromHeader.headerRef.classList.add('header-home');
-    refsFromHeader.headerBtnHomeRef.classList.add('header-button--active');
-
-    refs.paginationContainerRef.classList.remove('tui-pagination--hidden');
-    refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
+    showHeaderHome();
   }
+}
+
+export function showHeaderHome() {
+  refsFromHeader.queueBtnRef.classList.remove('header-control__btn--active');
+  refsFromHeader.watchedBtnRef.classList.remove('header-control__btn--active');
+  refsFromHeader.headerFormRef.classList.remove('header-form--hidden');
+  refsFromHeader.headerControlRef.classList.remove('header-control--active');
+  refsFromHeader.headerBtnLibrRef.classList.remove('header-button--active');
+  refsFromHeader.headerRef.classList.remove('header-library');
+  refsFromHeader.headerRef.classList.add('header-home');
+  refsFromHeader.headerBtnHomeRef.classList.add('header-button--active');
+
+  refs.paginationContainerRef.classList.remove('tui-pagination--hidden');
+  refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
 }
 
 function openHeaderLibrary(element) {

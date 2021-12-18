@@ -1,9 +1,12 @@
 <div class='header-auth'>
-  <svg class='header-entrance__icon'>
+  <svg class='header-entrance__icon' data-action='entrance'>
     <use href='{{this}}#entrance'></use>
   </svg>
+  <svg class='header-exit__icon' data-action='exit'>
+    <use href='{{this}}#exit'></use>
+  </svg>
   {{! <button type='submit' class='header-button header-button--log-in'>log in</button> }}
-  <button type='button' class='header-button header-button--log-out'>log out</button>
+  {{! <button type='button' class='header-button header-button__log-out'>log out</button> }}
 </div>
 
 <div class='header-main-nav'>
@@ -35,6 +38,8 @@
     <use href='{{this}}#search'></use>
   </svg>
 </form>
+
+<div class='header-user'></div>
 
 <div class='header-control'>
   <button

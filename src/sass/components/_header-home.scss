@@ -95,6 +95,10 @@ header .container {
   }
 }
 
+.header-entrance__icon--hidden {
+  display: none;
+}
+
 .header-button {
   border-style: none;
   background: transparent;
@@ -121,8 +125,21 @@ header .container {
   }
 }
 
-.header-button--log-out {
+.header-exit__icon {
   display: none;
+}
+
+.header-exit__icon--visible {
+  display: block;
+  width: 32px;
+  height: 32px;
+  fill: $white;
+  cursor: pointer;
+
+  &:hover {
+    fill: $orange;
+    transition:  fill 250ms $cubicBezier;
+  }
 }
 
 .header-main-nav {
@@ -168,6 +185,15 @@ header .container {
 
 .header-home-btn {
   margin-right: 35px;
+}
+
+.header-library-btn {
+  display: none;
+}
+
+.header-button--visible {
+  display: block;
+  // border-bottom: solid 3px $orange;
 }
 
 .header-button--active {
@@ -217,6 +243,22 @@ header .container {
 
 .header-control {
   display: none;
+}
+
+.header-user {
+   display: none;
+}
+
+.header-user--visible {
+   display: block;
+
+  @include fontProperty(
+    $color: $orange,
+    $weight: 500,
+    $size: 18px,
+    $height: 1.17,
+    $transform: uppercase
+  );
 }
 
 .header-control--active {

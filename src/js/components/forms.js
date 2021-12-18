@@ -1,4 +1,5 @@
 import { closeModal } from '../components/modal-forms';
+import { getSubmittedData } from '../components/user-auth';
 
 export function getForms() {
   const refs = {
@@ -67,13 +68,7 @@ export function getForms() {
 
     const formRef = event.target;
     const formData = new FormData(formRef);
-    const submittedData = {};
-
-    formData.forEach((value, key) => {
-      submittedData[key] = value;
-    });
-
-    console.log(submittedData);
+    getSubmittedData(formData);
 
     engine(username, 0, 'Username cannot be blank');
     engine(email, 1, 'Email cannot be blank');
@@ -85,13 +80,7 @@ export function getForms() {
 
     const formRef = event.target;
     const formData = new FormData(formRef);
-    const submittedData = {};
-
-    formData.forEach((value, key) => {
-      submittedData[key] = value;
-    });
-
-    console.log(submittedData);
+    getSubmittedData(formData);
 
     engine(emailIn, 3, 'Email cannot be blank');
     engine(passwordIn, 4, 'Password cannot be blank');
@@ -112,7 +101,10 @@ export function getForms() {
       // icons
       failureIcon[serial].style.opacity = '0';
       successIcon[serial].style.opacity = '1';
-      // closeModal();
+
+      setTimeout(() => {
+        closeModal();
+      }, 2000);
     }
   };
 
