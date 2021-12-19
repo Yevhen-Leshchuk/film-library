@@ -1,5 +1,5 @@
 .header-home {
-  height: 230px;
+  height: 250px;
 
   background-color: rgba(0, 0, 0, 0.56);
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
@@ -33,7 +33,7 @@
 }
 
 .header-library {
-  height: 230px;
+  height: 250px;
 
   background-color: rgba(0, 0, 0, 0.56);
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
@@ -67,6 +67,7 @@
 }
 
 header .container {
+  position: relative;
   max-height: 230px;
   height: 100%;
   padding-top: 10px;
@@ -79,8 +80,34 @@ header .container {
 
 .header-auth {
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 20px;
+  justify-content: flex-start;
+  margin-bottom: 60px;
+
+  @media screen and (max-width: 479px) {
+    flex-direction: column;
+  }
+
+  @media screen and (min-width: 480px) {
+    align-items: center;
+  }
+}
+
+.header-button {
+  border-style: none;
+  background: transparent;
+  outline: none;
+  text-transform: uppercase;
+  padding-left: 0;
+  padding-right: 0;
+  cursor: pointer;
+
+  @include fontProperty(
+    $color: $white,
+    $weight: 500,
+    $size: 18px,
+    $height: 1.17,
+    $transform: uppercase
+  );
 }
 
 .header-entrance__icon {
@@ -99,32 +126,6 @@ header .container {
   display: none;
 }
 
-.header-button {
-  border-style: none;
-  background: transparent;
-  outline: none;
-  text-transform: uppercase;
-  padding-left: 0;
-  padding-right: 0;
-  cursor: pointer;
-
-  @include fontProperty(
-    $color: $white,
-    $weight: 500,
-    $size: 12px,
-    $height: 1.17,
-    $transform: uppercase
-  );
-
-  @media screen and (min-width: 480px) {
-    font-size: 14px;
-  }
-
-  @media screen and (min-width: 768px) {
-    font-size: 18px;
-  }
-}
-
 .header-exit__icon {
   display: none;
 }
@@ -140,14 +141,26 @@ header .container {
     fill: $orange;
     transition:  fill 250ms $cubicBezier;
   }
+
+    @media screen and (max-width: 479px) {
+      margin-bottom: 5px;
+  }
+
+    @media screen and (min-width: 480px) {
+      margin-right: 5px;
+  }
 }
 
 .header-main-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 38px;
+  margin-bottom: 40px;
   cursor: pointer;
+
+  @media screen and (min-width: 480px) {
+    margin-bottom: 60px;
+  }
 
   @media screen and (min-width: 768px) {
     justify-content: space-between;
@@ -157,7 +170,6 @@ header .container {
 .header-logo {
   display: flex;
   align-items: center;
-  margin-right: 113px;
 }
 
 .header-logo__icon {
@@ -172,15 +184,24 @@ header .container {
 .header-logo__name {
   display: none;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 480px) {
     display: block;
 
-    @include fontProperty($color: $white, $weight: 500, $size: 30px, $height: 1.17);
+    @include fontProperty($color: $white, $weight: 500, $size: 25px, $height: 1.17);
+  }
+
+    @media screen and (min-width: 768px) {
+     font-size: 30px;
   }
 }
 
 .header-logo--accent {
   color: $orange;
+}
+
+.header-nav {
+  display: flex;
+  align-items: baseline;
 }
 
 .header-home-btn {
@@ -193,7 +214,6 @@ header .container {
 
 .header-button--visible {
   display: block;
-  // border-bottom: solid 3px $orange;
 }
 
 .header-button--active {
@@ -257,7 +277,7 @@ header .container {
     $weight: 500,
     $size: 18px,
     $height: 1.17,
-    $transform: uppercase
+    $text-align: none,
   );
 }
 

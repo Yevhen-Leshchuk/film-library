@@ -1,5 +1,6 @@
 import { clearGallery, startPage } from '../components/content';
 import { showHeaderHome } from '../components/header';
+import { closeModal } from '../components/modal-forms';
 
 export function getSubmittedData(formData) {
   const submittedData = {};
@@ -27,8 +28,12 @@ export function userDataMarkup(submittedData) {
     headerEntranceRef.classList.add('header-entrance__icon--hidden');
 
     if (submittedData !== undefined) {
-      headerUserRef.textContent = submittedData.username;
+      headerUserRef.textContent = `Hi, ${submittedData.username}`;
       headerBtnLibrRef.classList.add('header-button--visible');
+
+      setTimeout(() => {
+        showWelcomeSign(submittedData);
+      }, 1000);
     }
   }
   headerExitRef.addEventListener('click', exitAccount);
@@ -45,4 +50,16 @@ export function userDataMarkup(submittedData) {
     clearGallery();
     startPage();
   }
+}
+
+function showWelcomeSign(submittedData) {
+  const welcomeSignUpRef = document.querySelector('.welcome-sign-up');
+  const welcomeSignUpTitleRef = document.querySelector('.welcome-sign-up__title');
+
+  welcomeSignUpRef.classList.remove('welcome-sign--hidden');
+  welcomeSignUpTitleRef.textContent = `${submittedData.username},`;
+
+  setTimeout(() => {
+    closeModal();
+  }, 3000);
 }

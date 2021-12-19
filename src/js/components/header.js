@@ -5,6 +5,7 @@ import { clearGallery, startPage } from '../components/content';
 import pagination from '../components/pagination';
 import { movieLibrary } from '../components/movie-library';
 import { onAccountClick } from '../components/modal-forms';
+// import { switcherMarkup } from '../components/theme';
 import refs from '../refs';
 
 // loading header home -----------------------
@@ -17,6 +18,7 @@ function headerHomeMarkup() {
   const markupHeader = headerHome(logo);
 
   refs.hederContainerRef.insertAdjacentHTML('beforeend', markupHeader);
+  // switcherMarkup();
 }
 
 // logic of header home and library pages------------------
@@ -32,6 +34,7 @@ const refsFromHeader = {
   watchedBtnRef: document.querySelector('.header-control__watched'),
   accountRef: document.querySelector('.header-auth'),
   headerEntranceRef: document.querySelector('.header-entrance__icon'),
+  // headerMainNavRef: document.querySelector('.header-main-nav'),
 };
 movieLibrary._getHeaderHomeBtn(refsFromHeader.headerBtnHomeRef);
 
