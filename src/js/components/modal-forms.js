@@ -2,6 +2,7 @@ import forms from '../../templates/forms.hbs';
 import refs from '../refs';
 import icons from '../../images/sprite/sprite.svg';
 import { getForms } from '../components/forms';
+import { getSubmittedData } from '../components/user-auth';
 
 refs.modalRef.addEventListener('click', onLightboxClick);
 

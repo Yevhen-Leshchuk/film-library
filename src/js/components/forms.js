@@ -1,4 +1,3 @@
-import { closeModal } from '../components/modal-forms';
 import { getSubmittedData } from '../components/user-auth';
 
 export function getForms() {
@@ -101,10 +100,6 @@ export function getForms() {
       // icons
       failureIcon[serial].style.opacity = '0';
       successIcon[serial].style.opacity = '1';
-
-      setTimeout(() => {
-        closeModal();
-      }, 2000);
     }
   };
 
