@@ -3,6 +3,7 @@ import { modalMovieCard } from '../components/movie-card';
 import { galleryMarkup, clearGallery } from '../components/content';
 import { setClassOnBtn } from '../components/header';
 import { queue, watched } from '../components/library-pagination';
+import { plugMarkup } from '../components/plug';
 import { getClassWatchedBtn, getClassQueueBtn } from '../components/header';
 import {
   showMessageStorageEmpty,
@@ -88,6 +89,7 @@ class Library {
 
       if (this._queueStorage.length === 0) {
         showMessageStorageEmpty();
+        plugMarkup();
 
         refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
       }
@@ -181,6 +183,7 @@ class Library {
 
       if (this._watchedStorage.length === 0) {
         showMessageStorageEmpty();
+        plugMarkup();
 
         refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
       }
