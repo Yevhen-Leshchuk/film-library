@@ -4,6 +4,7 @@ import refs from '../refs';
 import { apiService } from '../services/api';
 import { searchFormRef } from '../components/header';
 import { showMessageNoInput, showMessageInvalidRequest } from '../components/notification';
+import { plugMarkup } from '../components/plug';
 
 searchFormRef.addEventListener('submit', searchFormHandler);
 
@@ -28,17 +29,18 @@ export function fetchMovies() {
   apiService.fetchMovies().then(({ results }) => {
     console.log(results);
 
+    galleryMarkup(results);
+    pagination.reset(results.total_resulrs);
+
     if (results.length === 0) {
       showMessageInvalidRequest();
+      plugMarkup();
 
       refs.paginationContainerRef.classList.add('tui-pagination--hidden');
     } else {
       refs.paginationContainerRef.classList.remove('tui-pagination--hidden');
     }
     refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
-
-    galleryMarkup(results);
-    pagination.reset(results.total_resulrs);
   });
 }
 

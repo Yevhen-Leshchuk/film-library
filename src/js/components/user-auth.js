@@ -61,5 +61,5 @@ function showWelcomeSign(submittedData) {
 
   setTimeout(() => {
     closeModal();
-  }, 3000);
+  }, 2000);
 }

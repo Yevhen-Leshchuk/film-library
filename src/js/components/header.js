@@ -5,7 +5,7 @@ import { clearGallery, startPage } from '../components/content';
 import pagination from '../components/pagination';
 import { movieLibrary } from '../components/movie-library';
 import { onAccountClick } from '../components/modal-forms';
-// import { switcherMarkup } from '../components/theme';
+import { plugMarkup } from '../components/plug';
 import refs from '../refs';
 
 // loading header home -----------------------
@@ -18,7 +18,6 @@ function headerHomeMarkup() {
   const markupHeader = headerHome(logo);
 
   refs.hederContainerRef.insertAdjacentHTML('beforeend', markupHeader);
-  // switcherMarkup();
 }
 
 // logic of header home and library pages------------------
@@ -34,7 +33,6 @@ const refsFromHeader = {
   watchedBtnRef: document.querySelector('.header-control__watched'),
   accountRef: document.querySelector('.header-auth'),
   headerEntranceRef: document.querySelector('.header-entrance__icon'),
-  // headerMainNavRef: document.querySelector('.header-main-nav'),
 };
 movieLibrary._getHeaderHomeBtn(refsFromHeader.headerBtnHomeRef);
 
@@ -109,6 +107,8 @@ function openHeaderLibrary(element) {
     if (movieLibrary._queueStorage.length !== 0) {
       refs.libraryPaginationContainerRef.classList.remove('tui-pagination--hidden');
     } else {
+      plugMarkup();
+
       refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
     }
     refs.paginationContainerRef.classList.add('tui-pagination--hidden');
@@ -122,6 +122,8 @@ function onQueueBtnClick() {
   if (movieLibrary._queueStorage.length !== 0) {
     refs.libraryPaginationContainerRef.classList.remove('tui-pagination--hidden');
   } else {
+    plugMarkup();
+
     refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
   }
   refs.paginationContainerRef.classList.add('tui-pagination--hidden');
@@ -137,6 +139,8 @@ function onWatchedBtnClick() {
   if (movieLibrary._watchedStorage.length !== 0) {
     refs.libraryPaginationContainerRef.classList.remove('tui-pagination--hidden');
   } else {
+    plugMarkup();
+
     refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
   }
   refs.paginationContainerRef.classList.add('tui-pagination--hidden');
