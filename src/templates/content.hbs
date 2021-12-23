@@ -1,24 +1,42 @@
-<ul class="galery">
+<ul class='galery'>
   {{#each this}}
 
-  <li class="galery-card" data-id={{id}}  data-title={{original_title}} data-poster={{poster_path}} data-genres={{genres}} data-date={{release_date}} data-rating={{vote_average}}>
-      <div class="trailer"></div>
+    <li
+      class='galery-card'
+      data-id={{id}}
+      data-title={{original_title}}
+      data-poster={{poster_path}}
+      data-genres={{genres}}
+      data-date={{release_date}}
+      data-rating={{vote_average}}
+    >
+      <div class='trailer' data-action='trailer'></div>
 
-      <div class="gallery-box">
-      {{#if poster_path}}
-      <img data-id={{id}} src='https://image.tmdb.org/t/p/w500/{{poster_path}}' alt="image" class="gallery-box__image" />
-      {{else}}
-      <img data-id={{id}} src='https://www.csaff.org/wp-content/uploads/csaff-no-poster.jpg' alt="image" class="gallery-box__image" />
-      {{/if}}
+      <div class='gallery-box'>
+        {{#if poster_path}}
+          <img
+            data-id={{id}}
+            src='https://image.tmdb.org/t/p/w500/{{poster_path}}'
+            alt='image'
+            class='gallery-box__image'
+          />
+        {{else}}
+          <img
+            data-id={{id}}
+            src='https://www.csaff.org/wp-content/uploads/csaff-no-poster.jpg'
+            alt='image'
+            class='gallery-box__image'
+          />
+        {{/if}}
       </div>
 
-      <h2 class="galery-card__title">{{original_title}}</h2>
-      <div class="galery-desc">
-        <span class="galery-genres">{{genres}}</span>
-        <span class="galery-desc__release">{{release_date}}</span>
-        <span class="galery-desc__rating">{{vote_average}}</span>
+      <h2 class='galery-card__title'>{{original_title}}</h2>
+      <div class='galery-desc'>
+        <span class='galery-genres'>{{genres}}</span>
+        <span class='galery-desc__release'>{{release_date}}</span>
+        <span class='galery-desc__rating'>{{vote_average}}</span>
       </div>
-  </li>
+    </li>
 
   {{/each}}
 </ul>

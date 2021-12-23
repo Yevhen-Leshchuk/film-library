@@ -3,7 +3,7 @@ import movieCard from '../../templates/movie-card.hbs';
 import Modal from './modal-card';
 import { movieLibrary } from '../components/movie-library';
 import { apiService } from '../services/api';
-// import { getRefCloseBtn } from '../components/footer';
+import { getMovieCardTrailer } from '../components/modal-trailer';
 
 export const modalMovieCard = new Modal({
   rootSelector: '.content',
@@ -64,4 +64,5 @@ function movieCardMarkup(movie) {
   const markup = movieCard(movie);
 
   refs.modalRef.insertAdjacentHTML('beforeend', markup);
+  getMovieCardTrailer();
 }

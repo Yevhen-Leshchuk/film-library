@@ -1,5 +1,5 @@
-const api_key = `${process.env.API_KEY}`;
-const baseURL = `https://api.themoviedb.org/3`;
+export const api_key = `${process.env.API_KEY}`;
+export const baseURL = `https://api.themoviedb.org/3`;
 const ID_URL = `${baseURL}/movie/`;
 
 let GENRES = [];

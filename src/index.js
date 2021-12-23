@@ -10,3 +10,4 @@ import './js/components/notification';
 import './js/components/theme';
 import './js/components/forms';
 import './js/components/modal-forms';
+import './js/components/modal-trailer';
