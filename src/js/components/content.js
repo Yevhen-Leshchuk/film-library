@@ -31,13 +31,11 @@ export function searchFormHandler(event) {
 
 export function fetchMovies() {
   apiService.fetchMovies().then(({ results }) => {
-    console.log(results);
+    // console.log(results);
 
     spinner.showSpinner();
-    console.log('show');
     setTimeout(function () {
       spinner.hideSpinner();
-      console.log('hide');
     }, 1000);
 
     galleryMarkup(results);

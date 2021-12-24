@@ -7,6 +7,7 @@ const refs = {
   htmlRef: document.querySelector('html'),
   paginationContainerRef: document.querySelector('.tui-pagination'),
   libraryPaginationContainerRef: document.querySelector('#pagination-container'),
+  loaderRef: document.querySelector('.loader-box'),
 };
 
 export default refs;

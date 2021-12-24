@@ -3,6 +3,7 @@ import 'tui-pagination/dist/tui-pagination.css';
 import { galleryMarkup, clearGallery } from '../components/content';
 import { movieLibrary } from '../components/movie-library';
 import { getClassWatchedBtn } from '../components/header';
+import { backToTop } from '../components/scroll-up';
 
 //-----------library pagination-------------
 
@@ -32,6 +33,8 @@ const libraryPagination = new Pagination(libraryСontainer, {
 });
 
 libraryPagination.on('beforeMove', e => {
+  backToTop();
+
   movieLibrary._storagePage = e.page;
 
   const movieQueStorage = localStorage.getItem('queueStorage');
