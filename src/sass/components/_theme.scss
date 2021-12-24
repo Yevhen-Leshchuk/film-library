@@ -113,6 +113,28 @@ body.dark-theme  .welcome-in-library {
   color: $white;
 }
 
+body.dark-theme  .scroll-up {
+  background: $white;
+  box-shadow: 0 1px 8px 3px $orange;
+}
+
+body.dark-theme  .scroll-up {
+  background: $white;
+  box-shadow: 0 1px 8px 3px $orange;
+
+  &:hover {
+    background-color: $orange;
+    box-shadow: 0 1px 8px 3px $white;
+  }
+
+  &:hover .scroll-up__arrow {
+  fill: $white;
+  }
+}
+
+body.dark-theme  .scroll-up__arrow {
+  fill: $orange;
+}
 
 .switcher {
   position: absolute;

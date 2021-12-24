@@ -38,9 +38,17 @@ body {
   }
 }
 
+@keyframes beat {
+  to {
+    transform: scale(1.4);
+  }
+}
+
 .footer-developer__icon {
   width: 14px;
   height: 13px;
+  animation: beat 0.25s infinite alternate;
+  transform-origin: center;
 }
 
 .footer-developer__icon {

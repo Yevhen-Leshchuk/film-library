@@ -2,6 +2,7 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { apiService } from '../services/api';
 import { galleryMarkup, clearGallery } from '../components/content';
+import { backToTop } from '../components/scroll-up';
 
 const container = document.getElementById('tui-pagination-container');
 
@@ -29,13 +30,13 @@ const pagination = new Pagination(container, {
 });
 
 pagination.on('beforeMove', async e => {
+  backToTop();
   apiService.page = e.page;
 
   const movies = await apiService.fetchMovies();
 
   clearGallery();
   galleryMarkup(movies.results);
-  console.log(movies.results);
 });
 
 let totalItemsFromServer;
