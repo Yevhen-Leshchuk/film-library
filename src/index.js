@@ -13,3 +13,4 @@ import './js/components/modal-forms';
 import './js/components/modal-trailer';
 import './js/components/spinner';
 import './js/components/scroll-up';
+import './js/components/logo-animation';
