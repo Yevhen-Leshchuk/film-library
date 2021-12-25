@@ -6,6 +6,7 @@ import pagination from '../components/pagination';
 import { movieLibrary } from '../components/movie-library';
 import { onAccountClick } from '../components/modal-forms';
 import { plugMarkup } from '../components/plug';
+import { logoAnimation } from '../components/logo-animation';
 import refs from '../refs';
 
 // loading header home -----------------------
@@ -18,6 +19,7 @@ function headerHomeMarkup() {
   const markupHeader = headerHome(logo);
 
   refs.hederContainerRef.insertAdjacentHTML('beforeend', markupHeader);
+  logoAnimation();
 }
 
 // logic of header home and library pages------------------

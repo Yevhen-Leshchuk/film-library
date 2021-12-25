@@ -36,7 +36,7 @@ export function fetchMovies() {
     spinner.showSpinner();
     setTimeout(function () {
       spinner.hideSpinner();
-    }, 1000);
+    }, 750);
 
     galleryMarkup(results);
     pagination.reset(results.total_resulrs);
