@@ -1,14 +1,17 @@
+import { getRefs } from '../refs';
+import { doLocalization } from '../components/language-switcher';
 import footer from '../../templates/footer.hbs';
 import footerModal from '../../templates/footer-modal.hbs';
 import icon from '../../images/sprite/sprite.svg';
 import refs from '../refs';
 
+footerMarkup();
+
 function footerMarkup() {
   const markup = footer(icon);
   refs.footerContainerRef.insertAdjacentHTML('beforeend', markup);
+  getRefs();
 }
-
-footerMarkup();
 
 const footerModalRef = document.querySelector('.footer-developer__link');
 
@@ -51,4 +54,8 @@ function developerCardMarkup() {
   const markup = footerModal(icon);
 
   refs.modalRef.insertAdjacentHTML('beforeend', markup);
+  getRefs();
+  doLocalization();
 }
+
+doLocalization();

@@ -1,5 +1,7 @@
 import forms from '../../templates/forms.hbs';
 import refs from '../refs';
+import { getRefs } from '../refs';
+import { doLocalization } from '../components/language-switcher';
 import icons from '../../images/sprite/sprite.svg';
 import { getForms } from '../components/forms';
 
@@ -41,4 +43,6 @@ function formCardMarkup() {
 
   refs.modalRef.insertAdjacentHTML('beforeend', markup);
   getForms();
+  getRefs();
+  doLocalization();
 }
