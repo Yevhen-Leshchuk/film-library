@@ -7,6 +7,8 @@ import { movieLibrary } from '../components/movie-library';
 import { onAccountClick } from '../components/modal-forms';
 import { plugMarkup } from '../components/plug';
 import { logoAnimation } from '../components/logo-animation';
+import { doLocalization, getLang, changeLanguage } from '../components/language-switcher';
+import { getRefs } from '../refs';
 import refs from '../refs';
 
 // loading header home -----------------------
@@ -20,6 +22,9 @@ function headerHomeMarkup() {
 
   refs.hederContainerRef.insertAdjacentHTML('beforeend', markupHeader);
   logoAnimation();
+  getRefs();
+  doLocalization();
+  getLang();
 }
 
 // logic of header home and library pages------------------
@@ -35,6 +40,9 @@ const refsFromHeader = {
   watchedBtnRef: document.querySelector('.header-control__watched'),
   accountRef: document.querySelector('.header-auth'),
   headerEntranceRef: document.querySelector('.header-entrance__icon'),
+  langEngRef: document.querySelector('[data-set="en-US"]'),
+  langRuRef: document.querySelector('[data-set="ru-RU"]'),
+  langControlRef: document.querySelector('.control__languages'),
 };
 movieLibrary._getHeaderHomeBtn(refsFromHeader.headerBtnHomeRef);
 
@@ -43,6 +51,7 @@ refsFromHeader.logoRef.addEventListener('click', onLogoClick);
 refsFromHeader.queueBtnRef.addEventListener('click', onQueueBtnClick);
 refsFromHeader.watchedBtnRef.addEventListener('click', onWatchedBtnClick);
 refsFromHeader.headerEntranceRef.addEventListener('click', onAccountClick);
+refsFromHeader.langControlRef.addEventListener('click', onlangControlClick);
 
 function onControlClick(event) {
   event.preventDefault();
@@ -163,4 +172,15 @@ export function getClassWatchedBtn() {
   if (refsFromHeader.watchedBtnRef.classList.contains('header-control__btn--active')) {
     return true;
   } else return false;
+}
+
+function onlangControlClick(event) {
+  const controlItem = event.target.dataset.set;
+
+  let lang = controlItem;
+  if (controlItem === 'ru-RU') {
+    changeLanguage(lang);
+  } else {
+    changeLanguage(lang);
+  }
 }

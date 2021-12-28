@@ -17,7 +17,7 @@ class Api {
   }
 
   async fetchGenres() {
-    this.url = this.genre;
+    this.url = `${this.genre}&language=${this._lang}`;
     const response = await fetch(this.url);
     const data = await response.json();
 
@@ -54,7 +54,7 @@ class Api {
 
   async MovieSearchId(movieId) {
     try {
-      const response = await fetch(`${ID_URL}${movieId}?api_key=${api_key}`);
+      const response = await fetch(`${ID_URL}${movieId}?api_key=${api_key}&language=${this._lang}`);
       const data = await response.json();
       return data;
     } catch (error) {

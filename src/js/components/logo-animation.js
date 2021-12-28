@@ -4,7 +4,6 @@ export function logoAnimation() {
   document.onreadystatechange = () => {
     if (document.readyState === 'complete') {
       const film = document.querySelector('#film');
-      console.log(film);
       const animationFilm = new LazyLinePainter(film, {
         ease: 'easeLinear',
         strokeWidth: 3,

@@ -34,6 +34,7 @@ pagination.on('beforeMove', async e => {
   apiService.page = e.page;
 
   const movies = await apiService.fetchMovies();
+  console.log(movies.results);
 
   clearGallery();
   galleryMarkup(movies.results);

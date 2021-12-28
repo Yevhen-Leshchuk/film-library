@@ -1,9 +1,11 @@
 import refs from '../refs';
+import { getRefs } from '../refs';
 import movieCard from '../../templates/movie-card.hbs';
 import Modal from './modal-card';
 import { movieLibrary } from '../components/movie-library';
 import { apiService } from '../services/api';
 import { getMovieCardTrailer } from '../components/modal-trailer';
+import { doLocalization } from '../components/language-switcher';
 
 export const modalMovieCard = new Modal({
   rootSelector: '.content',
@@ -65,4 +67,6 @@ function movieCardMarkup(movie) {
 
   refs.modalRef.insertAdjacentHTML('beforeend', markup);
   getMovieCardTrailer();
+  getRefs();
+  doLocalization();
 }

@@ -1,4 +1,5 @@
 import refs from '../refs';
+import { apiService } from '../services/api';
 import { modalMovieCard } from '../components/movie-card';
 import { galleryMarkup, clearGallery } from '../components/content';
 import { setClassOnBtn } from '../components/header';
@@ -83,9 +84,16 @@ class Library {
           }
         }
       }
+      if (apiService._lang === 'ru-RU') {
+        this._refs.queueRef.classList.remove('movie-btn__btn--active');
+        this._refs.queueRef.textContent = 'смотреть Позже';
+      } else {
+        this._refs.queueRef.classList.remove('movie-btn__btn--active');
+        this._refs.queueRef.textContent = 'add to queue';
+      }
 
-      this._refs.queueRef.classList.remove('movie-btn__btn--active');
-      this._refs.queueRef.textContent = 'add to queue';
+      // this._refs.queueRef.classList.remove('movie-btn__btn--active');
+      // this._refs.queueRef.textContent = 'add to queue';
 
       if (this._queueStorage.length === 0) {
         showMessageStorageEmpty();
@@ -131,8 +139,16 @@ class Library {
       galleryMarkup(this._queueStorage.slice(20));
     }
 
-    this._refs.queueRef.classList.add('movie-btn__btn--active');
-    this._refs.queueRef.textContent = 'remove from queue';
+    if (apiService._lang === 'ru-RU') {
+      this._refs.queueRef.classList.add('movie-btn__btn--active');
+      this._refs.queueRef.textContent = 'удалить из Ожидаемых';
+    } else {
+      this._refs.queueRef.classList.add('movie-btn__btn--active');
+      this._refs.queueRef.textContent = 'remove from queue';
+    }
+
+    // this._refs.queueRef.classList.add('movie-btn__btn--active');
+    // this._refs.queueRef.textContent = 'remove from queue';
   }
 
   //----------- Watched storage------------------------
@@ -178,8 +194,16 @@ class Library {
         }
       }
 
-      this._refs.watchedRef.classList.remove('movie-btn__btn--active');
-      this._refs.watchedRef.textContent = 'add to Watched';
+      if (apiService._lang === 'ru-RU') {
+        this._refs.watchedRef.classList.remove('movie-btn__btn--active');
+        this._refs.watchedRef.textContent = 'добавить в Просмотренные';
+      } else {
+        this._refs.watchedRef.classList.remove('movie-btn__btn--active');
+        this._refs.watchedRef.textContent = 'add to Watched';
+      }
+
+      // this._refs.watchedRef.classList.remove('movie-btn__btn--active');
+      // this._refs.watchedRef.textContent = 'add to Watched';
 
       if (this._watchedStorage.length === 0) {
         showMessageStorageEmpty();
@@ -225,8 +249,16 @@ class Library {
       galleryMarkup(this._watchedStorage.slice(20));
     }
 
-    this._refs.watchedRef.classList.add('movie-btn__btn--active');
-    this._refs.watchedRef.textContent = 'remove from watched';
+    if (apiService._lang === 'ru-RU') {
+      this._refs.watchedRef.classList.add('movie-btn__btn--active');
+      this._refs.watchedRef.textContent = 'удалить из Просмотренных';
+    } else {
+      this._refs.watchedRef.classList.add('movie-btn__btn--active');
+      this._refs.watchedRef.textContent = 'remove from watched';
+    }
+
+    // this._refs.watchedRef.classList.add('movie-btn__btn--active');
+    // this._refs.watchedRef.textContent = 'remove from watched';
   }
 
   _showQueue() {

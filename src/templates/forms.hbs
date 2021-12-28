@@ -18,10 +18,10 @@
 
     <form class='form-sign-up form-sign' id='form-up' autocomplete='on'>
       <div class='form-sign__container'>
-        <label class='form-sign__field' for='username'>User Name</label>
+        <label class='form-sign__field form-sign-up__field-username' for='username'>User Name</label>
 
         <input
-          class='form-sign__input'
+          class='form-sign__input form-sign-up__input-username'
           type='text'
           name='username'
           id='username'
@@ -42,9 +42,15 @@
       </div>
 
       <div class='form-sign__container'>
-        <label class='form-sign__field' for='email'>Email</label>
+        <label class='form-sign__field form-sign-up__field-email' for='email'>Email</label>
 
-        <input class='form-sign__input' type='email' name='email' id='email' placeholder='Mail' />
+        <input
+          class='form-sign__input form-sign-up__input-email'
+          type='email'
+          name='email'
+          id='email'
+          placeholder='Mail'
+        />
         <span class='error'></span>
 
         <svg class='form-sign__failure-icon action'>
@@ -60,10 +66,10 @@
       </div>
 
       <div class='form-sign__container'>
-        <label class='form-sign__field' for='password'>Password</label>
+        <label class='form-sign__field form-sign-up__field-password' for='password'>Password</label>
 
         <input
-          class='form-sign__input'
+          class='form-sign__input form-sign-up__input-password'
           type='password'
           name='password'
           id='password'
@@ -83,14 +89,20 @@
         </svg>
       </div>
 
-      <button class='submit-btn control' type='submit'>Submit</button>
+      <button class='submit-btn submit-btn-sign-up control' type='submit'>Submit</button>
     </form>
 
     <form class='form-sign-in form-sign form-sign--hidden' id='form-in' autocomplete='on'>
       <div class='form-sign__container'>
-        <label class='form-sign__field' for='email'>Email</label>
+        <label class='form-sign__field form-sign-in__field-email' for='email'>Email</label>
 
-        <input class='form-sign__input' type='email' name='email' id='emailIn' placeholder='Mail' />
+        <input
+          class='form-sign__input form-sign-in__input-email'
+          type='email'
+          name='email'
+          id='emailIn'
+          placeholder='Mail'
+        />
         <svg class='form-sign__failure-icon action'>
           <use href='{{this}}#notification'></use>
         </svg>
@@ -105,10 +117,10 @@
       </div>
 
       <div class='form-sign__container'>
-        <label class='form-sign__field' for='password'>Password</label>
+        <label class='form-sign__field form-sign-in__field-password' for='password'>Password</label>
 
         <input
-          class='form-sign__input'
+          class='form-sign__input form-sign-in__input-password'
           type='password'
           name='password'
           id='passwordIn'
@@ -128,7 +140,7 @@
         <span class='error'></span>
       </div>
 
-      <button class='submit-btn control' type='submit'>Submit</button>
+      <button class='submit-btn submit-btn-sign-in control' type='submit'>Submit</button>
     </form>
   </div>
 

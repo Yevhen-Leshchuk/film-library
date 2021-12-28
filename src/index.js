@@ -14,3 +14,4 @@ import './js/components/modal-trailer';
 import './js/components/spinner';
 import './js/components/scroll-up';
 import './js/components/logo-animation';
+import './js/components/language-switcher';

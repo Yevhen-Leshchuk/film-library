@@ -1,0 +1,17 @@
+.control__languages {
+  display: flex;
+  margin-left: 50px;
+}
+
+.control__languages-item {
+margin-right: 10px;
+}
+
+.control__languages-link {
+@include fontProperty($color: $white, $weight: 500, $size: 25px, $height: 1.17);
+
+}
+
+.control__languages-link--active {
+  color: $orange;
+}
