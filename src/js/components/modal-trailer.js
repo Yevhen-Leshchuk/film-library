@@ -2,12 +2,13 @@ import refs from '../refs';
 import trailer from '../../templates/trailer.hbs';
 import { api_key, baseURL } from '../services/api';
 import { trailerErrorMarkup } from '../components/plug';
+import { apiService } from '../services/api';
 
 refs.contentRef.addEventListener('click', onPlayTrailer);
 refs.modalRef.addEventListener('click', onLightboxClick);
 
 function fetchTrailerFilm(movieId) {
-  return fetch(`${baseURL}/movie/${movieId}/videos?api_key=${api_key}`)
+  return fetch(`${baseURL}/movie/${movieId}/videos?api_key=${api_key}&language=${apiService._lang}`)
     .then(response => response.json())
     .then(videos => {
       const trailerKey = videos.results[0].key;
@@ -25,6 +26,8 @@ function onPlayTrailer(event) {
   if (event.target.dataset.action !== 'trailer') {
     return;
   }
+
+  // localStorage.setItem('trailer', JSON.stringify(userData));
 
   const movieId = event.target.closest('li').dataset.id;
 

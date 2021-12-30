@@ -8,6 +8,7 @@ import { onAccountClick } from '../components/modal-forms';
 import { plugMarkup } from '../components/plug';
 import { logoAnimation } from '../components/logo-animation';
 import { doLocalization, getLang, changeLanguage } from '../components/language-switcher';
+import { exitAccount, userDataMarkup } from '../components/user-auth';
 import { getRefs } from '../refs';
 import refs from '../refs';
 
@@ -21,10 +22,15 @@ function headerHomeMarkup() {
   const markupHeader = headerHome(logo);
 
   refs.hederContainerRef.insertAdjacentHTML('beforeend', markupHeader);
+
   logoAnimation();
   getRefs();
   doLocalization();
   getLang();
+
+  const userStorage = localStorage.getItem('user');
+  let userData = JSON.parse(userStorage);
+  if (userData) userDataMarkup();
 }
 
 // logic of header home and library pages------------------
@@ -43,6 +49,10 @@ const refsFromHeader = {
   langEngRef: document.querySelector('[data-set="en-US"]'),
   langRuRef: document.querySelector('[data-set="ru-RU"]'),
   langControlRef: document.querySelector('.control__languages'),
+  headerExitRef: document.querySelector('.header-exit-btn'),
+  headerUserRef: document.querySelector('.header-user'),
+  headerBtnLibrRef: document.querySelector('.header-library-btn'),
+  headerEntranceRef: document.querySelector('.header-entrance__icon'),
 };
 movieLibrary._getHeaderHomeBtn(refsFromHeader.headerBtnHomeRef);
 
@@ -52,6 +62,7 @@ refsFromHeader.queueBtnRef.addEventListener('click', onQueueBtnClick);
 refsFromHeader.watchedBtnRef.addEventListener('click', onWatchedBtnClick);
 refsFromHeader.headerEntranceRef.addEventListener('click', onAccountClick);
 refsFromHeader.langControlRef.addEventListener('click', onlangControlClick);
+refsFromHeader.headerExitRef.addEventListener('click', exitAccount);
 
 function onControlClick(event) {
   event.preventDefault();
@@ -184,3 +195,18 @@ function onlangControlClick(event) {
     changeLanguage(lang);
   }
 }
+
+// export function userMarkup() {
+//   refsFromHeader.headerUserRef.classList.add('header-user--visible');
+//   refsFromHeader.headerExitRef.classList.add('header-exit__btn--visible');
+//   refsFromHeader.headerEntranceRef.classList.add('header-entrance__icon--hidden');
+//   refsFromHeader.headerBtnLibrRef.classList.add('header-button--visible');
+// }
+// const userStorage = localStorage.getItem('user');
+// let userData = JSON.parse(userStorage);
+
+// if (userData) {
+//   console.log('ssss');
+//   userMarkup();
+//   // return;
+// }

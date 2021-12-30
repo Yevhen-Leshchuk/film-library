@@ -1,4 +1,4 @@
-import { getSubmittedData } from '../components/user-auth';
+import { signUp, signIn } from '../components/user-auth';
 
 export function getForms() {
   const refs = {
@@ -67,7 +67,13 @@ export function getForms() {
 
     const formRef = event.target;
     const formData = new FormData(formRef);
-    getSubmittedData(formData);
+    const submittedSignUpData = {};
+
+    formData.forEach((value, key) => {
+      submittedSignUpData[key] = value;
+    });
+    // console.log(submittedSignUpData);
+    signUp(submittedSignUpData);
 
     engine(username, 0, 'Username cannot be blank');
     engine(email, 1, 'Email cannot be blank');
@@ -79,7 +85,14 @@ export function getForms() {
 
     const formRef = event.target;
     const formData = new FormData(formRef);
-    getSubmittedData(formData);
+    const submittedSignInData = {};
+
+    formData.forEach((value, key) => {
+      submittedSignInData[key] = value;
+    });
+    // console.log(submittedSignInData);
+
+    signIn(submittedSignInData);
 
     engine(emailIn, 3, 'Email cannot be blank');
     engine(passwordIn, 4, 'Password cannot be blank');
