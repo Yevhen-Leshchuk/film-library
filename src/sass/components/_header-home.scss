@@ -126,12 +126,20 @@ header .container {
   display: none;
 }
 
-.header-exit__icon {
-  display: none;
+.header-exit-btn {
+ display: none;
 }
 
-.header-exit__icon--visible {
+.header-exit__btn--visible {
   display: block;
+  width: 32px;
+  height: 32px;
+  border-style: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.header-exit__icon {
   width: 32px;
   height: 32px;
   fill: $white;
@@ -172,7 +180,7 @@ header .container {
   width: 24px;
   height: 24px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 480px) {
     margin-right: 13px;
   }
 }

@@ -1,5 +1,6 @@
 import LocalizedStrings from 'localized-strings';
 import { apiService } from '../services/api';
+// import { userMarkup } from '../components/header';
 import { getRefs } from '../refs';
 
 export const getLang = () => {

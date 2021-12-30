@@ -21,7 +21,7 @@ export const modalMovieCard = new Modal({
 
 function getMovies() {
   apiService.MovieSearchId(modalMovieCard._imgId).then(result => {
-    // console.log(result);
+    console.log(result);
     const genres = result.genres.map(item => item.name).slice(0, 2);
     result.genres = genres.join(', ');
 

@@ -16,14 +16,20 @@
       <button class='control-sign-in control' type='submit' data-action='sign-in'>Sign In</button>
     </div>
 
-    <form class='form-sign-up form-sign' id='form-up' autocomplete='on'>
+    <form
+      class='form-sign-up form-sign'
+      action='http://localhost:8080/api/v1/auth/signup'
+      method='POST'
+      id='form-up'
+      autocomplete='on'
+    >
       <div class='form-sign__container'>
         <label class='form-sign__field form-sign-up__field-username' for='username'>User Name</label>
 
         <input
           class='form-sign__input form-sign-up__input-username'
           type='text'
-          name='username'
+          name='name'
           id='username'
           placeholder='Name'
         />
@@ -92,7 +98,13 @@
       <button class='submit-btn submit-btn-sign-up control' type='submit'>Submit</button>
     </form>
 
-    <form class='form-sign-in form-sign form-sign--hidden' id='form-in' autocomplete='on'>
+    <form
+      class='form-sign-in form-sign form-sign--hidden'
+      action='http://localhost:8080/api/v1/auth/signin'
+      method='POST'
+      id='form-in'
+      autocomplete='on'
+    >
       <div class='form-sign__container'>
         <label class='form-sign__field form-sign-in__field-email' for='email'>Email</label>
 

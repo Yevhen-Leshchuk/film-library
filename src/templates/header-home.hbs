@@ -2,9 +2,13 @@
   <svg class='header-entrance__icon' data-action='entrance'>
     <use href='{{this}}#entrance'></use>
   </svg>
-  <svg class='header-exit__icon' data-action='exit'>
+  <button class="header-exit-btn" type="submit" action='http://localhost:8080/api/v1/auth/logout'
+      method='POST'>
+      <svg class='header-exit__icon'  data-action='exit'>
     <use href='{{this}}#exit'></use>
   </svg>
+      </button>
+
   <div class='header-user'></div>
   <ul class='control__languages'>
     <li class='control__languages-item'>

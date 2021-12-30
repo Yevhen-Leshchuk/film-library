@@ -6,7 +6,6 @@ import { searchFormRef } from '../components/header';
 import { showMessageNoInput, showMessageInvalidRequest } from '../components/notification';
 import { plugMarkup } from '../components/plug';
 import Spinner from '../components/spinner';
-// import { spinnerMarkup } from '../components/spinner';
 
 const spinner = new Spinner();
 
@@ -31,7 +30,7 @@ export function searchFormHandler(event) {
 
 export function fetchMovies() {
   apiService.fetchMovies().then(({ results }) => {
-    console.log(results);
+    // console.log(results);
 
     spinner.showSpinner();
     setTimeout(function () {
