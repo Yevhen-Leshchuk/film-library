@@ -1,6 +1,7 @@
 import { clearGallery, startPage } from '../components/content';
 import { showHeaderHome } from '../components/header';
 import { closeModal } from '../components/modal-forms';
+import { getUserLibrary } from '../components/user-library';
 
 export function userDataMarkup() {
   const headerUserRef = document.querySelector('.header-user');
@@ -38,8 +39,8 @@ export function exitAccount(event) {
   let userData = JSON.parse(userStorage);
 
   logOut(userData.token);
-
   userData = localStorage.removeItem('user');
+
   if (!userData) {
     headerUserRef.classList.remove('header-user--visible');
     headerExitRef.classList.remove('header-exit__btn--visible');
@@ -76,14 +77,21 @@ export function signUp({ name, email, password }) {
   return fetch('http://localhost:8080/api/v1/auth/signup', options)
     .then(res => res.json())
     .then(data => {
-      console.log(data);
-      let userData = data.data.user;
-      localStorage.setItem('user', JSON.stringify(userData));
-      userDataMarkup();
-      setTimeout(() => {
-        showWelcomeSign(userData);
-      }, 1000);
-    });
+      if (data.code === 201 && data.status === 'success') {
+        let userData = data.data.user;
+        userData = {
+          ...userData,
+          films: [],
+        };
+
+        localStorage.setItem('user', JSON.stringify(userData));
+        userDataMarkup();
+        setTimeout(() => {
+          showWelcomeSign(userData);
+        }, 1000);
+      }
+    })
+    .catch(error => console.log('error from signup', error));
 }
 
 export function signIn({ email, password }) {
@@ -98,14 +106,18 @@ export function signIn({ email, password }) {
   return fetch('http://localhost:8080/api/v1/auth/signin', options)
     .then(res => res.json())
     .then(data => {
-      console.log(data);
-      let userData = data.data.user;
-      localStorage.setItem('user', JSON.stringify(userData));
-      userDataMarkup();
-      setTimeout(() => {
-        showWelcomeSign(userData);
-      }, 1000);
-    });
+      if (data.code === 200 && data.status === 'success') {
+        getUserLibrary(data);
+
+        let userData = data.data.user;
+        localStorage.setItem('user', JSON.stringify(userData));
+        userDataMarkup();
+        setTimeout(() => {
+          showWelcomeSign(userData);
+        }, 1000);
+      }
+    })
+    .catch(error => console.log('error from signin', error));
 }
 
 export function logOut(token) {
@@ -120,6 +132,10 @@ export function logOut(token) {
   fetch('http://localhost:8080/api/v1/auth/logout', options)
     .then(res => res.json())
     .then(data => {
-      console.log(data);
-    });
+      if (data.code === 204 && data.status === 'success') {
+        localStorage.removeItem('queueStorage');
+        localStorage.removeItem('watchedStorage');
+      }
+    })
+    .catch(error => console.log('error from logout', error));
 }

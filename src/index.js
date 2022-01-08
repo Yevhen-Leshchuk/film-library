@@ -15,3 +15,5 @@ import './js/components/spinner';
 import './js/components/scroll-up';
 import './js/components/logo-animation';
 import './js/components/language-switcher';
+import './js/components/api-movie-library';
+import './js/components/user-library';

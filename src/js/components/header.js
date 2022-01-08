@@ -195,18 +195,3 @@ function onlangControlClick(event) {
     changeLanguage(lang);
   }
 }
-
-// export function userMarkup() {
-//   refsFromHeader.headerUserRef.classList.add('header-user--visible');
-//   refsFromHeader.headerExitRef.classList.add('header-exit__btn--visible');
-//   refsFromHeader.headerEntranceRef.classList.add('header-entrance__icon--hidden');
-//   refsFromHeader.headerBtnLibrRef.classList.add('header-button--visible');
-// }
-// const userStorage = localStorage.getItem('user');
-// let userData = JSON.parse(userStorage);
-
-// if (userData) {
-//   console.log('ssss');
-//   userMarkup();
-//   // return;
-// }

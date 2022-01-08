@@ -21,7 +21,6 @@ export const modalMovieCard = new Modal({
 
 function getMovies() {
   apiService.MovieSearchId(modalMovieCard._imgId).then(result => {
-    console.log(result);
     const genres = result.genres.map(item => item.name).slice(0, 2);
     result.genres = genres.join(', ');
 
@@ -38,7 +37,10 @@ function getMovies() {
 
     if (queueStorage !== null) {
       queueStorage.find(movie => {
-        if (movie.id === this._imgId) {
+        if (movie.id === this._imgId && apiService._lang === 'ru-RU') {
+          queueRef.classList.add('movie-btn__btn--active');
+          queueRef.textContent = 'удалить из Ожидаемых';
+        } else if (movie.id === this._imgId && apiService._lang === 'en-US') {
           queueRef.classList.add('movie-btn__btn--active');
           queueRef.textContent = 'remove from queue';
         }
@@ -50,9 +52,12 @@ function getMovies() {
 
     if (watchedStorage !== null) {
       watchedStorage.find(movie => {
-        if (movie.id === this._imgId) {
+        if (movie.id === this._imgId && apiService._lang === 'ru-RU') {
           watchedRef.classList.add('movie-btn__btn--active');
-          watchedRef.textContent = 'remove from Watched';
+          watchedRef.textContent = 'удалить из Просмотренных';
+        } else if (movie.id === this._imgId && apiService._lang === 'en-US') {
+          watchedRef.classList.add('movie-btn__btn--active');
+          watchedRef.textContent = 'remove from watched';
         }
       });
     }
