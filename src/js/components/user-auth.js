@@ -3,6 +3,8 @@ import { showHeaderHome } from '../components/header';
 import { closeModal } from '../components/modal-forms';
 import { getUserLibrary } from '../components/user-library';
 
+export const baseUrlBackend = `${process.env.BASE_URL_BACKEND}`;
+
 export function userDataMarkup() {
   const headerUserRef = document.querySelector('.header-user');
   const headerBtnLibrRef = document.querySelector('.header-library-btn');
@@ -74,7 +76,7 @@ export function signUp({ name, email, password }) {
     body: JSON.stringify({ name, email, password }),
   };
 
-  return fetch('http://localhost:8080/api/v1/auth/signup', options)
+  return fetch(`${baseUrlBackend}/api/v1/auth/signup`, options)
     .then(res => res.json())
     .then(data => {
       if (data.code === 201 && data.status === 'success') {
@@ -103,7 +105,7 @@ export function signIn({ email, password }) {
     body: JSON.stringify({ email, password }),
   };
 
-  return fetch('http://localhost:8080/api/v1/auth/signin', options)
+  return fetch(`${baseUrlBackend}/api/v1/auth/signin`, options)
     .then(res => res.json())
     .then(data => {
       if (data.code === 200 && data.status === 'success') {
@@ -129,7 +131,7 @@ export function logOut(token) {
     },
   };
 
-  fetch('http://localhost:8080/api/v1/auth/logout', options)
+  fetch(`${baseUrlBackend}/api/v1/auth/logout`, options)
     .then(res => res.json())
     .then(data => {
       if (data.code === 204 && data.status === 'success') {

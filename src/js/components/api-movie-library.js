@@ -1,4 +1,5 @@
 import { movieLibrary } from '../components/movie-library';
+import { baseUrlBackend } from '../components/user-auth';
 
 export function setToLibrary(id, token, status, movie) {
   const addMovieApi = {
@@ -14,7 +15,7 @@ export function setToLibrary(id, token, status, movie) {
     body: JSON.stringify(addMovieApi),
   };
 
-  return fetch('http://localhost:8080/api/v1/films', options)
+  return fetch(`${baseUrlBackend}/api/v1/films`, options)
     .then(res => res.json())
     .then(data => {
       if (data.code === 201 && data.status === 'success') {
@@ -44,7 +45,7 @@ export function deleteMovieFromLibrary(token, status, _id) {
     },
   };
 
-  fetch(`http://localhost:8080/api/v1/films/${_id}`, options)
+  fetch(`${baseUrlBackend}/api/v1/films/${_id}`, options)
     .then(res => res.json())
     .then(data => {
       if (data.code === 200 && data.status === 'success') {
