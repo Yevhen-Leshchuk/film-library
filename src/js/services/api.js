@@ -14,6 +14,7 @@ class Api {
     this.genre = `${baseURL}/genre/movie/list?api_key=${api_key}`;
     this.trending = `${baseURL}/trending/movie/day?api_key=${api_key}`;
     this._lang = '';
+    // this._isValidate = false;
   }
 
   async fetchGenres() {

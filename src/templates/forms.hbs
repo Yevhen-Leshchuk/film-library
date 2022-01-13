@@ -22,6 +22,7 @@
       method='POST'
       id='form-up'
       autocomplete='on'
+      novalidate='novalidate'
     >
       <div class='form-sign__container'>
         <label class='form-sign__field form-sign-up__field-username' for='username'>User Name</label>
@@ -37,14 +38,14 @@
           <use href='{{this}}#form-name'></use>
         </svg>
 
-        <svg class='form-sign__failure-icon action'>
+        <svg class='form-sign__failure-icon action signup-failure-icon-name'>
           <use href='{{this}}#notification'></use>
         </svg>
-        <svg class='form-sign__success-icon action'>
+        <svg class='form-sign__success-icon action signup-success-icon-name'>
           <use href='{{this}}#checked'></use>
         </svg>
 
-        <span class='error'></span>
+        <span class='signup-error-name error'></span>
       </div>
 
       <div class='form-sign__container'>
@@ -54,15 +55,15 @@
           class='form-sign__input form-sign-up__input-email'
           type='email'
           name='email'
-          id='email'
+          id='mail'
           placeholder='Mail'
         />
-        <span class='error'></span>
+        <span class='signup-error-email error'></span>
 
-        <svg class='form-sign__failure-icon action'>
+        <svg class='form-sign__failure-icon action signup-failure-icon-email'>
           <use href='{{this}}#notification'></use>
         </svg>
-        <svg class='form-sign__success-icon action'>
+        <svg class='form-sign__success-icon action signup-success-icon-email'>
           <use href='{{this}}#checked'></use>
         </svg>
 
@@ -78,15 +79,15 @@
           class='form-sign__input form-sign-up__input-password'
           type='password'
           name='password'
-          id='password'
+          id='pass'
           placeholder='Password'
         />
-        <span class='error'></span>
+        <span class='signup-error-password error'></span>
 
-        <svg class='form-sign__failure-icon action'>
+        <svg class='form-sign__failure-icon action signup-failure-icon-password'>
           <use href='{{this}}#notification'></use>
         </svg>
-        <svg class='form-sign__success-icon action'>
+        <svg class='form-sign__success-icon action signup-success-icon-password'>
           <use href='{{this}}#checked'></use>
         </svg>
 
@@ -104,6 +105,7 @@
       method='POST'
       id='form-in'
       autocomplete='on'
+      novalidate='novalidate'
     >
       <div class='form-sign__container'>
         <label class='form-sign__field form-sign-in__field-email' for='email'>Email</label>
@@ -115,17 +117,17 @@
           id='emailIn'
           placeholder='Mail'
         />
-        <svg class='form-sign__failure-icon action'>
+        <svg class='form-sign__failure-icon action signin-failure-icon-email'>
           <use href='{{this}}#notification'></use>
         </svg>
-        <svg class='form-sign__success-icon action'>
+        <svg class='form-sign__success-icon action signin-success-icon-email'>
           <use href='{{this}}#checked'></use>
         </svg>
 
         <svg class='form-sign__icon'>
           <use href='{{this}}#form-mail'></use>
         </svg>
-        <span class='error'></span>
+        <span class='signin-error-email error-hidden'></span>
       </div>
 
       <div class='form-sign__container'>
@@ -139,17 +141,17 @@
           placeholder='Password'
         />
 
-        <svg class='form-sign__failure-icon action'>
+        <svg class='form-sign__failure-icon action signin-failure-icon-password'>
           <use href='{{this}}#notification'></use>
         </svg>
-        <svg class='form-sign__success-icon action'>
+        <svg class='form-sign__success-icon action signin-success-icon-password'>
           <use href='{{this}}#checked'></use>
         </svg>
 
         <svg class='form-sign__icon'>
           <use href='{{this}}#lock'></use>
         </svg>
-        <span class='error'></span>
+        <span class='signin-error-password error-hidden'></span>
       </div>
 
       <button class='submit-btn submit-btn-sign-in control' type='submit'>Submit</button>

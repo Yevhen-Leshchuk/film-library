@@ -1,10 +1,12 @@
 import { signUp, signIn } from '../components/user-auth';
+import { clearStylesSignUpForm, clearStylesSignInForm } from '../components/form-validation';
 
 export function getForms() {
   const refs = {
     controls: document.querySelector('#controls'),
     formSignIn: document.querySelector('.form-sign-in'),
     formSignUp: document.querySelector('.form-sign-up'),
+    formMessageErr: document.querySelector('.error'),
   };
 
   refs.controls.addEventListener('click', onControlClick);
@@ -30,41 +32,26 @@ export function getForms() {
       refs.formSignUp.classList.remove('form-sign--hidden');
 
       refs.formSignIn.reset();
-      clearStylesForm(username, 0);
-      clearStylesForm(email, 1);
-      clearStylesForm(password, 2);
+      clearStylesSignUpForm();
     } else {
       refs.formSignIn.classList.remove('form-sign--hidden');
       refs.formSignUp.classList.add('form-sign--hidden');
 
       refs.formSignUp.reset();
-
-      clearStylesForm(emailIn, 3);
-      clearStylesForm(passwordIn, 4);
+      clearStylesSignInForm();
     }
   }
 
-  //-----forms validation------------
-
   let id = id => document.getElementById(id);
 
-  let classes = classes => document.getElementsByClassName(classes);
-
-  let username = id('username'),
-    email = id('email'),
-    password = id('password'),
-    formIn = id('form-in'),
-    formUp = id('form-up'),
-    errorMsg = classes('error'),
-    successIcon = classes('form-sign__success-icon'),
-    failureIcon = classes('form-sign__failure-icon');
+  let formIn = id('form-in'),
+    formUp = id('form-up');
 
   formUp.addEventListener('submit', formUpHandler);
   formIn.addEventListener('submit', formInHandler);
 
   function formUpHandler(event) {
     event.preventDefault();
-
     const formRef = event.target;
     const formData = new FormData(formRef);
     const submittedSignUpData = {};
@@ -72,12 +59,8 @@ export function getForms() {
     formData.forEach((value, key) => {
       submittedSignUpData[key] = value;
     });
-    // console.log(submittedSignUpData);
-    signUp(submittedSignUpData);
 
-    engine(username, 0, 'Username cannot be blank');
-    engine(email, 1, 'Email cannot be blank');
-    engine(password, 2, 'Password cannot be blank');
+    signUp(submittedSignUpData);
   }
 
   function formInHandler(event) {
@@ -93,36 +76,5 @@ export function getForms() {
     // console.log(submittedSignInData);
 
     signIn(submittedSignInData);
-
-    engine(emailIn, 3, 'Email cannot be blank');
-    engine(passwordIn, 4, 'Password cannot be blank');
-  }
-
-  let engine = (id, serial, message) => {
-    if (id.value.trim() === '') {
-      errorMsg[serial].innerHTML = message;
-      id.classList.add('form-sign__input--error');
-
-      // icons
-      failureIcon[serial].style.opacity = '1';
-      successIcon[serial].style.opacity = '0';
-    } else {
-      errorMsg[serial].innerHTML = '';
-      id.classList.add('form-sign__input--success');
-
-      // icons
-      failureIcon[serial].style.opacity = '0';
-      successIcon[serial].style.opacity = '1';
-    }
-  };
-
-  function clearStylesForm(id, serial) {
-    if (id === id) {
-      failureIcon[serial].style.opacity = '0';
-      successIcon[serial].style.opacity = '0';
-      errorMsg[serial].innerHTML = '';
-      id.classList.remove('form-sign__input--error');
-      id.classList.remove('form-sign__input--success');
-    }
   }
 }

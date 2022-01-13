@@ -17,3 +17,4 @@ import './js/components/logo-animation';
 import './js/components/language-switcher';
 import './js/components/api-movie-library';
 import './js/components/user-library';
+import './js/components/form-validation';
