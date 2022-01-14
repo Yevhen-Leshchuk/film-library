@@ -95,7 +95,7 @@ export function signUp({ name, email, password }) {
         data.code === 400 &&
         data.message === 'Your IP address has reached the limit for creating accounts. Try later!'
       ) {
-        showMessageLimitAccounts(data.message);
+        showMessageLimitAccounts();
         return;
       }
 
