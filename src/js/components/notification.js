@@ -4,41 +4,76 @@ import '@pnotify/core/dist/BrightTheme.css';
 import { apiService } from '../services/api';
 
 export function showMessageNoInput() {
-  return notice({
-    text: 'No input! Please enter query!',
-    width: '370px',
-  });
+  if (apiService._lang === 'ru-RU') {
+    return notice({
+      text: 'Вы ничего не ввели! Пожалуйста, введите запрос!',
+      width: '370px',
+    });
+  } else if (apiService._lang === 'en-US') {
+    return notice({
+      text: 'No input! Please enter query!',
+      width: '370px',
+    });
+  }
 }
 
 export function showMessageInvalidRequest() {
-  return notice({
-    text: 'Search result not successful. Enter the correct movie name.',
-    width: '370px',
-  });
+  if (apiService._lang === 'ru-RU') {
+    return notice({
+      text: 'Фильм не найден! Введите правильное название фильма.',
+      width: '370px',
+    });
+  } else if (apiService._lang === 'en-US') {
+    return notice({
+      text: 'Search result not successful. Enter the correct movie name.',
+      width: '370px',
+    });
+  }
 }
 
 export function showMessageStorageEmpty() {
-  return info({
-    text: 'Library is Empty!',
-    width: '370px',
-  });
+  if (apiService._lang === 'ru-RU') {
+    return notice({
+      text: 'Ваша библиотека пуста.',
+      width: '370px',
+    });
+  } else if (apiService._lang === 'en-US') {
+    return notice({
+      text: 'Library is Empty!',
+      width: '370px',
+    });
+  }
 }
 
 export function showMessageStorageFuul() {
-  return info({
-    text: 'Library is Full! Please, clear library.',
-    width: '370px',
-  });
+  if (apiService._lang === 'ru-RU') {
+    return notice({
+      text: 'Ваша библиотека заполнена. Пожалуйста, очистите библиотеку!',
+      width: '370px',
+    });
+  } else if (apiService._lang === 'en-US') {
+    return notice({
+      text: 'Library is Full! Please, clear library.',
+      width: '370px',
+    });
+  }
 }
 
 export function showMessageSameMovies() {
-  return info({
-    text: 'You cannot add this movie, it is in a different category!',
-    width: '370px',
-  });
+  if (apiService._lang === 'ru-RU') {
+    return notice({
+      text: 'Вы не можете добавить этот фильм, он находится в другой категории!',
+      width: '370px',
+    });
+  } else if (apiService._lang === 'en-US') {
+    return notice({
+      text: 'You cannot add this movie, it is in a different category!',
+      width: '370px',
+    });
+  }
 }
 
-export function showMessageLimitAccounts(message) {
+export function showMessageLimitAccounts() {
   if (apiService._lang === 'ru-RU') {
     return error({
       text: 'Превышен лимит запросов на ваш IP-адрес. Попробуйте позже!',
