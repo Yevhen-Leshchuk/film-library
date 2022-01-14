@@ -2,6 +2,8 @@ import { clearGallery, startPage } from '../components/content';
 import { showHeaderHome } from '../components/header';
 import { closeModal } from '../components/modal-forms';
 import { getUserLibrary } from '../components/user-library';
+import { showMessageLimitAccounts } from '../components/notification';
+import { checkSignUpForm, checkSignInForm } from '../components/form-validation';
 
 export const baseUrlBackend = `${process.env.BASE_URL_BACKEND}`;
 
@@ -67,6 +69,10 @@ function showWelcomeSign(userData) {
   }, 2000);
 }
 
+/**
+ * signUp
+ **/
+
 export function signUp({ name, email, password }) {
   const options = {
     method: 'POST',
@@ -79,6 +85,24 @@ export function signUp({ name, email, password }) {
   return fetch(`${baseUrlBackend}/api/v1/auth/signup`, options)
     .then(res => res.json())
     .then(data => {
+      console.log(data);
+      checkSignUpForm(data);
+      /**
+       * for notification
+       **/
+
+      if (
+        data.code === 400 &&
+        data.message === 'Your IP address has reached the limit for creating accounts. Try later!'
+      ) {
+        showMessageLimitAccounts(data.message);
+        return;
+      }
+
+      /**
+       * success
+       **/
+
       if (data.code === 201 && data.status === 'success') {
         let userData = data.data.user;
         userData = {
@@ -91,10 +115,15 @@ export function signUp({ name, email, password }) {
         setTimeout(() => {
           showWelcomeSign(userData);
         }, 1000);
+        return;
       }
     })
     .catch(error => console.log('error from signup', error));
 }
+
+/**
+ * signIn
+ **/
 
 export function signIn({ email, password }) {
   const options = {
@@ -108,6 +137,21 @@ export function signIn({ email, password }) {
   return fetch(`${baseUrlBackend}/api/v1/auth/signin`, options)
     .then(res => res.json())
     .then(data => {
+      console.log(data);
+      checkSignInForm(data);
+
+      if (
+        data.code === 400 &&
+        data.message === 'Your IP address has reached the limit for creating accounts. Try later!'
+      ) {
+        showMessageLimitAccounts();
+        return;
+      }
+
+      /**
+       * success
+       **/
+
       if (data.code === 200 && data.status === 'success') {
         getUserLibrary(data);
 
