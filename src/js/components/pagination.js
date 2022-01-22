@@ -6,7 +6,7 @@ import { backToTop } from '../components/scroll-up';
 
 const container = document.getElementById('tui-pagination-container');
 
-const pagination = new Pagination(container, {
+export const pagination = new Pagination(container, {
   itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
@@ -34,7 +34,6 @@ pagination.on('beforeMove', async e => {
   apiService.page = e.page;
 
   const movies = await apiService.fetchMovies();
-  console.log(movies.results);
 
   clearGallery();
   galleryMarkup(movies.results);

@@ -27,14 +27,13 @@ function onPlayTrailer(event) {
     return;
   }
 
-  // localStorage.setItem('trailer', JSON.stringify(userData));
-
   const movieId = event.target.closest('li').dataset.id;
 
   fetchTrailerFilm(movieId);
 
   refs.modalRef.classList.remove('backdrop--hidden');
-  refs.bodyRef.classList.add('body--hidden');
+  refs.bodyRef.classList.remove('body_landscape--hidden');
+  refs.htmlRef.classList.remove('is-landscape');
 
   window.addEventListener('keydown', onKeyPress);
 }
@@ -49,8 +48,11 @@ export function getMovieCardTrailer() {
     fetchTrailerFilm(trailerKey);
 
     refs.modalRef.classList.remove('backdrop--hidden');
-    refs.bodyRef.classList.add('body--hidden');
+    refs.bodyRef.classList.remove('body_landscape--hidden');
+    refs.htmlRef.classList.remove('is-landscape');
+
     window.addEventListener('keydown', onKeyPress);
+    removeMovieCard();
   }
 }
 
@@ -78,4 +80,14 @@ function trailerModalMarkup(trailerKey) {
 
   const closeModalBtnRef = document.querySelector('.trailer-btn');
   closeModalBtnRef.addEventListener('click', closeModal);
+}
+
+export function getRefsMovieCard() {
+  return {
+    movieCardRef: document.querySelector('.movie-card '),
+  };
+}
+
+function removeMovieCard() {
+  getRefsMovieCard().movieCardRef.classList.add('movie-card--hidden');
 }

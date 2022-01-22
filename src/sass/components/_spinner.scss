@@ -21,7 +21,6 @@
   }
 }
 
-
 .spinner,
 .spinner:before,
 .spinner:after {
@@ -31,11 +30,11 @@
   width: 1em;
   height: 4em;
 }
+
 .spinner {
   color: $orange;
   text-indent: -9999em;
-  // margin: 88px auto;
-  // position: relative;
+
   font-size: 11px;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
@@ -43,25 +42,29 @@
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
 
-position: absolute;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .spinner:before,
 .spinner:after {
   position: absolute;
   top: 0;
   content: '';
 }
+
 .spinner:before {
   left: -1.5em;
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s;
 }
+
 .spinner:after {
   left: 1.5em;
 }
+
 @-webkit-keyframes load1 {
   0%,
   80%,
@@ -69,11 +72,13 @@ position: absolute;
     box-shadow: 0 0;
     height: 4em;
   }
+
   40% {
     box-shadow: 0 -2em;
     height: 5em;
   }
 }
+
 @keyframes load1 {
   0%,
   80%,
@@ -81,6 +86,7 @@ position: absolute;
     box-shadow: 0 0;
     height: 4em;
   }
+
   40% {
     box-shadow: 0 -2em;
     height: 5em;

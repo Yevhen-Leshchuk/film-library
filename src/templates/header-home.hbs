@@ -1,27 +1,5 @@
-<div class='header-auth'>
-  <svg class='header-entrance__icon' data-action='entrance'>
-    <use href='{{this}}#entrance'></use>
-  </svg>
-  <button class="header-exit-btn" type="submit"
-      method='POST'>
-      <svg class='header-exit__icon'  data-action='exit'>
-    <use href='{{this}}#exit'></use>
-  </svg>
-      </button>
 
-  <div class='header-user'></div>
-  <ul class='control__languages'>
-    <li class='control__languages-item'>
-      <a href='#' class='control__languages-link' data-set='en-US'>Eng</a>
-    </li>
-    <li class='control__languages-item'>
-      <a href='#' class='control__languages-link' data-set='ru-RU'>Ru</svg>
-      </a>
-    </li>
-  </ul>
-</div>
-
-<div class='header-main-nav'>
+<div class="header-box">
   <div class='header-logo' data-action='home'>
     <svg
       width='24'
@@ -44,7 +22,8 @@
       ></path>
     </svg>
     <h1 class='header-logo__name'>Film<span class='header-logo--accent'>Library</span></h1>
-  </div>
+</div>
+
   <div class='header-nav'>
     <button
       type='button'
@@ -53,6 +32,54 @@
     >Home</button>
     <button type='button' class='header-button header-library-btn' data-action='library'>my library</button>
   </div>
+
+  <div class="header-lang">
+     <ul class='control__languages'>
+    <li class='control__languages-item'>
+      <a href='#' class='control__languages-link' data-set='en-US'>Eng</a>
+    </li>
+    <li class='control__languages-item'>
+      <a href='#' class='control__languages-link' data-set='ru-RU'>Ru</svg>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class='switcher'>
+  <div class='theme-switch'>
+    <svg class='theme-switch__icon' id='sun' role='img' aria-label='Иконка солнца'>
+      <use href='{{this}}#sun'></use>
+    </svg>
+
+    <div class='theme-switch__control'>
+      <input
+        class='theme-switch__toggle'
+        type='checkbox'
+        name='theme'
+        id='theme-switch-toggle'
+        aria-label='Переключить между тёмной и светлой темой'
+      />
+      <label aria-hidden='true' class='theme-switch__track' for='theme-switch-toggle'>
+      </label>
+      <div aria-hidden='true' class='theme-switch__marker'></div>
+    </div>
+
+    <svg class='theme-switch__icon' id='moon' aria-label='Иконка луны'>
+      <use href='{{this}}#moon'></use>
+    </svg>
+  </div>
+</div>
+
+<div class='header-auth'>
+   <svg class='header-entrance__icon' data-action='entrance'>
+        <use href='{{this}}#entrance'></use>
+      </svg>
+      <button class="header-exit-btn" type="submit"
+      method='POST'>
+        <svg class='header-exit__icon'  data-action='exit'>
+          <use href='{{this}}#exit'></use>
+        </svg>
+      </button>
 </div>
 
 <form class='header-form'>
@@ -79,4 +106,8 @@
     class='header-control__btn header-control__queue'
     data-btn='queue'
   >Queue</button>
+</div>
+
+<div class='header-user'></div>
+
 </div>

@@ -1,16 +1,4 @@
-import themeSwitcher from '../../templates/theme.hbs';
-import toggle from '../../images/sprite/toggle.svg';
 import refs from '../refs';
-
-switcherMarkup();
-
-export function switcherMarkup() {
-  // const headerMainNavRef = document.querySelector('.header-main-nav');
-  // console.log(headerMainNavRef);
-  const markupToolbar = themeSwitcher(toggle);
-
-  refs.hederContainerRef.insertAdjacentHTML('afterbegin', markupToolbar);
-}
 
 const Theme = {
   LIGHT: 'light-theme',

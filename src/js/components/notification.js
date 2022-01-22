@@ -1,4 +1,4 @@
-import { notice, info, error } from '@pnotify/core/dist/PNotify.js';
+import { notice, error } from '@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 import { apiService } from '../services/api';
@@ -82,6 +82,20 @@ export function showMessageLimitAccounts() {
   } else if (apiService._lang === 'en-US') {
     return error({
       text: 'Your IP address has reached the limit for creating accounts. Try later!',
+      width: '370px',
+    });
+  }
+}
+
+export function showMessageNoAuth() {
+  if (apiService._lang === 'ru-RU') {
+    return notice({
+      text: 'Пожалуйста, войдите или зарегистрируйтесь!',
+      width: '370px',
+    });
+  } else if (apiService._lang === 'en-US') {
+    return notice({
+      text: 'Please, Sign In or Sign Up!',
       width: '370px',
     });
   }

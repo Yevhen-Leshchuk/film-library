@@ -21,11 +21,14 @@
     "sass": "^1.32.8"
   },
   "dependencies": {
+    "debounce": "^1.2.1",
     "lazy-line-painter": "^1.9.6",
     "localized-strings": "^0.2.4",
     "lodash.debounce": "^4.0.8",
+    "lodash.throttle": "^4.1.1",
     "notiflix": "^3.2.2",
     "pnotify": "^5.2.0",
+    "throttle": "^1.0.3",
     "tui-pagination": "^3.4.1"
   }
 }

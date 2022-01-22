@@ -1,6 +1,7 @@
 .content.container {
   padding-top: 20px;
   padding-bottom: 40px;
+
   @media screen and (min-width: 768px) {
     padding: 60px 75px;
   }
@@ -31,6 +32,7 @@
   &:last-child {
     margin-bottom: 0;
   }
+
   @media screen and (min-width: 768px) and (max-width: 1199px) {
     flex-basis: calc(100% / 2 - 30px);
     margin-left: 0;
@@ -45,6 +47,7 @@
       margin-bottom: 0;
     }
   }
+
   @media screen and (min-width: 1200px) {
     flex-basis: calc(100% / 4 - 20px);
     margin-left: 0;
@@ -59,11 +62,12 @@
       margin-bottom: 0;
     }
   }
+
   &:hover {
-   transform: scale(1.05);
-   transition: transform 250ms $cubicBezier;
-   box-shadow: 0 5px 20px -5px $orange;
-   border-radius: 5px;
+    transform: scale(1.05);
+    transition: transform 250ms $cubicBezier;
+    box-shadow: 0 5px 20px -5px $orange;
+    border-radius: 5px;
   }
 }
 
@@ -109,7 +113,14 @@
 .galery-card__title {
   margin-bottom: 2px;
   margin-left: 6px;
-  @include fontProperty($color: $black, $weight: 500, $height: 1.17, $text-align: left, $transform: uppercase);
+
+  @include fontProperty(
+    $color: $black,
+    $weight: 500,
+    $height: 1.17,
+    $text-align: left,
+    $transform: uppercase
+  );
 }
 
 .galery-desc {

@@ -1,8 +1,9 @@
 .footer-modal {
   @media screen and (max-width: 480px) {
-   width: 100vw;
-   height: 100vh;
+    width: 100vw;
+    height: 100vh;
   }
+
   position: absolute;
   top: 50%;
   left: 50%;
@@ -49,12 +50,7 @@
   margin-top: 0;
   margin-bottom: 10px;
 
-  @include fontProperty(
-    $color: $black,
-    $weight: 500,
-    $size: 22px,
-    $height: 1.19
-  );
+  @include fontProperty($color: $darkGray, $weight: 500, $size: 26px, $height: 1.19);
   text-align: center;
 }
 
@@ -62,9 +58,10 @@
   margin-top: 0;
   margin-bottom: 16px;
 
-  @include fontProperty($color: $darkGray, $size: 18px, $height: 1.19);
+  @include fontProperty($color: $orange, $size: 18px, $height: 1.19, $transform: uppercase);
   text-align: center;
 }
+
 .team-social {
   display: flex;
   justify-content: center;

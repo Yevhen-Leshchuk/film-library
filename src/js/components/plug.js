@@ -1,9 +1,11 @@
-import plug from '../../images/content/plug.png';
+import plugImg from '../../images/content/plug.png';
+import plugTemplate from '../../templates/plug.hbs';
 import youtubeError from '../../images/content/youtube-broken.jpg';
 import refs from '../refs';
 
 export function plugMarkup() {
-  const markup = `<div class="plug-box"><img src="./${plug}" /></div>`;
+  const markup = plugTemplate(plugImg);
+
   refs.contentRef.insertAdjacentHTML('beforeend', markup);
 }
 

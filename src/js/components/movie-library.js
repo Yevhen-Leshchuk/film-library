@@ -5,6 +5,7 @@ import { galleryMarkup, clearGallery } from '../components/content';
 import { setClassOnBtn } from '../components/header';
 import { queue, watched } from '../components/library-pagination';
 import { plugMarkup } from '../components/plug';
+import { showMessageNoAuth } from '../components/notification';
 import { getClassWatchedBtn, getClassQueueBtn } from '../components/header';
 import { setToLibrary, deleteMovieFromLibrary } from '../components/api-movie-library';
 import {
@@ -13,8 +14,9 @@ import {
   showMessageSameMovies,
 } from '../components/notification';
 
-//--------------------Movie Library-----------
-
+/**
+ * movie library
+ **/
 class Library {
   constructor() {
     this._storagePage = 1;
@@ -45,8 +47,9 @@ class Library {
     this.refBtn = homeBtn;
   }
 
-  //----------- library storage------------------------
-
+  /**
+   * library storage
+   **/
   _onBtnQueueClick(event) {
     event.preventDefault();
     this._queueBtn = event.target;
@@ -58,12 +61,14 @@ class Library {
 
     if (localStorage.getItem('queueStorage') !== null) {
       this._queueStorage = JSON.parse(localStorage.getItem('queueStorage'));
-      if (this._queueStorage.length === 19) {
-        this._storagePage += 1;
-      }
+
+      this.numberOfMovies = this._queueStorage.length;
+      this._storagePage = Math.ceil(this.numberOfMovies / 20);
     }
 
-    //----------- clearing storage------------------------
+    /**
+     * clearing storage
+     **/
     const userStorageQueue = localStorage.getItem('user');
     let userDataQueue = JSON.parse(userStorageQueue);
 
@@ -84,9 +89,14 @@ class Library {
       }
     }
 
-    //--------------------add film to queue storage--------------------------
-
-    if (this._queueStorage.length === 40) {
+    /**
+     * add film to queue storage
+     **/
+    if (
+      this._queueStorage.length === 200 &&
+      this._refs.queueRef.textContent !== 'удалить из Ожидаемых' &&
+      this._refs.queueRef.textContent !== 'remove from queue'
+    ) {
       showMessageStorageFuul();
       return;
     }
@@ -98,11 +108,14 @@ class Library {
       showMessageSameMovies();
       return;
     }
-
     if (
       this._refs.queueRef.textContent === 'смотреть Позже' ||
       this._refs.queueRef.textContent === 'add to queue'
     ) {
+      if (!userDataQueue) {
+        showMessageNoAuth();
+        return;
+      }
       setToLibrary(this._newMovie.id, userDataQueue.token, status, this._newMovie);
     }
 
@@ -145,9 +158,12 @@ class Library {
             if (this._storagePage === 1) {
               clearGallery();
               galleryMarkup(this._queueStorage.slice(0, 20));
-            } else {
+            } else if (this._storagePage > 1) {
+              this.beginIndex = this._storagePage * 20 - 20;
+              this.endIndex = this._storagePage * 20;
+
               clearGallery();
-              galleryMarkup(this._queueStorage.slice(20));
+              galleryMarkup(this._queueStorage.slice(this.beginIndex, this.endIndex));
             }
           }
         }
@@ -162,7 +178,16 @@ class Library {
 
         if (this._queueStorage.length === 0) {
           showMessageStorageEmpty();
-          plugMarkup();
+
+          if (this._headerHomePage !== 'is-active') {
+            plugMarkup();
+            const plugTextRef = document.querySelector('.plug-box__text');
+            if (apiService._lang === 'ru-RU') {
+              plugTextRef.textContent = 'Библиотека "посмотреть фильмы" пуста!';
+            } else if (apiService._lang === 'en-US') {
+              plugTextRef.textContent = '"Queue" storage is empty!';
+            }
+          }
 
           refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
         }
@@ -177,8 +202,9 @@ class Library {
     }
   }
 
-  //----------- Watched storage------------------------
-
+  /**
+   * watched storage
+   **/
   _onBtnWatchedClick(event) {
     event.preventDefault();
     this._watchedBtn = event.target;
@@ -190,12 +216,14 @@ class Library {
 
     if (localStorage.getItem('watchedStorage') !== null) {
       this._watchedStorage = JSON.parse(localStorage.getItem('watchedStorage'));
-      if (this._watchedStorage.length === 19) {
-        this._storagePage += 1;
-      }
+
+      this.numberOfMovies = this._watchedStorage.length;
+      this._storagePage = Math.ceil(this.numberOfMovies / 20);
     }
 
-    //----------- clearing storage------------------------
+    /**
+     * clearing storage
+     **/
     const userStorageWatched = localStorage.getItem('user');
     let userDataWatched = JSON.parse(userStorageWatched);
 
@@ -216,9 +244,15 @@ class Library {
         deleteMovieFromLibrary(userDataWatched.token, status, movieId._id);
       }
     }
-    //--------------------add to watched Storage-----------------------------------
 
-    if (this._watchedStorage.length === 40) {
+    /**
+     * add to watched Storage
+     **/
+    if (
+      this._watchedStorage.length === 200 &&
+      this._refs.watchedRef.textContent !== 'удалить из Просмотренных' &&
+      this._refs.watchedRef.textContent !== 'remove from watched'
+    ) {
       showMessageStorageFuul();
       return;
     }
@@ -235,6 +269,10 @@ class Library {
       this._refs.watchedRef.textContent === 'добавить в Просмотренные' ||
       this._refs.watchedRef.textContent === 'add to Watched'
     ) {
+      if (!userDataWatched) {
+        showMessageNoAuth();
+        return;
+      }
       setToLibrary(this._newMovie.id, userDataWatched.token, status, this._newMovie);
     }
 
@@ -277,9 +315,11 @@ class Library {
             if (this._storagePage === 1) {
               clearGallery();
               galleryMarkup(this._watchedStorage.slice(0, 20));
-            } else {
+            } else if (this._storagePage > 1) {
+              this.beginIndex = this._storagePage * 20 - 20;
+              this.endIndex = this._storagePage * 20;
               clearGallery();
-              galleryMarkup(this._watchedStorage.slice(20));
+              galleryMarkup(this._watchedStorage.slice(this.beginIndex, this.endIndex));
             }
           }
         }
@@ -294,7 +334,16 @@ class Library {
 
         if (this._watchedStorage.length === 0) {
           showMessageStorageEmpty();
-          plugMarkup();
+
+          if (this._headerHomePage !== 'is-active') {
+            plugMarkup();
+            const plugTextRef = document.querySelector('.plug-box__text');
+            if (apiService._lang === 'ru-RU') {
+              plugTextRef.textContent = 'Библиотека "просмотренные фильмы" пуста!';
+            } else if (apiService._lang === 'en-US') {
+              plugTextRef.textContent = '"Watched" storage is empty!';
+            }
+          }
 
           refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
         }
@@ -310,7 +359,6 @@ class Library {
   }
 
   _showQueue() {
-    // changeLangForUserLbr();
     const movieQueStorage = localStorage.getItem('queueStorage');
     this._queueStorage = JSON.parse(movieQueStorage) || [];
 
@@ -323,7 +371,6 @@ class Library {
   }
 
   _showWatched() {
-    // changeLangForUserLbr();
     const movieWatStorage = localStorage.getItem('watchedStorage');
     this._watchedStorage = JSON.parse(movieWatStorage) || [];
 
