@@ -30,8 +30,6 @@ export function searchFormHandler(event) {
 
 export function fetchMovies() {
   apiService.fetchMovies().then(({ results }) => {
-    // console.log(results);
-
     spinner.showSpinner();
     setTimeout(function () {
       spinner.hideSpinner();

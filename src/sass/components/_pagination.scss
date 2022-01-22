@@ -2,7 +2,8 @@
   display: none !important;
 }
 
-#tui-pagination-container, #pagination-container {
+#tui-pagination-container,
+#pagination-container {
   width: 100%;
   height: auto;
   margin-top: 0;
@@ -35,10 +36,18 @@
   border-radius: 5px !important;
   border: none !important;
 
-  @include fontProperty($color: $black !important, $weight: 500 !important, $height: 1.33 !important, $text-align: center !important);
+  @include fontProperty(
+    $color: $black !important,
+    $weight: 500 !important,
+    $height: 1.33 !important,
+    $text-align: center !important
+  );
 }
 
-.tui-prev, .tui-next, .tui-prev-is-ellip, .tui-next-is-ellip {
+.tui-prev,
+.tui-next,
+.tui-prev-is-ellip,
+.tui-next-is-ellip {
   display: none !important;
 
   @media screen and (min-width: 480px) {
@@ -48,20 +57,21 @@
 }
 
 .tui-next-is-ellip {
-   @media screen and (min-width: 480px) {
+  @media screen and (min-width: 480px) {
     padding: 4px 13px !important;
     margin-right: 0 !important;
   }
 }
 
-.tui-next, .tui-prev {
+.tui-next,
+.tui-prev {
   padding: 15px !important;
 }
 
 .tui-prev-is-ellip {
-   @media screen and (min-width: 480px) {
+  @media screen and (min-width: 480px) {
     padding: 4px 13px !important;
-    margin-left: 0!important;
+    margin-left: 0 !important;
   }
 }
 

@@ -19,3 +19,13 @@
 .plug-box--hidden {
   display: none;
 }
+
+.plug-box__text {
+  @include fontProperty(
+    $size: 36px,
+    $color: $orange,
+    $weight: 500,
+    $height: 1.33,
+    $text-align: center
+  );
+}

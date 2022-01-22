@@ -6,6 +6,7 @@ import { movieLibrary } from '../components/movie-library';
 import { apiService } from '../services/api';
 import { getMovieCardTrailer } from '../components/modal-trailer';
 import { doLocalization } from '../components/language-switcher';
+import { getRefsMovieCard } from '../components/modal-trailer';
 
 export const modalMovieCard = new Modal({
   rootSelector: '.content',
@@ -74,4 +75,5 @@ function movieCardMarkup(movie) {
   getMovieCardTrailer();
   getRefs();
   doLocalization();
+  getRefsMovieCard();
 }

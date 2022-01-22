@@ -1,5 +1,4 @@
 body {
-
   transition: color 250ms $cubicBezier, background-color 250ms $cubicBezier;
 }
 
@@ -10,7 +9,6 @@ body.dark-theme {
 
 body.dark-theme .backdrop {
   background-color: $bgBackdropDarkTheme;
-
 }
 
 body.dark-theme .galery-card__title {
@@ -28,7 +26,6 @@ body.dark-theme .movie-btn__btn {
   border: 1px solid $white;
   transition: border-color 250ms, background-color 250ms $cubicBezier;
 
-
   &:hover {
     border: none;
     transition: border-color 250ms, background-color 250ms $cubicBezier;
@@ -37,12 +34,11 @@ body.dark-theme .movie-btn__btn {
 
 body.dark-theme .close-modal__icon {
   fill: $white;
-  transition:  fill 250ms $cubicBezier;
+  transition: fill 250ms $cubicBezier;
 
-
-    &:hover {
+  &:hover {
     fill: $orange;
-    transition:  fill 250ms $cubicBezier;
+    transition: fill 250ms $cubicBezier;
   }
 }
 
@@ -51,48 +47,48 @@ body.dark-theme .footer {
   color: $white;
 }
 
-body.dark-theme  .footer > .container  {
+body.dark-theme .footer > .container {
   background-color: #1d2025;
   color: $white;
 }
 
-body.dark-theme .tui-page-btn  {
+body.dark-theme .tui-page-btn {
   color: $white !important;
 
-    &:hover:not(.tui-is-selected) {
-      background-color: $white !important;
-      color: $black !important;
+  &:hover:not(.tui-is-selected) {
+    background-color: $white !important;
+    color: $black !important;
   }
 }
 
-body.dark-theme  .footer-modal   {
+body.dark-theme .footer-modal {
   background-color: $dark;
   box-shadow: $modalBoxShadow;
 }
 
-body.dark-theme  .team-content   {
+body.dark-theme .team-content {
   background-color: $dark;
   border-color: $white;
 }
 
-body.dark-theme  .team-content__title  {
+body.dark-theme .team-content__title {
   color: $white;
 }
 
-body.dark-theme  .team-content__text  {
-  color: $white;
+body.dark-theme .team-content__text {
+  color: $orange;
 }
 
-body.dark-theme  .form-card {
+body.dark-theme .form-card {
   background-color: $dark;
   color: $white;
 }
 
-body.dark-theme  .control {
+body.dark-theme .control {
   color: $white;
 }
 
-body.dark-theme  .form-sign__icon {
+body.dark-theme .form-sign__icon {
   transition: fill 250ms $cubicBezier;
 
   .form-sign__input:focus ~ & {
@@ -100,25 +96,25 @@ body.dark-theme  .form-sign__icon {
   }
 }
 
-body.dark-theme  .welcome-sign-up {
+body.dark-theme .welcome-sign-up {
   background-color: $dark;
   color: $white;
 }
 
-body.dark-theme  .welcome-sign-up__title {
+body.dark-theme .welcome-sign-up__title {
   color: $white;
 }
 
-body.dark-theme  .welcome-in-library {
+body.dark-theme .welcome-in-library {
   color: $white;
 }
 
-body.dark-theme  .scroll-up {
+body.dark-theme .scroll-up {
   background: $white;
   box-shadow: 0 1px 8px 3px $orange;
 }
 
-body.dark-theme  .scroll-up {
+body.dark-theme .scroll-up {
   background: $white;
   box-shadow: 0 1px 8px 3px $orange;
 
@@ -128,25 +124,35 @@ body.dark-theme  .scroll-up {
   }
 
   &:hover .scroll-up__arrow {
-  fill: $white;
+    fill: $white;
   }
 }
 
-body.dark-theme  .scroll-up__arrow {
+body.dark-theme .scroll-up__arrow {
   fill: $orange;
 }
 
 .switcher {
-  position: absolute;
-  top: 10px;
-  right: 20px;
+  @media screen and (min-width: 320px) {
+    order: 4;
+  }
+
+  @media screen and (min-width: 480px) {
+    order: 3;
+    margin-left: 0;
+  }
 
   @media screen and (min-width: 768px) {
-    right: 72px;
+    order: 6;
+  }
+
+  @media screen and (min-width: 1200px) {
+    order: 4;
+    margin-right: 16px;
+    margin-bottom: 80px;
   }
 }
 
-/* THEME SWITCH */
 .theme-switch {
   display: flex;
   align-items: center;
@@ -162,7 +168,6 @@ body.dark-theme  .scroll-up__arrow {
 
 .theme-switch__icon--active {
   fill: $orange;
-
 }
 
 .theme-switch__control {
@@ -170,10 +175,15 @@ body.dark-theme  .scroll-up__arrow {
   align-items: center;
   flex-shrink: 0;
   position: relative;
-  width: 64px;
-  height: 32px;
+  width: 76px;
+  height: 36px;
   border-radius: 50em;
   padding: 3px 0;
+
+  @media screen and (min-width: 768px) {
+    width: 64px;
+    height: 32px;
+  }
 }
 
 .theme-switch__toggle {
@@ -223,7 +233,7 @@ body.dark-theme  .scroll-up__arrow {
   transform: translateX(35px);
 }
 
-.theme-switch__toggle:focus + .theme-switch__track,
-.theme-switch__toggle:active + .theme-switch__track {
+.theme-switch__toggle + .theme-switch__track,
+.theme-switch__toggle + .theme-switch__track {
   box-shadow: 0 0 0 3px $orange;
 }

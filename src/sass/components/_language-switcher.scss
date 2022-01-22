@@ -1,15 +1,50 @@
+.header-lang {
+  @media screen and (min-width: 320px) {
+    order: 3;
+    margin-right: 3px;
+    margin-bottom: 40px;
+  }
+
+  @media screen and (min-width: 480px) {
+    order: 3;
+    margin-right: 163px;
+  }
+
+  @media screen and (min-width: 768px) {
+    order: 5;
+    margin-right: 5px;
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+
+  @media screen and (min-width: 1200px) {
+    order: 3;
+    margin-left: 0;
+    margin-right: 8px;
+    margin-bottom: 80px;
+  }
+}
+
 .control__languages {
   display: flex;
-  margin-left: 50px;
 }
 
 .control__languages-item {
-margin-right: 10px;
+  margin-right: 10px;
 }
 
 .control__languages-link {
-@include fontProperty($color: $white, $weight: 500, $size: 25px, $height: 1.17);
+  @include fontProperty(
+    $color: $white,
+    $weight: 500,
+    $size: 31px,
+    $height: 1.17,
+    $transform: uppercase
+  );
 
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
 }
 
 .control__languages-link--active {

@@ -3,12 +3,10 @@ import { apiService } from '../services/api';
 /**
  * forms validation
  **/
-
 export function checkSignUpForm(data) {
   /**
    * username
    **/
-
   if (
     data.code === 400 &&
     data.message === 'Field name is not allowed to be empty' &&
@@ -99,7 +97,6 @@ export function checkSignUpForm(data) {
   /**
    * mail
    **/
-
   if (data.code === 400 && data.message === 'Field email is not allowed to be empty') {
     refsFormEl().formSignUpInputEmail.classList.remove('form-sign__input--success');
     refsFormEl().formSignUpSuccessIconEmail.style.opacity = '0';
@@ -197,7 +194,6 @@ export function checkSignUpForm(data) {
   /**
    * pass
    **/
-
   if (data.code === 400 && data.message === 'Field password is not allowed to be empty') {
     refsFormEl().formSignUpInputPassword.classList.remove('form-sign__input--success');
     refsFormEl().formSignUpSuccessIconPassword.style.opacity = '0';
@@ -273,7 +269,6 @@ export function checkSignUpForm(data) {
   /**
    * success
    **/
-
   if (data.code === 201 && data.status === 'success') {
     refsFormEl().formSignUpInputName.classList.remove('form-sign__input--error');
     refsFormEl().formSignUpErrorNotificationName.classList.remove('error-visible');
@@ -302,7 +297,6 @@ export function checkSignInForm(data) {
   /**
    * mail
    **/
-
   if (
     data.code === 400 &&
     data.message === 'Field email is not allowed to be empty' &&
@@ -370,7 +364,6 @@ export function checkSignInForm(data) {
   /**
    * pass
    **/
-
   if (
     data.code === 400 &&
     data.message === 'Field password is not allowed to be empty' &&
@@ -409,7 +402,6 @@ export function checkSignInForm(data) {
   /**
    * success
    **/
-
   if (data.code === 200 && data.status === 'success') {
     refsFormEl().formSignInInputEmail.classList.remove('form-sign__input--error');
     refsFormEl().formSignInErrorNotificationEmail.classList.remove('error-visible');

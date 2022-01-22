@@ -12,8 +12,9 @@ import { exitAccount, userDataMarkup } from '../components/user-auth';
 import { getRefs } from '../refs';
 import refs from '../refs';
 
-// loading header home -----------------------
-
+/**
+ * header markup
+ **/
 headerHomeMarkup();
 
 export const searchFormRef = document.querySelector('.header-form');
@@ -33,8 +34,11 @@ function headerHomeMarkup() {
   if (userData) userDataMarkup();
 }
 
-// logic of header home and library pages------------------
-const refsFromHeader = {
+/**
+ * logic of header home and library pages
+ **/
+
+export const refsFromHeader = {
   headerNavRef: document.querySelector('.header-nav'),
   headerFormRef: document.querySelector('.header-form'),
   headerControlRef: document.querySelector('.header-control'),
@@ -85,6 +89,8 @@ function onLogoClick(event) {
   apiService.searchQuery = '';
   apiService.page = 1;
   pagination.reset();
+
+  localStorage.setItem('page', JSON.stringify(apiService.page));
 }
 
 function openHeaderHome(element) {
@@ -97,6 +103,8 @@ function openHeaderHome(element) {
     pagination.reset();
 
     showHeaderHome();
+    movieLibrary._headerHomePage = 'is-active';
+    localStorage.setItem('page', JSON.stringify(apiService.page));
   }
 }
 
@@ -130,10 +138,18 @@ function openHeaderLibrary(element) {
       refs.libraryPaginationContainerRef.classList.remove('tui-pagination--hidden');
     } else {
       plugMarkup();
+      const plugTextRef = document.querySelector('.plug-box__text');
+
+      if (apiService._lang === 'ru-RU') {
+        plugTextRef.textContent = 'Библиотека "посмотреть фильмы" пуста!';
+      } else if (apiService._lang === 'en-US') {
+        plugTextRef.textContent = '"Queue" storage is empty!';
+      }
 
       refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
     }
     refs.paginationContainerRef.classList.add('tui-pagination--hidden');
+    movieLibrary._headerHomePage = 'not-active';
   }
 }
 
@@ -145,6 +161,13 @@ function onQueueBtnClick() {
     refs.libraryPaginationContainerRef.classList.remove('tui-pagination--hidden');
   } else {
     plugMarkup();
+    const plugTextRef = document.querySelector('.plug-box__text');
+
+    if (apiService._lang === 'ru-RU') {
+      plugTextRef.textContent = 'Библиотека "посмотреть фильмы" пуста!';
+    } else if (apiService._lang === 'en-US') {
+      plugTextRef.textContent = '"Queue" storage is empty!';
+    }
 
     refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
   }
@@ -162,6 +185,13 @@ function onWatchedBtnClick() {
     refs.libraryPaginationContainerRef.classList.remove('tui-pagination--hidden');
   } else {
     plugMarkup();
+    const plugTextRef = document.querySelector('.plug-box__text');
+
+    if (apiService._lang === 'ru-RU') {
+      plugTextRef.textContent = 'Библиотека "просмотренные фильмы" пуста!';
+    } else if (apiService._lang === 'en-US') {
+      plugTextRef.textContent = '"Watched" storage is empty!';
+    }
 
     refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
   }
@@ -184,14 +214,14 @@ export function getClassWatchedBtn() {
     return true;
   } else return false;
 }
-
-function onlangControlClick(event) {
+export async function onlangControlClick(event) {
   const controlItem = event.target.dataset.set;
 
   let lang = controlItem;
+
   if (controlItem === 'ru-RU') {
     changeLanguage(lang);
-  } else {
+  } else if (controlItem === 'en-US') {
     changeLanguage(lang);
   }
 }

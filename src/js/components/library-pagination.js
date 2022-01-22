@@ -5,8 +5,9 @@ import { movieLibrary } from '../components/movie-library';
 import { getClassWatchedBtn } from '../components/header';
 import { backToTop } from '../components/scroll-up';
 
-//-----------library pagination-------------
-
+/**
+ * library pagination
+ **/
 const libraryСontainer = document.getElementById('pagination-container');
 
 const libraryPagination = new Pagination(libraryСontainer, {
@@ -42,6 +43,8 @@ libraryPagination.on('beforeMove', e => {
 
   const movieWatStorage = localStorage.getItem('watchedStorage');
   const watchedStorage = JSON.parse(movieWatStorage) || [];
+  let beginIndex;
+  let endIndex;
 
   if (movieLibrary._storagePage === 1) {
     if (!getClassWatchedBtn()) {
@@ -51,15 +54,18 @@ libraryPagination.on('beforeMove', e => {
       clearGallery();
       galleryMarkup(watchedStorage.slice(0, 20));
     }
-  }
-
-  if (movieLibrary._storagePage === 2) {
+  } else if (movieLibrary._storagePage === e.page) {
     if (!getClassWatchedBtn()) {
+      beginIndex = e.page * 20 - 20;
+      endIndex = e.page * 20;
+
       clearGallery();
-      galleryMarkup(queueStorage.slice(20));
+      galleryMarkup(queueStorage.slice(beginIndex, endIndex));
     } else {
+      beginIndex = e.page * 20 - 20;
+      endIndex = e.page * 20;
       clearGallery();
-      galleryMarkup(watchedStorage.slice(20));
+      galleryMarkup(watchedStorage.slice(beginIndex, endIndex));
     }
   }
 });

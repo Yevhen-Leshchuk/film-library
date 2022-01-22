@@ -42,6 +42,7 @@ export function getRefs() {
     submit_btn_sign_in_ref: document.querySelector('.submit-btn-sign-in'),
     welcome_in_library_ref: document.querySelector('.welcome-in-library'),
     team_content__text_ref: document.querySelector('.team-content__text'),
+    team_content__title_ref: document.querySelector('.team-content__title'),
   };
 }
 

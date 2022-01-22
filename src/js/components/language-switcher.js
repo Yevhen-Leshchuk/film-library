@@ -16,7 +16,7 @@ export const getLang = () => {
   }
 };
 
-function setClassLangControl(lang) {
+export async function setClassLangControl(lang) {
   const langEngRef = document.querySelector('[data-set="en-US"]');
   const langRuRef = document.querySelector('[data-set="ru-RU"]');
 
@@ -72,6 +72,7 @@ const getLocalsStrings = () => {
         developer_text: 'Developed with',
         developer_by_text: 'by',
         team_content__text_text: 'Frontend Developer',
+        team_content__title_text: 'Yevhen Leshchuk',
       },
       'ru-RU': {
         home_btn_text: 'Главная',
@@ -105,6 +106,7 @@ const getLocalsStrings = () => {
         developer_text: 'Разработано с',
         developer_by_text: '',
         team_content__text_text: 'Фронтенд-разработчик',
+        team_content__title_text: 'Евгений Лещук',
       },
     },
     {
@@ -142,6 +144,7 @@ export function changeLanguage(newLang) {
   const currentLang = localStorage.getItem('language');
   if (currentLang !== newLang) {
     localStorage.setItem('language', newLang);
+
     location.reload();
   }
 }

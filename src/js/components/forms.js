@@ -73,7 +73,6 @@ export function getForms() {
     formData.forEach((value, key) => {
       submittedSignInData[key] = value;
     });
-    // console.log(submittedSignInData);
 
     signIn(submittedSignInData);
   }

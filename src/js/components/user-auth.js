@@ -25,7 +25,7 @@ export function userDataMarkup() {
     headerEntranceRef.classList.add('header-entrance__icon--hidden');
 
     if (userData !== undefined) {
-      headerUserRef.textContent = `Hi, ${userData.name}`;
+      headerUserRef.textContent = `Hi, ${userData.name.slice(0, 10)}`;
       headerBtnLibrRef.classList.add('header-button--visible');
     }
   }
@@ -62,8 +62,8 @@ function showWelcomeSign(userData) {
   const welcomeSignUpTitleRef = document.querySelector('.welcome-sign-up__title');
 
   welcomeSignUpRef.classList.remove('welcome-sign--hidden');
-  welcomeSignUpTitleRef.textContent = `${userData.name},`;
-
+  welcomeSignUpTitleRef.textContent = `${userData.name.slice(0, 10)},`;
+  //.slice(0, 10)
   setTimeout(() => {
     closeModal();
   }, 2000);
@@ -72,7 +72,6 @@ function showWelcomeSign(userData) {
 /**
  * signUp
  **/
-
 export function signUp({ name, email, password }) {
   const options = {
     method: 'POST',
@@ -85,12 +84,11 @@ export function signUp({ name, email, password }) {
   return fetch(`${baseUrlBackend}/api/v1/auth/signup`, options)
     .then(res => res.json())
     .then(data => {
-      console.log(data);
       checkSignUpForm(data);
+
       /**
        * for notification
        **/
-
       if (
         data.code === 400 &&
         data.message === 'Your IP address has reached the limit for creating accounts. Try later!'
@@ -102,7 +100,6 @@ export function signUp({ name, email, password }) {
       /**
        * success
        **/
-
       if (data.code === 201 && data.status === 'success') {
         let userData = data.data.user;
         userData = {
@@ -124,7 +121,6 @@ export function signUp({ name, email, password }) {
 /**
  * signIn
  **/
-
 export function signIn({ email, password }) {
   const options = {
     method: 'POST',
@@ -137,7 +133,6 @@ export function signIn({ email, password }) {
   return fetch(`${baseUrlBackend}/api/v1/auth/signin`, options)
     .then(res => res.json())
     .then(data => {
-      console.log(data);
       checkSignInForm(data);
 
       if (
@@ -151,7 +146,6 @@ export function signIn({ email, password }) {
       /**
        * success
        **/
-
       if (data.code === 200 && data.status === 'success') {
         getUserLibrary(data);
 
