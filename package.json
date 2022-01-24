@@ -8,6 +8,10 @@
     "dev": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /film-library/"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://yevhen-leshchuk.github.io/film-library.git"
+      },
   "keywords": [],
   "author": "Yevhen Leshchuk <evg.leschuk@gmail.com>",
   "license": "ISC",
