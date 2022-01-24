@@ -37,7 +37,7 @@ body.dark-theme .close-modal__icon {
   transition: fill 250ms $cubicBezier;
 
   &:hover {
-    fill: $orange;
+    fill: $darkGray;
     transition: fill 250ms $cubicBezier;
   }
 }

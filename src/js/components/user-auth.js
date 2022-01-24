@@ -25,7 +25,14 @@ export function userDataMarkup() {
     headerEntranceRef.classList.add('header-entrance__icon--hidden');
 
     if (userData !== undefined) {
-      headerUserRef.textContent = `Hi, ${userData.name.slice(0, 10)}`;
+      const userName = userData.name;
+
+      if (userName.length > 10) {
+        headerUserRef.textContent = `Hi, ${userName.slice(0, 11)}...`;
+      } else {
+        headerUserRef.textContent = `Hi, ${userName}`;
+      }
+
       headerBtnLibrRef.classList.add('header-button--visible');
     }
   }
@@ -62,8 +69,14 @@ function showWelcomeSign(userData) {
   const welcomeSignUpTitleRef = document.querySelector('.welcome-sign-up__title');
 
   welcomeSignUpRef.classList.remove('welcome-sign--hidden');
-  welcomeSignUpTitleRef.textContent = `${userData.name.slice(0, 10)},`;
-  //.slice(0, 10)
+  const userName = userData.name;
+
+  if (userName.length > 10) {
+    welcomeSignUpTitleRef.textContent = `${userName.slice(0, 11)}...`;
+  } else {
+    welcomeSignUpTitleRef.textContent = `${userName}`;
+  }
+
   setTimeout(() => {
     closeModal();
   }, 2000);
@@ -109,6 +122,7 @@ export function signUp({ name, email, password }) {
 
         localStorage.setItem('user', JSON.stringify(userData));
         userDataMarkup();
+
         setTimeout(() => {
           showWelcomeSign(userData);
         }, 1000);
@@ -152,6 +166,7 @@ export function signIn({ email, password }) {
         let userData = data.data.user;
         localStorage.setItem('user', JSON.stringify(userData));
         userDataMarkup();
+
         setTimeout(() => {
           showWelcomeSign(userData);
         }, 1000);

@@ -31,6 +31,8 @@ function onPlayTrailer(event) {
 
   fetchTrailerFilm(movieId);
 
+  refs.bodyRef.classList.add('body--hidden');
+
   refs.modalRef.classList.remove('backdrop--hidden');
   refs.bodyRef.classList.remove('body_landscape--hidden');
   refs.htmlRef.classList.remove('is-landscape');

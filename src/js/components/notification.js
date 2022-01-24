@@ -39,7 +39,7 @@ export function showMessageStorageEmpty() {
     });
   } else if (apiService._lang === 'en-US') {
     return notice({
-      text: 'Library is Empty!',
+      text: 'Library is empty!',
       width: '370px',
     });
   }
@@ -53,7 +53,7 @@ export function showMessageStorageFuul() {
     });
   } else if (apiService._lang === 'en-US') {
     return notice({
-      text: 'Library is Full! Please, clear library.',
+      text: 'Library is full! Please, clear library.',
       width: '370px',
     });
   }
@@ -95,7 +95,7 @@ export function showMessageNoAuth() {
     });
   } else if (apiService._lang === 'en-US') {
     return notice({
-      text: 'Please, Sign In or Sign Up!',
+      text: 'Please, sign in or sign up!',
       width: '370px',
     });
   }
