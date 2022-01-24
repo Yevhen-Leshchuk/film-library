@@ -1,0 +1,65 @@
+<div class='movie-card'>
+  <div class='movie-box'>
+    {{#if poster_path}}
+      <img
+        src='https://image.tmdb.org/t/p/w500/{{poster_path}}'
+        alt='image'
+        class='movie-box__image'
+      />
+    {{else}}
+      <img
+        src='https://www.csaff.org/wp-content/uploads/csaff-no-poster.jpg'
+        alt='image'
+        class='movie-box__image'
+      />
+    {{/if}}
+  </div>
+
+  <button type='button' class='close-modal'>
+    <svg class='close-modal__icon' width='20' height='20' id='close' viewBox='0 0 32 32'><path
+        d='M32 3.223L28.777 0 16 12.777 3.223 0 0 3.223 12.777 16 0 28.777 3.223 32 16 19.223 28.777 32 32 28.777 19.223 16 32 3.223z'
+      ></path>
+    </svg>
+  </button>
+
+  <div class='movie-desc'>
+    <div class='movie-title'>
+      <h2 class='movie-desc__title'>{{title}}</h2>
+      <div class='movie-desc__trailer' data-id={{id}}></div>
+    </div>
+    <div class='info-box'>
+      <ul class='movie-info'>
+        <li class='movie-info__list movie-info__list-vote'>Vote / Votes</li>
+        <li class='movie-info__list movie-info__list-popularity'>Popularity</li>
+        <li class='movie-info__list movie-info__list-title'>Original Title</li>
+        <li class='movie-info__list movie-info__list-genre'>Genre</li>
+      </ul>
+
+      <ul class='movie-data'>
+        <li class='movie-data__list movie-data__vote'>{{vote_average}}</li>
+        <span class='slash'>/</span>
+        <span class='movie-data__list movie-data__votes'>{{vote_count}}</span>
+        <li class='movie-data__list'>{{popularity}}</li>
+        <li class='movie-data__list movie-data__title'>{{original_title}}</li>
+        <li class='movie-data__list'>{{genres}}</li>
+      </ul>
+    </div>
+
+    <h3 class='movie-about__title'>About</h3>
+    <p class='movie-desc__overview'>{{overview}}</p>
+    <div class='movie-btn'>
+      <button
+        type='button'
+        class='movie-btn__btn movie-btn--watched'
+        data-status='watched'
+        data-id={{id}}
+      >add to Watched</button>
+      <button
+        type='button'
+        class='movie-btn__btn movie-btn--queue'
+        data-status='queued'
+        data-id={{id}}
+      >add to queue</button>
+    </div>
+  </div>
+</div>

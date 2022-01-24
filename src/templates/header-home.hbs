@@ -1,0 +1,113 @@
+
+<div class="header-box">
+  <div class='header-logo' data-action='home'>
+    <svg
+      width='24'
+      height='24'
+      fill='none'
+      id='film'
+      xmlns='http://www.w3.org/2000/svg'
+      data-llp-composed='true'
+      class='lazy-line-painter header-logo__icon'
+    >
+      <path
+        d='M19.82 2H4.18A2.18 2.18 0 002 4.18v15.64A2.18 2.18 0 004.18 22h15.64A2.18 2.18 0 0022 19.82V4.18A2.18 2.18 0 0019.82 2zM7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 17h5M17 7h5'
+        data-llp-id='film-0'
+        data-llp-duration='1700'
+        data-llp-delay='0'
+        fill-opacity='0'
+        style='stroke-linecap: square'
+        data-llp-stroke-join=''
+        data-llp-stroke-cap='square'
+      ></path>
+    </svg>
+    <h1 class='header-logo__name'>Film<span class='header-logo--accent'>Library</span></h1>
+</div>
+
+  <div class='header-nav'>
+    <button
+      type='button'
+      class='header-button header-home-btn header-button--active'
+      data-action='home'
+    >Home</button>
+    <button type='button' class='header-button header-library-btn' data-action='library'>my library</button>
+  </div>
+
+  <div class="header-lang">
+     <ul class='control__languages'>
+    <li class='control__languages-item'>
+      <a href='#' class='control__languages-link' data-set='en-US'>Eng</a>
+    </li>
+    <li class='control__languages-item'>
+      <a href='#' class='control__languages-link' data-set='ru-RU'>Ru</svg>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class='switcher'>
+  <div class='theme-switch'>
+    <svg class='theme-switch__icon' id='sun' role='img' aria-label='Иконка солнца'>
+      <use href='{{this}}#sun'></use>
+    </svg>
+
+    <div class='theme-switch__control'>
+      <input
+        class='theme-switch__toggle'
+        type='checkbox'
+        name='theme'
+        id='theme-switch-toggle'
+        aria-label='Переключить между тёмной и светлой темой'
+      />
+      <label aria-hidden='true' class='theme-switch__track' for='theme-switch-toggle'>
+      </label>
+      <div aria-hidden='true' class='theme-switch__marker'></div>
+    </div>
+
+    <svg class='theme-switch__icon' id='moon' aria-label='Иконка луны'>
+      <use href='{{this}}#moon'></use>
+    </svg>
+  </div>
+</div>
+
+<div class='header-auth'>
+   <svg class='header-entrance__icon' data-action='entrance'>
+        <use href='{{this}}#entrance'></use>
+      </svg>
+      <button class="header-exit-btn" type="submit"
+      method='POST'>
+        <svg class='header-exit__icon'  data-action='exit'>
+          <use href='{{this}}#exit'></use>
+        </svg>
+      </button>
+</div>
+
+<form class='header-form'>
+  <input
+    class='header-form__input'
+    type='text'
+    name='query'
+    autocomplete='off'
+    placeholder='Search Movies'
+  />
+  <svg class='header-form__icon'>
+    <use href='{{this}}#search'></use>
+  </svg>
+</form>
+
+<div class='header-control'>
+  <button
+    type='button'
+    class='header-control__btn header-control__watched'
+    data-btn='watched'
+  >Watched</button>
+  <button
+    type='button'
+    class='header-control__btn header-control__queue'
+    data-btn='queue'
+  >Queue</button>
+</div>
+
+<div class='header-user'></div>
+
+</div>

@@ -1,0 +1,93 @@
+.tui-pagination--hidden {
+  display: none !important;
+}
+
+#tui-pagination-container,
+#pagination-container {
+  width: 100%;
+  height: auto;
+  margin-top: 0;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0;
+  padding-bottom: 40px;
+  border: none;
+
+  @media screen and (min-width: 480px) {
+    @include containerMedia($mobile);
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 60px;
+  }
+
+  @media screen and (min-width: 768px) {
+    @include containerMedia($tablet);
+  }
+
+  @media screen and (min-width: 1200px) {
+    @include containerMedia($desktop);
+  }
+}
+
+.tui-page-btn {
+  width: 40px !important;
+  height: 40px !important;
+  padding-top: 13px !important;
+  border-radius: 5px !important;
+  border: none !important;
+
+  @include fontProperty(
+    $color: $black !important,
+    $weight: 500 !important,
+    $height: 1.33 !important,
+    $text-align: center !important
+  );
+}
+
+.tui-prev,
+.tui-next,
+.tui-prev-is-ellip,
+.tui-next-is-ellip {
+  display: none !important;
+
+  @media screen and (min-width: 480px) {
+    display: inline-block !important;
+    background-color: $sLightGray;
+  }
+}
+
+.tui-next-is-ellip {
+  @media screen and (min-width: 480px) {
+    padding: 4px 13px !important;
+    margin-right: 0 !important;
+  }
+}
+
+.tui-next,
+.tui-prev {
+  padding: 15px !important;
+}
+
+.tui-prev-is-ellip {
+  @media screen and (min-width: 480px) {
+    padding: 4px 13px !important;
+    margin-left: 0 !important;
+  }
+}
+
+.tui-first {
+  margin-right: 5px !important;
+  padding: 15px !important;
+  background-color: $sLightGray;
+}
+
+.tui-last {
+  margin-left: 5px !important;
+  padding: 15px !important;
+  background-color: $sLightGray;
+}
+
+.tui-is-selected {
+  background-color: $orange !important;
+  color: $white !important;
+}

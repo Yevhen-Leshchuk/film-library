@@ -1,0 +1,24 @@
+<div class='switcher'>
+  <div class='theme-switch'>
+    <svg class='theme-switch__icon' id='sun' role='img' aria-label='Иконка солнца'>
+      <use href='{{this}}#sun'></use>
+    </svg>
+
+    <div class='theme-switch__control'>
+      <input
+        class='theme-switch__toggle'
+        type='checkbox'
+        name='theme'
+        id='theme-switch-toggle'
+        aria-label='Переключить между тёмной и светлой темой'
+      />
+      <label aria-hidden='true' class='theme-switch__track' for='theme-switch-toggle'>
+      </label>
+      <div aria-hidden='true' class='theme-switch__marker'></div>
+    </div>
+
+    <svg class='theme-switch__icon' id='moon' aria-label='Иконка луны'>
+      <use href='{{this}}#moon'></use>
+    </svg>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+@mixin containerMedia($mobile) {
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: $mobile;
+}
+
+@mixin fontProperty(
+  $font-family: Roboto,
+  $color: none,
+  $weight: 400,
+  $size: 12px,
+  $height: 1.14,
+  $transform: none,
+  $text-align: center
+) {
+  font-family: $font-family;
+  color: $color;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $height;
+  text-transform: $transform;
+  text-align: $text-align;
+}
