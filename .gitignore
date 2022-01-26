@@ -108,5 +108,4 @@ dist
 .vscode
 
 #lock file
-package-lock.json
 yarn.lock
