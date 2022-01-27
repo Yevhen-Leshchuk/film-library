@@ -1,4 +1,5 @@
-export const api_key = `${process.env.API_KEY}`;
+// export const api_key = `${process.env.API_KEY}`;
+export const api_key = 'c02b36da545a5844f0cde427ebff9c5c';
 export const baseURL = `https://api.themoviedb.org/3`;
 const ID_URL = `${baseURL}/movie/`;
 
