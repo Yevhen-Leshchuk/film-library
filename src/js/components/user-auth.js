@@ -5,7 +5,7 @@ import { getUserLibrary } from '../components/user-library';
 import { showMessageLimitAccounts } from '../components/notification';
 import { checkSignUpForm, checkSignInForm } from '../components/form-validation';
 
-export const baseUrlBackend = `${process.env.BASE_URL_BACKEND}`;
+export const baseUrlBackend = 'https://film-library-api-backend.herokuapp.com';
 
 export function userDataMarkup() {
   const headerUserRef = document.querySelector('.header-user');
