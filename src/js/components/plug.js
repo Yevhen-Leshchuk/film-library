@@ -10,6 +10,6 @@ export function plugMarkup() {
 }
 
 export function trailerErrorMarkup() {
-  const markup = `<div class="error-box"><img class="error-box__img" width="1000" height="600" src="../${youtubeError}" alt="trailer not found" class="trailer"></div>`;
+  const markup = `<div class="error-box"><img class="error-box__img" width="1000" height="600" src="./${youtubeError}" alt="trailer not found" class="trailer"></div>`;
   refs.modalRef.innerHTML = markup;
 }
