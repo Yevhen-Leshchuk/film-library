@@ -42,6 +42,14 @@ export function fetchMovies() {
       showMessageInvalidRequest();
       plugMarkup();
 
+      const plugTextRef = document.querySelector('.plug-box__text');
+
+      if (apiService._lang === 'ru-RU') {
+        plugTextRef.textContent = 'Фильмы не найдены!';
+      } else if (apiService._lang === 'en-US') {
+        plugTextRef.textContent = 'Movies not found!';
+      }
+
       refs.paginationContainerRef.classList.add('tui-pagination--hidden');
     } else {
       refs.paginationContainerRef.classList.remove('tui-pagination--hidden');

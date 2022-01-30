@@ -143,7 +143,7 @@ function openHeaderLibrary(element) {
       if (apiService._lang === 'ru-RU') {
         plugTextRef.textContent = 'Библиотека "посмотреть фильмы" пуста!';
       } else if (apiService._lang === 'en-US') {
-        plugTextRef.textContent = '"Queue" storage is empty!';
+        plugTextRef.textContent = 'Queue" storage is empty!';
       }
 
       refs.libraryPaginationContainerRef.classList.add('tui-pagination--hidden');
