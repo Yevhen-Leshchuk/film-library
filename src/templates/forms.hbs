@@ -34,15 +34,23 @@
           id='username'
           placeholder='Name'
         />
-        <svg class='form-sign__icon'>
-          <use href='{{this}}#form-name'></use>
+
+        <svg class='form-sign__icon'
+          id="form-name"
+          viewBox="0 0 32 32">
+          <path d="M16 16c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8zm0 4c-5.34 0-16 2.68-16 8v2c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2v-2c0-5.32-10.66-8-16-8z"/>
         </svg>
 
-        <svg class='form-sign__failure-icon action signup-failure-icon-name'>
-          <use href='{{this}}#notification'></use>
+        <svg class='form-sign__failure-icon action signup-failure-icon-name'
+          id="notification"
+          viewBox="0 0 32 32">
+          <path d="M16 3c-3.472 0-6.737 1.352-9.192 3.808s-3.808 5.72-3.808 9.192c0 3.472 1.352 6.737 3.808 9.192s5.72 3.808 9.192 3.808c3.472 0 6.737-1.352 9.192-3.808s3.808-5.72 3.808-9.192c0-3.472-1.352-6.737-3.808-9.192s-5.72-3.808-9.192-3.808zM16 0v0c8.837 0 16 7.163 16 16s-7.163 16-16 16c-8.837 0-16-7.163-16-16s7.163-16 16-16zM14 22h4v4h-4zM14 6h4v12h-4z">
         </svg>
-        <svg class='form-sign__success-icon action signup-success-icon-name'>
-          <use href='{{this}}#checked'></use>
+
+        <svg class='form-sign__success-icon action signup-success-icon-name'
+          id="checked"
+          viewBox="0 0 32 32">
+          <path d="M28 0h-24c-2.2 0-4 1.8-4 4v24c0 2.2 1.8 4 4 4h24c2.2 0 4-1.8 4-4v-24c0-2.2-1.8-4-4-4zM14 24.828l-7.414-7.414 2.828-2.828 4.586 4.586 9.586-9.586 2.828 2.828-12.414 12.414z">
         </svg>
 
         <span class='signup-error-name error'></span>
@@ -60,15 +68,22 @@
         />
         <span class='signup-error-email error'></span>
 
-        <svg class='form-sign__failure-icon action signup-failure-icon-email'>
-          <use href='{{this}}#notification'></use>
-        </svg>
-        <svg class='form-sign__success-icon action signup-success-icon-email'>
-          <use href='{{this}}#checked'></use>
+        <svg class='form-sign__failure-icon action signup-failure-icon-email'
+          id="notification"
+          viewBox="0 0 32 32">
+          <path d="M16 3c-3.472 0-6.737 1.352-9.192 3.808s-3.808 5.72-3.808 9.192c0 3.472 1.352 6.737 3.808 9.192s5.72 3.808 9.192 3.808c3.472 0 6.737-1.352 9.192-3.808s3.808-5.72 3.808-9.192c0-3.472-1.352-6.737-3.808-9.192s-5.72-3.808-9.192-3.808zM16 0v0c8.837 0 16 7.163 16 16s-7.163 16-16 16c-8.837 0-16-7.163-16-16s7.163-16 16-16zM14 22h4v4h-4zM14 6h4v12h-4z">
         </svg>
 
-        <svg class='form-sign__icon'>
-          <use href='{{this}}#form-mail'></use>
+        <svg class='form-sign__success-icon action signup-success-icon-email'
+          id="checked"
+          viewBox="0 0 32 32">
+          <path d="M28 0h-24c-2.2 0-4 1.8-4 4v24c0 2.2 1.8 4 4 4h24c2.2 0 4-1.8 4-4v-24c0-2.2-1.8-4-4-4zM14 24.828l-7.414-7.414 2.828-2.828 4.586 4.586 9.586-9.586 2.828 2.828-12.414 12.414z">
+        </svg>
+
+        <svg class='form-sign__icon'
+          id="form-mail"
+          viewBox="0 0 43 32">
+          <path d="M37.333 0h-32c-2.2 0-3.98 1.8-3.98 4l-.02 24c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V4c0-2.2-1.8-4-4-4zm-.8 8.5l-14.14 8.84c-.64.4-1.48.4-2.12 0L6.133 8.5c-.5-.32-.8-.86-.8-1.44 0-1.34 1.46-2.14 2.6-1.44l13.4 8.38 13.4-8.38c1.14-.7 2.6.1 2.6 1.44 0 .58-.3 1.12-.8 1.44z"/>
         </svg>
       </div>
 
@@ -84,15 +99,22 @@
         />
         <span class='signup-error-password error'></span>
 
-        <svg class='form-sign__failure-icon action signup-failure-icon-password'>
-          <use href='{{this}}#notification'></use>
-        </svg>
-        <svg class='form-sign__success-icon action signup-success-icon-password'>
-          <use href='{{this}}#checked'></use>
+        <svg class='form-sign__failure-icon action signup-failure-icon-password'
+          id="notification"
+          viewBox="0 0 32 32">
+          <path d="M16 3c-3.472 0-6.737 1.352-9.192 3.808s-3.808 5.72-3.808 9.192c0 3.472 1.352 6.737 3.808 9.192s5.72 3.808 9.192 3.808c3.472 0 6.737-1.352 9.192-3.808s3.808-5.72 3.808-9.192c0-3.472-1.352-6.737-3.808-9.192s-5.72-3.808-9.192-3.808zM16 0v0c8.837 0 16 7.163 16 16s-7.163 16-16 16c-8.837 0-16-7.163-16-16s7.163-16 16-16zM14 22h4v4h-4zM14 6h4v12h-4z">
         </svg>
 
-        <svg class='form-sign__icon'>
-          <use href='{{this}}#lock'></use>
+        <svg class='form-sign__success-icon action signup-success-icon-password'
+          id="checked"
+          viewBox="0 0 32 32">
+          <path d="M28 0h-24c-2.2 0-4 1.8-4 4v24c0 2.2 1.8 4 4 4h24c2.2 0 4-1.8 4-4v-24c0-2.2-1.8-4-4-4zM14 24.828l-7.414-7.414 2.828-2.828 4.586 4.586 9.586-9.586 2.828 2.828-12.414 12.414z">
+        </svg>
+
+        <svg class='form-sign__icon'
+          id="form-mail"
+          viewBox="0 0 43 32">
+          <path d="M37.333 0h-32c-2.2 0-3.98 1.8-3.98 4l-.02 24c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V4c0-2.2-1.8-4-4-4zm-.8 8.5l-14.14 8.84c-.64.4-1.48.4-2.12 0L6.133 8.5c-.5-.32-.8-.86-.8-1.44 0-1.34 1.46-2.14 2.6-1.44l13.4 8.38 13.4-8.38c1.14-.7 2.6.1 2.6 1.44 0 .58-.3 1.12-.8 1.44z"/>
         </svg>
       </div>
 
@@ -117,15 +139,23 @@
           id='emailIn'
           placeholder='Mail'
         />
-        <svg class='form-sign__failure-icon action signin-failure-icon-email'>
-          <use href='{{this}}#notification'></use>
-        </svg>
-        <svg class='form-sign__success-icon action signin-success-icon-email'>
-          <use href='{{this}}#checked'></use>
+
+        <svg class='form-sign__failure-icon action signin-failure-icon-email'
+          id="notification"
+          viewBox="0 0 32 32">
+          <path d="M16 3c-3.472 0-6.737 1.352-9.192 3.808s-3.808 5.72-3.808 9.192c0 3.472 1.352 6.737 3.808 9.192s5.72 3.808 9.192 3.808c3.472 0 6.737-1.352 9.192-3.808s3.808-5.72 3.808-9.192c0-3.472-1.352-6.737-3.808-9.192s-5.72-3.808-9.192-3.808zM16 0v0c8.837 0 16 7.163 16 16s-7.163 16-16 16c-8.837 0-16-7.163-16-16s7.163-16 16-16zM14 22h4v4h-4zM14 6h4v12h-4z">
         </svg>
 
-        <svg class='form-sign__icon'>
-          <use href='{{this}}#form-mail'></use>
+        <svg class='form-sign__success-icon action signin-success-icon-email'
+          id="checked"
+          viewBox="0 0 32 32">
+          <path d="M28 0h-24c-2.2 0-4 1.8-4 4v24c0 2.2 1.8 4 4 4h24c2.2 0 4-1.8 4-4v-24c0-2.2-1.8-4-4-4zM14 24.828l-7.414-7.414 2.828-2.828 4.586 4.586 9.586-9.586 2.828 2.828-12.414 12.414z">
+        </svg>
+
+        <svg class='form-sign__icon'
+          id="form-mail"
+          viewBox="0 0 43 32">
+          <path d="M37.333 0h-32c-2.2 0-3.98 1.8-3.98 4l-.02 24c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V4c0-2.2-1.8-4-4-4zm-.8 8.5l-14.14 8.84c-.64.4-1.48.4-2.12 0L6.133 8.5c-.5-.32-.8-.86-.8-1.44 0-1.34 1.46-2.14 2.6-1.44l13.4 8.38 13.4-8.38c1.14-.7 2.6.1 2.6 1.44 0 .58-.3 1.12-.8 1.44z"/>
         </svg>
         <span class='signin-error-email error-hidden'></span>
       </div>
@@ -141,15 +171,22 @@
           placeholder='Password'
         />
 
-        <svg class='form-sign__failure-icon action signin-failure-icon-password'>
-          <use href='{{this}}#notification'></use>
-        </svg>
-        <svg class='form-sign__success-icon action signin-success-icon-password'>
-          <use href='{{this}}#checked'></use>
+        <svg class='form-sign__failure-icon action signin-failure-icon-password'
+          id="notification"
+          viewBox="0 0 32 32">
+          <path d="M16 3c-3.472 0-6.737 1.352-9.192 3.808s-3.808 5.72-3.808 9.192c0 3.472 1.352 6.737 3.808 9.192s5.72 3.808 9.192 3.808c3.472 0 6.737-1.352 9.192-3.808s3.808-5.72 3.808-9.192c0-3.472-1.352-6.737-3.808-9.192s-5.72-3.808-9.192-3.808zM16 0v0c8.837 0 16 7.163 16 16s-7.163 16-16 16c-8.837 0-16-7.163-16-16s7.163-16 16-16zM14 22h4v4h-4zM14 6h4v12h-4z">
         </svg>
 
-        <svg class='form-sign__icon'>
-          <use href='{{this}}#lock'></use>
+        <svg class='form-sign__success-icon action signin-success-icon-password'
+          id="checked"
+          viewBox="0 0 32 32">
+          <path d="M28 0h-24c-2.2 0-4 1.8-4 4v24c0 2.2 1.8 4 4 4h24c2.2 0 4-1.8 4-4v-24c0-2.2-1.8-4-4-4zM14 24.828l-7.414-7.414 2.828-2.828 4.586 4.586 9.586-9.586 2.828 2.828-12.414 12.414z">
+        </svg>
+
+        <svg class='form-sign__icon'
+          id="lock"
+          viewBox="0 0 32 32">
+          <path d="M18.5 14H18V8c0-3.308-2.692-6-6-6H8C4.692 2 2 4.692 2 8v6h-.5c-.825 0-1.5.675-1.5 1.5v15c0 .825.675 1.5 1.5 1.5h17c.825 0 1.5-.675 1.5-1.5v-15c0-.825-.675-1.5-1.5-1.5zM6 8c0-1.103.897-2 2-2h4c1.103 0 2 .897 2 2v6H6V8z"/>
         </svg>
         <span class='signin-error-password error-hidden'></span>
       </div>
