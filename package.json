@@ -6,7 +6,8 @@
   "homepage": "https://github.com/Yevhen-Leshchuk/film-library",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /film-library/"
+    "predeploy": "snowpack build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -27,13 +28,15 @@
   },
   "dependencies": {
     "debounce": "^1.2.1",
+    "gh-pages": "^4.0.0",
     "lazy-line-painter": "^1.9.6",
     "localized-strings": "^0.2.4",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
     "notiflix": "^3.2.2",
     "pnotify": "^5.2.0",
-    "src": "^1.1.2",
+    "snowpack": "^3.8.8",
+    "src": "^1.0.0",
     "throttle": "^1.0.3",
     "tui-pagination": "^3.4.1"
   }
