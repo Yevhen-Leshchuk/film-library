@@ -1,0 +1,1 @@
+export default "/src/images/sprite/sprite.svg";

@@ -1,0 +1,1 @@
+export default "/src/images/content/youtube-broken.jpg";

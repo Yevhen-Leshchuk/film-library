@@ -1,0 +1,11 @@
+{
+  "imports": {
+    "@pnotify/core/dist/BrightTheme.css": "./@pnotify/core/dist/BrightTheme.css",
+    "@pnotify/core/dist/PNotify.css": "./@pnotify/core/dist/PNotify.css",
+    "@pnotify/core/dist/PNotify.js": "./@pnotify/core/dist/PNotify.js",
+    "lazy-line-painter": "./lazy-line-painter.js",
+    "localized-strings": "./localized-strings.js",
+    "tui-pagination": "./tui-pagination.js",
+    "tui-pagination/dist/tui-pagination.css": "./tui-pagination/dist/tui-pagination.css"
+  }
+}

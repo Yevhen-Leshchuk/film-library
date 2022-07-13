@@ -1,0 +1,1 @@
+export default "/src/templates/trailer.hbs";

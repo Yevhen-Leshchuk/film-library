@@ -1,0 +1,203 @@
+<div class='form-card'>
+  <button type='button' class='close-modal' id='form-modal'>
+    <svg class='close-modal__icon' width='20' height='20' id='close' viewBox='0 0 32 32'>
+      <path
+        d='M32 3.223L28.777 0 16 12.777 3.223 0 0 3.223 12.777 16 0 28.777 3.223 32 16 19.223 28.777 32 32 28.777 19.223 16 32 3.223z'
+      ></path>
+    </svg>
+  </button>
+  <div class='form-container'>
+    <div class='control-btn' id='controls'>
+      <button
+        class='control-sign-up control control-btn--active'
+        type='submit'
+        data-action='sign-up'
+      >Sign Up</button>
+      <button class='control-sign-in control' type='submit' data-action='sign-in'>Sign In</button>
+    </div>
+
+    <form
+      class='form-sign-up form-sign'
+      {{! action='http://localhost:8080/api/v1/auth/signup' }}
+      method='POST'
+      id='form-up'
+      autocomplete='on'
+      novalidate='novalidate'
+    >
+      <div class='form-sign__container'>
+        <label class='form-sign__field form-sign-up__field-username' for='username'>User Name</label>
+
+        <input
+          class='form-sign__input form-sign-up__input-username'
+          type='text'
+          name='name'
+          id='username'
+          placeholder='Name'
+        />
+
+        <svg class='form-sign__icon'
+          id="form-name"
+          viewBox="0 0 32 32">
+          <path d="M16 16c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8zm0 4c-5.34 0-16 2.68-16 8v2c0 1.1.9 2 2 2h28c1.1 0 2-.9 2-2v-2c0-5.32-10.66-8-16-8z"/>
+        </svg>
+
+        <svg class='form-sign__failure-icon action signup-failure-icon-name'
+          id="notification"
+          viewBox="0 0 32 32">
+          <path d="M16 3c-3.472 0-6.737 1.352-9.192 3.808s-3.808 5.72-3.808 9.192c0 3.472 1.352 6.737 3.808 9.192s5.72 3.808 9.192 3.808c3.472 0 6.737-1.352 9.192-3.808s3.808-5.72 3.808-9.192c0-3.472-1.352-6.737-3.808-9.192s-5.72-3.808-9.192-3.808zM16 0v0c8.837 0 16 7.163 16 16s-7.163 16-16 16c-8.837 0-16-7.163-16-16s7.163-16 16-16zM14 22h4v4h-4zM14 6h4v12h-4z">
+        </svg>
+
+        <svg class='form-sign__success-icon action signup-success-icon-name'
+          id="checked"
+          viewBox="0 0 32 32">
+          <path d="M28 0h-24c-2.2 0-4 1.8-4 4v24c0 2.2 1.8 4 4 4h24c2.2 0 4-1.8 4-4v-24c0-2.2-1.8-4-4-4zM14 24.828l-7.414-7.414 2.828-2.828 4.586 4.586 9.586-9.586 2.828 2.828-12.414 12.414z">
+        </svg>
+
+        <span class='signup-error-name error'></span>
+      </div>
+
+      <div class='form-sign__container'>
+        <label class='form-sign__field form-sign-up__field-email' for='email'>Email</label>
+
+        <input
+          class='form-sign__input form-sign-up__input-email'
+          type='email'
+          name='email'
+          id='mail'
+          placeholder='Mail'
+        />
+        <span class='signup-error-email error'></span>
+
+        <svg class='form-sign__failure-icon action signup-failure-icon-email'
+          id="notification"
+          viewBox="0 0 32 32">
+          <path d="M16 3c-3.472 0-6.737 1.352-9.192 3.808s-3.808 5.72-3.808 9.192c0 3.472 1.352 6.737 3.808 9.192s5.72 3.808 9.192 3.808c3.472 0 6.737-1.352 9.192-3.808s3.808-5.72 3.808-9.192c0-3.472-1.352-6.737-3.808-9.192s-5.72-3.808-9.192-3.808zM16 0v0c8.837 0 16 7.163 16 16s-7.163 16-16 16c-8.837 0-16-7.163-16-16s7.163-16 16-16zM14 22h4v4h-4zM14 6h4v12h-4z">
+        </svg>
+
+        <svg class='form-sign__success-icon action signup-success-icon-email'
+          id="checked"
+          viewBox="0 0 32 32">
+          <path d="M28 0h-24c-2.2 0-4 1.8-4 4v24c0 2.2 1.8 4 4 4h24c2.2 0 4-1.8 4-4v-24c0-2.2-1.8-4-4-4zM14 24.828l-7.414-7.414 2.828-2.828 4.586 4.586 9.586-9.586 2.828 2.828-12.414 12.414z">
+        </svg>
+
+        <svg class='form-sign__icon'
+          id="form-mail"
+          viewBox="0 0 43 32">
+          <path d="M37.333 0h-32c-2.2 0-3.98 1.8-3.98 4l-.02 24c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V4c0-2.2-1.8-4-4-4zm-.8 8.5l-14.14 8.84c-.64.4-1.48.4-2.12 0L6.133 8.5c-.5-.32-.8-.86-.8-1.44 0-1.34 1.46-2.14 2.6-1.44l13.4 8.38 13.4-8.38c1.14-.7 2.6.1 2.6 1.44 0 .58-.3 1.12-.8 1.44z"/>
+        </svg>
+      </div>
+
+      <div class='form-sign__container'>
+        <label class='form-sign__field form-sign-up__field-password' for='password'>Password</label>
+
+        <input
+          class='form-sign__input form-sign-up__input-password'
+          type='password'
+          name='password'
+          id='pass'
+          placeholder='Password'
+        />
+        <span class='signup-error-password error'></span>
+
+        <svg class='form-sign__failure-icon action signup-failure-icon-password'
+          id="notification"
+          viewBox="0 0 32 32">
+          <path d="M16 3c-3.472 0-6.737 1.352-9.192 3.808s-3.808 5.72-3.808 9.192c0 3.472 1.352 6.737 3.808 9.192s5.72 3.808 9.192 3.808c3.472 0 6.737-1.352 9.192-3.808s3.808-5.72 3.808-9.192c0-3.472-1.352-6.737-3.808-9.192s-5.72-3.808-9.192-3.808zM16 0v0c8.837 0 16 7.163 16 16s-7.163 16-16 16c-8.837 0-16-7.163-16-16s7.163-16 16-16zM14 22h4v4h-4zM14 6h4v12h-4z">
+        </svg>
+
+        <svg class='form-sign__success-icon action signup-success-icon-password'
+          id="checked"
+          viewBox="0 0 32 32">
+          <path d="M28 0h-24c-2.2 0-4 1.8-4 4v24c0 2.2 1.8 4 4 4h24c2.2 0 4-1.8 4-4v-24c0-2.2-1.8-4-4-4zM14 24.828l-7.414-7.414 2.828-2.828 4.586 4.586 9.586-9.586 2.828 2.828-12.414 12.414z">
+        </svg>
+
+        <svg class='form-sign__icon'
+          id="form-mail"
+          viewBox="0 0 43 32">
+          <path d="M37.333 0h-32c-2.2 0-3.98 1.8-3.98 4l-.02 24c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V4c0-2.2-1.8-4-4-4zm-.8 8.5l-14.14 8.84c-.64.4-1.48.4-2.12 0L6.133 8.5c-.5-.32-.8-.86-.8-1.44 0-1.34 1.46-2.14 2.6-1.44l13.4 8.38 13.4-8.38c1.14-.7 2.6.1 2.6 1.44 0 .58-.3 1.12-.8 1.44z"/>
+        </svg>
+      </div>
+
+      <button class='submit-btn submit-btn-sign-up control' type='submit'>Submit</button>
+    </form>
+
+    <form
+      class='form-sign-in form-sign form-sign--hidden'
+      {{! action='http://localhost:8080/api/v1/auth/signin' }}
+      method='POST'
+      id='form-in'
+      autocomplete='on'
+      novalidate='novalidate'
+    >
+      <div class='form-sign__container'>
+        <label class='form-sign__field form-sign-in__field-email' for='email'>Email</label>
+
+        <input
+          class='form-sign__input form-sign-in__input-email'
+          type='email'
+          name='email'
+          id='emailIn'
+          placeholder='Mail'
+        />
+
+        <svg class='form-sign__failure-icon action signin-failure-icon-email'
+          id="notification"
+          viewBox="0 0 32 32">
+          <path d="M16 3c-3.472 0-6.737 1.352-9.192 3.808s-3.808 5.72-3.808 9.192c0 3.472 1.352 6.737 3.808 9.192s5.72 3.808 9.192 3.808c3.472 0 6.737-1.352 9.192-3.808s3.808-5.72 3.808-9.192c0-3.472-1.352-6.737-3.808-9.192s-5.72-3.808-9.192-3.808zM16 0v0c8.837 0 16 7.163 16 16s-7.163 16-16 16c-8.837 0-16-7.163-16-16s7.163-16 16-16zM14 22h4v4h-4zM14 6h4v12h-4z">
+        </svg>
+
+        <svg class='form-sign__success-icon action signin-success-icon-email'
+          id="checked"
+          viewBox="0 0 32 32">
+          <path d="M28 0h-24c-2.2 0-4 1.8-4 4v24c0 2.2 1.8 4 4 4h24c2.2 0 4-1.8 4-4v-24c0-2.2-1.8-4-4-4zM14 24.828l-7.414-7.414 2.828-2.828 4.586 4.586 9.586-9.586 2.828 2.828-12.414 12.414z">
+        </svg>
+
+        <svg class='form-sign__icon'
+          id="form-mail"
+          viewBox="0 0 43 32">
+          <path d="M37.333 0h-32c-2.2 0-3.98 1.8-3.98 4l-.02 24c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V4c0-2.2-1.8-4-4-4zm-.8 8.5l-14.14 8.84c-.64.4-1.48.4-2.12 0L6.133 8.5c-.5-.32-.8-.86-.8-1.44 0-1.34 1.46-2.14 2.6-1.44l13.4 8.38 13.4-8.38c1.14-.7 2.6.1 2.6 1.44 0 .58-.3 1.12-.8 1.44z"/>
+        </svg>
+        <span class='signin-error-email error-hidden'></span>
+      </div>
+
+      <div class='form-sign__container'>
+        <label class='form-sign__field form-sign-in__field-password' for='password'>Password</label>
+
+        <input
+          class='form-sign__input form-sign-in__input-password'
+          type='password'
+          name='password'
+          id='passwordIn'
+          placeholder='Password'
+        />
+
+        <svg class='form-sign__failure-icon action signin-failure-icon-password'
+          id="notification"
+          viewBox="0 0 32 32">
+          <path d="M16 3c-3.472 0-6.737 1.352-9.192 3.808s-3.808 5.72-3.808 9.192c0 3.472 1.352 6.737 3.808 9.192s5.72 3.808 9.192 3.808c3.472 0 6.737-1.352 9.192-3.808s3.808-5.72 3.808-9.192c0-3.472-1.352-6.737-3.808-9.192s-5.72-3.808-9.192-3.808zM16 0v0c8.837 0 16 7.163 16 16s-7.163 16-16 16c-8.837 0-16-7.163-16-16s7.163-16 16-16zM14 22h4v4h-4zM14 6h4v12h-4z">
+        </svg>
+
+        <svg class='form-sign__success-icon action signin-success-icon-password'
+          id="checked"
+          viewBox="0 0 32 32">
+          <path d="M28 0h-24c-2.2 0-4 1.8-4 4v24c0 2.2 1.8 4 4 4h24c2.2 0 4-1.8 4-4v-24c0-2.2-1.8-4-4-4zM14 24.828l-7.414-7.414 2.828-2.828 4.586 4.586 9.586-9.586 2.828 2.828-12.414 12.414z">
+        </svg>
+
+        <svg class='form-sign__icon'
+          id="lock"
+          viewBox="0 0 32 32">
+          <path d="M18.5 14H18V8c0-3.308-2.692-6-6-6H8C4.692 2 2 4.692 2 8v6h-.5c-.825 0-1.5.675-1.5 1.5v15c0 .825.675 1.5 1.5 1.5h17c.825 0 1.5-.675 1.5-1.5v-15c0-.825-.675-1.5-1.5-1.5zM6 8c0-1.103.897-2 2-2h4c1.103 0 2 .897 2 2v6H6V8z"/>
+        </svg>
+        <span class='signin-error-password error-hidden'></span>
+      </div>
+
+      <button class='submit-btn submit-btn-sign-in control' type='submit'>Submit</button>
+    </form>
+  </div>
+
+  <div class='welcome-sign-up welcome-sign--hidden'>
+    <h2 class='welcome-sign-up__title'></h2>
+    <span class='welcome-in-library'>Welcome in FilmLibrary!</span>
+  </div>
+
+</div>
