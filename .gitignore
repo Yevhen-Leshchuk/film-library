@@ -109,3 +109,5 @@ dist
 
 #lock file
 yarn.lock
+# Local Netlify folder
+.netlify
