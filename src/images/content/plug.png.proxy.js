@@ -1,1 +1,0 @@
-export default "/src/images/content/plug.png";

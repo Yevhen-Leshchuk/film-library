@@ -1,1 +1,0 @@
-export default "/src/templates/footer.hbs";
